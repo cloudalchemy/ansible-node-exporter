@@ -20,11 +20,27 @@
     path: "/opt/node_exporter-{{ prometheus_node_exporter_version }}.linux-amd64"
   register: prometheus_node_exporter_install_path
 
-- name: Download Node Exporter
+#- name: Download Node Exporter
+#  get_url:
+#    url: "{{ prometheus_node_exporter_download_url }}"
+#    dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+#  when: prometheus_node_exporter_install_path.stat.exists == False
+
+- name: Download Node Exporter to local folder
+  become: no
   get_url:
     url: "{{ prometheus_node_exporter_download_url }}"
     dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+    validate_certs: no
   when: prometheus_node_exporter_install_path.stat.exists == False
+# force: true
+  run_once: true
+  delegate_to: localhost
+
+- name: propagate Node Exporter
+  copy:
+   src: /tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz 
+   dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
 
 - name: Extract Node Exporter into the install directory
   unarchive:
