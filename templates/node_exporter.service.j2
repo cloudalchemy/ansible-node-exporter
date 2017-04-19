@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus Node Exporter
+After=network.target
+
+[Service]
+Type=simple
+User={{ prometheus_node_exporter_service_username }}
+Group={{ prometheus_node_exporter_service_group }}
+ExecStart=/opt/node_exporter/node_exporter -collectors.enabled {{ prometheus_node_exporter_enabled_collectors | join(',') }} {% for flag, flag_value in prometheus_node_exporter_config_flags.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %}
+
+SyslogIdentifier=prometheus_node_exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Roman Demachkovych
+  description: Install Prometheus Node Exporter
+  company: Sointeractive
+  min_ansible_version: 1.9
+  platforms:
+   - name: EL
+     versions:
+       - 7
+   - name: Ubuntu
+     versions:
+       - 16.04
+  galaxy_tags:
+   - monitoring
+   - prometheus
+   - node exporter
+
+#dependencies:
+#  - { role: username.common }

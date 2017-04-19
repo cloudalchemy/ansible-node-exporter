@@ -1,0 +1,62 @@
+---
+- name: Create the Node Exporter group
+  group:
+    name: "{{ prometheus_node_exporter_service_group }}"
+    state: present
+    system: yes
+
+- name: Create the Node Exporter user
+  user:
+    name: "{{ prometheus_node_exporter_service_username }}"
+    groups: "{{ prometheus_node_exporter_service_group }}"
+    append: yes
+    shell: /bin/bash
+
+#
+# Install Prometheus Node Exporter
+#
+- name: Check if the version of Node Exporter already exists
+  stat:
+    path: "/opt/node_exporter-{{ prometheus_node_exporter_version }}.linux-amd64"
+  register: prometheus_node_exporter_install_path
+
+- name: Download Node Exporter
+  get_url:
+    url: "{{ prometheus_node_exporter_download_url }}"
+    dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+  when: prometheus_node_exporter_install_path.stat.exists == False
+
+- name: Extract Node Exporter into the install directory
+  unarchive:
+    src: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+    dest: "/opt/"
+    copy: no
+    owner: "{{ prometheus_node_exporter_service_username }}"
+    group: "{{ prometheus_node_exporter_service_group }}"
+  when: prometheus_node_exporter_install_path.stat.exists == False
+
+- name: Create a symlink for /opt/node_exporter
+  file:
+    src: "/opt/node_exporter-{{ prometheus_node_exporter_version }}.linux-amd64"
+    dest: /opt/node_exporter
+    owner: "{{ prometheus_node_exporter_service_username }}"
+    group: "{{ prometheus_node_exporter_service_group }}"
+    state: link
+  when: prometheus_node_exporter_install_path.stat.exists == False
+
+- name: Copy the Node Exporter systemd service file
+  template:
+    src: node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart node_exporter
+
+- name: Ensure Node Exporter is started and enabled on boot
+  service:
+    name: node_exporter
+    state: started
+    enabled: yes

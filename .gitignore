@@ -1,0 +1,6 @@
+*.swp
+*.swo
+*.idea
+.vagrant/
+*.retry
+*.log
