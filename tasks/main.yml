@@ -12,28 +12,12 @@
     append: yes
     shell: /bin/bash
 
-#
-# Install Prometheus Node Exporter
-#
-- name: Check if the version of Node Exporter already exists
-  stat:
-    path: "/opt/node_exporter-{{ prometheus_node_exporter_version }}.linux-amd64"
-  register: prometheus_node_exporter_install_path
-
-#- name: Download Node Exporter
-#  get_url:
-#    url: "{{ prometheus_node_exporter_download_url }}"
-#    dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
-#  when: prometheus_node_exporter_install_path.stat.exists == False
-
 - name: Download Node Exporter to local folder
   become: no
   get_url:
     url: "{{ prometheus_node_exporter_download_url }}"
     dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
     validate_certs: no
-  when: prometheus_node_exporter_install_path.stat.exists == False
-# force: true
   run_once: true
   delegate_to: localhost
 
@@ -49,7 +33,6 @@
     copy: no
     owner: "{{ prometheus_node_exporter_service_username }}"
     group: "{{ prometheus_node_exporter_service_group }}"
-  when: prometheus_node_exporter_install_path.stat.exists == False
 
 - name: Create a symlink for /opt/node_exporter
   file:
@@ -58,7 +41,6 @@
     owner: "{{ prometheus_node_exporter_service_username }}"
     group: "{{ prometheus_node_exporter_service_group }}"
     state: link
-  when: prometheus_node_exporter_install_path.stat.exists == False
 
 - name: Copy the Node Exporter systemd service file
   template:
