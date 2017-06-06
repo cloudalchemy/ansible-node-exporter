@@ -1,45 +1,45 @@
 ---
 - name: Create the Node Exporter group
   group:
-    name: "{{ prometheus_node_exporter_service_group }}"
+    name: "{{ node_exporter_service_group }}"
     state: present
     system: yes
 
 - name: Create the Node Exporter user
   user:
-    name: "{{ prometheus_node_exporter_service_username }}"
-    groups: "{{ prometheus_node_exporter_service_group }}"
+    name: "{{ node_exporter_service_username }}"
+    groups: "{{ node_exporter_service_group }}"
     append: yes
     shell: /bin/bash
 
 - name: Download Node Exporter to local folder
   become: no
   get_url:
-    url: "{{ prometheus_node_exporter_download_url }}"
-    dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+    url: "{{ node_exporter_download_url }}"
+    dest: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
     validate_certs: no
   run_once: true
   delegate_to: localhost
 
 - name: propagate Node Exporter
   copy:
-   src: /tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz 
-   dest: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+   src: /tmp/node_exporter-{{ node_exporter_version }}.tar.gz
+   dest: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
 
 - name: Extract Node Exporter into the install directory
   unarchive:
-    src: "/tmp/node_exporter-{{ prometheus_node_exporter_version }}.tar.gz"
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
     dest: "/opt/"
     copy: no
-    owner: "{{ prometheus_node_exporter_service_username }}"
-    group: "{{ prometheus_node_exporter_service_group }}"
+    owner: "{{ node_exporter_service_username }}"
+    group: "{{ node_exporter_service_group }}"
 
 - name: Create a symlink for /opt/node_exporter
   file:
-    src: "/opt/node_exporter-{{ prometheus_node_exporter_version }}.linux-amd64"
+    src: "/opt/node_exporter-{{ node_exporter_version }}.linux-amd64"
     dest: /opt/node_exporter
-    owner: "{{ prometheus_node_exporter_service_username }}"
-    group: "{{ prometheus_node_exporter_service_group }}"
+    owner: "{{ node_exporter_service_username }}"
+    group: "{{ node_exporter_service_group }}"
     state: link
 
 - name: Copy the Node Exporter systemd service file
