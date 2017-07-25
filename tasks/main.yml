@@ -10,7 +10,7 @@
     name: "{{ node_exporter_service_username }}"
     groups: "{{ node_exporter_service_group }}"
     append: yes
-    shell: /bin/bash
+    shell: /bin/false
     system: yes
     createhome: no
 
