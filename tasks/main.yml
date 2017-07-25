@@ -11,6 +11,8 @@
     groups: "{{ node_exporter_service_group }}"
     append: yes
     shell: /bin/bash
+    system: yes
+    createhome: no
 
 - name: Download Node Exporter to local folder
   become: no
