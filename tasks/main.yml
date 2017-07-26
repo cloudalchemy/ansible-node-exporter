@@ -10,7 +10,9 @@
     name: "{{ node_exporter_service_username }}"
     groups: "{{ node_exporter_service_group }}"
     append: yes
-    shell: /bin/bash
+    shell: /usr/sbin/nologin
+    system: yes
+    createhome: no
 
 - name: Download Node Exporter to local folder
   become: no
