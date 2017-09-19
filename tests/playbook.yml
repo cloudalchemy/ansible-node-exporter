@@ -13,6 +13,4 @@
   roles:
     - node-exporter
   vars:
-    node_exporter_config_flags:
-      'web.listen-address': '127.0.0.1:9100'
-      'log.level': 'info'
+    node_exporter_web_listen_address: "127.0.0.1:9100"

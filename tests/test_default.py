@@ -3,20 +3,10 @@ from testinfra.utils.ansible_runner import AnsibleRunner
 testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 
-def test_directories(File):
-    present = [
-        "/opt/node_exporter"
-    ]
-    if present:
-        for directory in present:
-            d = File(directory)
-            assert d.is_directory
-            assert d.exists
-
-
 def test_files(File):
     present = [
-        "/etc/systemd/system/node_exporter.service"
+        "/etc/systemd/system/node_exporter.service",
+        "/opt/node_exporter"
     ]
     if present:
         for file in present:

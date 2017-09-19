@@ -1,8 +1,6 @@
 ---
 node_exporter_version: 0.14.0
-node_exporter_download_url: https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz
-node_exporter_service_username: node-exp
-node_exporter_service_group: node-exp
+node_exporter_web_listen_address: "0.0.0.0:9100"
 
 node_exporter_enabled_collectors:
   - conntrack
