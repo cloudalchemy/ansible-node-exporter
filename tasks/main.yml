@@ -1,48 +1,36 @@
 ---
 - name: Create the Node Exporter group
   group:
-    name: "{{ node_exporter_service_group }}"
+    name: "node-exp"
     state: present
     system: yes
 
 - name: Create the Node Exporter user
   user:
-    name: "{{ node_exporter_service_username }}"
-    groups: "{{ node_exporter_service_group }}"
+    name: "node-exp"
+    groups: "node-exp"
     append: yes
     shell: /usr/sbin/nologin
     system: yes
     createhome: no
 
-- name: Download Node Exporter to local folder
+- name: download node exporter binary to local folder
   become: no
-  get_url:
-    url: "{{ node_exporter_download_url }}"
-    dest: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
-    validate_certs: no
+  unarchive:
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
   run_once: true
   delegate_to: localhost
 
-- name: propagate Node Exporter
+- name: propagate prometheus and promtool binaries
   copy:
-   src: /tmp/node_exporter-{{ node_exporter_version }}.tar.gz
-   dest: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
-
-- name: Extract Node Exporter into the install directory
-  unarchive:
-    src: "/tmp/node_exporter-{{ node_exporter_version }}.tar.gz"
-    dest: "/opt/"
-    copy: no
-    owner: "{{ node_exporter_service_username }}"
-    group: "{{ node_exporter_service_group }}"
-
-- name: Create a symlink for /opt/node_exporter
-  file:
-    src: "/opt/node_exporter-{{ node_exporter_version }}.linux-amd64"
-    dest: /opt/node_exporter
-    owner: "{{ node_exporter_service_username }}"
-    group: "{{ node_exporter_service_group }}"
-    state: link
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
+    dest: "/opt/node_exporter"
+    mode: 0755
+    owner: "node-exp"
+    group: "node-exp"
 
 - name: Copy the Node Exporter systemd service file
   template:
@@ -55,8 +43,7 @@
     - reload systemd
     - restart node_exporter
 
-- name: Ensure Node Exporter is started and enabled on boot
+- name: Ensure Node Exporter is enabled on boot
   service:
     name: node_exporter
-    state: started
     enabled: yes

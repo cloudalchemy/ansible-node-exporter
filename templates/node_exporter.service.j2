@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-User={{ node_exporter_service_username }}
-Group={{ node_exporter_service_group }}
-ExecStart=/opt/node_exporter/node_exporter -collectors.enabled {{ node_exporter_enabled_collectors | join(',') }} {% for flag, flag_value in node_exporter_config_flags.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %}
+User=node-exp
+Group=node-exp
+ExecStart=/opt/node_exporter -web.listen-address {{ node_exporter_web_listen_address }} -collectors.enabled {{ node_exporter_enabled_collectors | join(',') }}
 
 SyslogIdentifier=node_exporter
 Restart=always
