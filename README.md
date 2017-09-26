@@ -23,8 +23,6 @@ Use it in a playbook as follows:
       - loadavg
   roles:
     - SoInteractive.node-exporter
-  tags:
-    - node-exporter
 ```
 
 Have a look at the [defaults/main.yml](defaults/main.yml) for role variables
