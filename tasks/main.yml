@@ -14,7 +14,7 @@
     system: yes
     createhome: no
 
-- name: download node exporter binary to local folder
+- name: Download node exporter binary to local folder
   become: no
   unarchive:
     src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
@@ -24,13 +24,15 @@
   run_once: true
   delegate_to: localhost
 
-- name: propagate prometheus and promtool binaries
+- name: Propagate Node Exporter binaries
   copy:
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
     dest: "/opt/node_exporter"
     mode: 0755
     owner: "node-exp"
     group: "node-exp"
+  notify:
+    - restart node_exporter
 
 - name: Copy the Node Exporter systemd service file
   template:
