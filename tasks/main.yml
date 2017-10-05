@@ -32,7 +32,7 @@
     owner: "node-exp"
     group: "node-exp"
   notify:
-    - restart node_exporter
+    - restart node exporter
 
 - name: Copy the Node Exporter systemd service file
   template:
@@ -42,10 +42,9 @@
     group: root
     mode: 0644
   notify:
-    - reload systemd
-    - restart node_exporter
+    - restart node exporter
 
 - name: Ensure Node Exporter is enabled on boot
-  service:
+  systemd:
     name: node_exporter
     enabled: yes
