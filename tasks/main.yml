@@ -44,6 +44,27 @@
   notify:
     - restart node exporter
 
+- name: Install dependencies on RedHat OS family
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libselinux-python
+    - policycoreutils-python
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_virtualization_type != "docker"
+
+- name: Allow Node Exporter port in SELinux on RedHat OS family
+  seport:
+    ports: "{{ node_exporter_web_listen_address.split(':')[1] }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_virtualization_type != "docker"
+
 - name: Ensure Node Exporter is enabled on boot
   systemd:
     name: node_exporter
