@@ -50,7 +50,7 @@
     proto: tcp
     setype: http_port_t
     state: present
-  when: ansible_distribution == 'CentOS'
+  when: ansible_os_family == "RedHat"
 
 - name: Ensure Node Exporter is enabled on boot
   systemd:
