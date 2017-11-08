@@ -18,6 +18,8 @@ node_exporter_enabled_collectors:
   - textfile
   - time
   - vmstat
+  - systemd
+  - ntp
 
 node_exporter_config_flags:
   'web.listen-address': '0.0.0.0:9100'
