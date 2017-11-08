@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=node-exp
 Group=node-exp
-ExecStart=/opt/node_exporter -web.listen-address {{ node_exporter_web_listen_address }} -collectors.enabled {{ node_exporter_enabled_collectors | join(',') }}
+ExecStart=/opt/node_exporter --web.listen-address {{ node_exporter_web_listen_address }} --collectors.enabled {{ node_exporter_enabled_collectors | join(',') }}
 
 SyslogIdentifier=node_exporter
 Restart=always
