@@ -1,5 +1,5 @@
 ---
-node_exporter_version: 0.14.0
+node_exporter_version: 0.15.1
 node_exporter_web_listen_address: "0.0.0.0:9100"
 
 node_exporter_enabled_collectors:
@@ -18,6 +18,8 @@ node_exporter_enabled_collectors:
   - textfile
   - time
   - vmstat
+  - systemd
+  - ntp
 
 node_exporter_config_flags:
   'web.listen-address': '0.0.0.0:9100'
