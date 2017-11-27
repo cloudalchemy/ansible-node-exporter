@@ -3,7 +3,7 @@
 Ansible Role: Node Exporter
 ===========================
 
-[![Build Status](https://travis-ci.org/SoInteractive/ansible-node-exporter.svg?branch=master)](https://travis-ci.org/SoInteractive/ansible-node-exporter) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-SoInteractive.node_exporter-blue.svg)](https://galaxy.ansible.com/SoInteractive/node-exporter/) [![GitHub tag](https://img.shields.io/github/tag/sointeractive/ansible-node-exporter.svg)](https://github.com/SoInteractive/ansible-node-exporter/tags) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
+[![Build Status](https://travis-ci.org/cloudalchemy/ansible-node-exporter.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-node-exporter) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.node_exporter-blue.svg)](https://galaxy.ansible.com/cloudalchemy/node-exporter/) [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-node-exporter.svg)](https://github.com/cloudalchemy/ansible-node-exporter/tags)
 
 Prometheus Node Exporter
 
@@ -22,7 +22,7 @@ Use it in a playbook as follows:
       - gmond
       - loadavg
   roles:
-    - SoInteractive.node-exporter
+    - cloudalchemy.node-exporter
 ```
 
 Have a look at the [defaults/main.yml](defaults/main.yml) for role variables
