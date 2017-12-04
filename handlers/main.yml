@@ -7,4 +7,4 @@
 - name: stop node_exporter
   systemd:
     name: node_exporter
-    state: stoped
+    state: stopped
