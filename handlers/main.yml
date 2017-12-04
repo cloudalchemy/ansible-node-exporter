@@ -4,3 +4,7 @@
     daemon_reload: yes
     name: node_exporter
     state: restarted
+- name: stop node_exporter
+  systemd:
+    name: node_exporter
+    state: stop
