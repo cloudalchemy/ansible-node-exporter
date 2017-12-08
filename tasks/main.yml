@@ -68,4 +68,13 @@
 - name: Ensure Node Exporter is enabled on boot
   systemd:
     name: node_exporter
+    masked: no
     enabled: yes
+
+- name: Stop Node Exporter and disable on boot
+  systemd:
+    name: node_exporter
+    enabled: no
+  when: node_exporter == "disable"
+  notify:
+    - stop node_exporter
