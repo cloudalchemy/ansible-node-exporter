@@ -1,5 +1,5 @@
 ---
-node_exporter_version: 0.15.1
+node_exporter_version: 0.15.2
 node_exporter_web_listen_address: "0.0.0.0:9100"
 
 node_exporter_enabled_collectors:
