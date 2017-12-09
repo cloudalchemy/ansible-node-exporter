@@ -14,23 +14,18 @@
     system: yes
     createhome: no
 
-- name: Set go architecture
-  set_fact:
-    go_arch: "{{ ansible_architecture | replace('armv7l','armv7') | replace('aarch64','arm64') | replace('x86_64','amd64') }}"
-  when: go_arch is undefined
-
 - name: Download node exporter binary to local folder
   become: no
   unarchive:
-    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: yes
-    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
   delegate_to: localhost
 
 - name: Propagate Node Exporter binaries
   copy:
-    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
     dest: "/opt/node_exporter"
     mode: 0755
     owner: "node-exp"
