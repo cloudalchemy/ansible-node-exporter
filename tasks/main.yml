@@ -17,16 +17,15 @@
 - name: Download node exporter binary to local folder
   become: no
   unarchive:
-    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: yes
-    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
-  run_once: true
+    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
   delegate_to: localhost
 
 - name: Propagate Node Exporter binaries
   copy:
-    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
     dest: "/opt/node_exporter"
     mode: 0755
     owner: "node-exp"
