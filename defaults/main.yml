@@ -20,3 +20,6 @@ node_exporter_enabled_collectors:
   - vmstat
   - systemd
   - ntp
+
+node_exporter_disabled_collectors:
+  - logind
