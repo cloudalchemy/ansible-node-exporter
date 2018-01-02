@@ -24,8 +24,8 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | -------------- | ------------- | -----------------------------------|
 | `node_exporter_version` | 0.15.2 | Node exporter package version |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
-| `node_exporter_enabled_collectors` | [logind] | List of enabled collectors |
-| `node_exporter_disabled_collectors` | [logind] | List of disabled collectors | 
+| `node_exporter_enabled_collectors` | [ conntrack, diskstats, entropy, filefd, filesystem, hwmon, loadavg, mdadm, meminfo, netdev, netstat, stat, textfile, time, vmstat, systemd, ntp ] | List of enabled collectors |
+| `node_exporter_disabled_collectors` | [ logind ] | List of disabled collectors | 
 
 ## Example
 
