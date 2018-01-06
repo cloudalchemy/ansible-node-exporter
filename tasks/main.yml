@@ -14,7 +14,7 @@
     system: yes
     createhome: no
 
-- name: Download node exporter binary to local folder
+- name: Download Node exporter binary to local folder
   become: no
   unarchive:
     src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
