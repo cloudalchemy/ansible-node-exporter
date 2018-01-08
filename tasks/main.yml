@@ -33,6 +33,12 @@
   notify:
     - restart node exporter
 
+- name: Node exporter can read anything (omit file permissions)
+  capabilities:
+    path: '/opt/node_exporter'
+    capability: cap_dac_read_search+ep
+    state: present
+
 - name: Copy the Node Exporter systemd service file
   template:
     src: node_exporter.service.j2
