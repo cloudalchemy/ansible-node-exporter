@@ -19,7 +19,8 @@ node_exporter_enabled_collectors:
   - time
   - vmstat
   - systemd
-  - ntp
+  - timex
 
 node_exporter_disabled_collectors:
   - logind
+  - ntp
