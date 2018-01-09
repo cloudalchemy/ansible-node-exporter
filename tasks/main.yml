@@ -27,11 +27,17 @@
   copy:
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
     dest: "/opt/node_exporter"
-    mode: 0755
+    mode: 0750
     owner: "node-exp"
     group: "node-exp"
   notify:
     - restart node exporter
+
+- name: Node exporter can read anything (omit file permissions)
+  capabilities:
+    path: '/opt/node_exporter'
+    capability: cap_dac_read_search+ep
+    state: present
 
 - name: Copy the Node Exporter systemd service file
   template:
