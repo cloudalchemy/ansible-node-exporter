@@ -13,6 +13,7 @@
     shell: /usr/sbin/nologin
     system: yes
     createhome: no
+    home: /opt
 
 - name: Download Node exporter binary to local folder
   become: no
