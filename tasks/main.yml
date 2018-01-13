@@ -1,4 +1,6 @@
 ---
+- include: preflight.yml
+
 - name: Create the Node Exporter group
   group:
     name: "node-exp"
