@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych
+  author: Roman Demachkovych, Pawel Krupa
   description: Prometheus Node Exporter
   license: MIT
   min_ansible_version: 2.2
@@ -8,12 +8,21 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
+  - name: Debian
+    versions:
+    - jessie
+    - stretch
   - name: EL
     versions:
     - 7
+  - name: Fedora
+    versions:
+    - 27
   galaxy_tags:
   - monitoring
   - prometheus
   - node-exporter
+  - metrics
+
 
 dependencies: []

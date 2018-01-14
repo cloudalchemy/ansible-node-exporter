@@ -36,6 +36,12 @@
   notify:
     - restart node exporter
 
+- name: Install libcap on Debian systems
+  package:
+    name: "libcap2-bin"
+    state: present
+  when: ansible_os_family | lower == "debian"
+
 - name: Node exporter can read anything (omit file permissions)
   capabilities:
     path: '/opt/node_exporter'
