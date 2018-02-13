@@ -1,5 +1,6 @@
 ---
 - name: restart node exporter
+  become: true
   systemd:
     daemon_reload: yes
     name: node_exporter
