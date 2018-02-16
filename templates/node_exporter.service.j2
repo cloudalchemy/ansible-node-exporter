@@ -7,7 +7,11 @@ Type=simple
 User=node-exp
 Group=node-exp
 Nice=-5
-ExecStart=/opt/node_exporter --web.listen-address {{ node_exporter_web_listen_address }} {% for c in node_exporter_enabled_collectors %} --collector.{{ c }}{% endfor %} {% for c in node_exporter_disabled_collectors %} --no-collector.{{ c }}{% endfor %}
+ExecStart=/opt/node_exporter \
+    --web.listen-address {{ node_exporter_web_listen_address }} \
+    {% for c in node_exporter_enabled_collectors %}--collector.{{ c }}\
+    {% endfor %}{% for c in node_exporter_disabled_collectors %}--no-collector.{{ c }}\
+    {% endfor %}
 
 SyslogIdentifier=node_exporter
 Restart=always
