@@ -21,7 +21,7 @@ ExecStart=/usr/local/bin/node_exporter \
     {% endfor -%}
     {% for c in node_exporter_disabled_collectors -%}
     --no-collector.{{ c }} \
-    {% endfor -%}
+    {% endfor %}
 
 SyslogIdentifier=node_exporter
 Restart=always
