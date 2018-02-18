@@ -6,7 +6,7 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 def test_files(host):
     files = [
         "/etc/systemd/system/node_exporter.service",
-        "/opt/node_exporter"
+        "/usr/local/bin/node_exporter"
     ]
     for file in files:
         f = host.file(file)
