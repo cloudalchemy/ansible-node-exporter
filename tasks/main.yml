@@ -35,6 +35,7 @@
     group: "node-exp"
   notify:
     - restart node exporter
+  when: not ansible_check_mode
 
 - name: Install libcap on Debian systems
   package:
