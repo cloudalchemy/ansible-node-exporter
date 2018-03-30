@@ -45,7 +45,7 @@ We try to provide production ready ansible roles which should be as much zero-co
 
 ### Add tests
 
-We try to have as much tests written in testinfra framework as possible, so when you copy file, some template or starting some server just add couple of lines in [/tests/test)default.py](test_default.py) file. If you want to know how to write tests in testinfra, go to their [docs](http://testinfra.readthedocs.io/en/latest/index.html).
+We try to have as much tests written in testinfra framework as possible, so when you copy file, some template or starting some server just add couple of lines in [/tests/test_default.py](test_default.py) file. If you want to know how to write tests in testinfra, go to their [docs](http://testinfra.readthedocs.io/en/latest/index.html).
 
 ### Follow best practices
 

@@ -15,7 +15,6 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 ## Requirements
 
 - Ansible >= 2.3
-- go-lang installed on deployer machine (same one where ansible is installed)
 
 ## Role Variables
 
