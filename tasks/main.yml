@@ -52,6 +52,8 @@
     path: '/usr/local/bin/node_exporter'
     capability: cap_dac_read_search+ep
     state: present
+  when:
+    not ansible_check_mode
 
 - name: Copy the Node Exporter systemd service file
   template:
