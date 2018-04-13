@@ -13,7 +13,7 @@ ExecStart=/usr/local/bin/node_exporter \
     {%   if not c is mapping -%}
     --collector.{{ c }} \
     {%   else -%}
-    {%     set name,opt = c.items()[0] -%}
+    {%     set name,opt = (c.items() | list)[0] -%}
     {%     for k,v in opt.items() -%}
     --collector.{{ name }}.{{ k }}={{ v }} \
     {%     endfor -%}
