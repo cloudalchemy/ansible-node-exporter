@@ -5,24 +5,24 @@
   group:
     name: "node-exp"
     state: present
-    system: yes
+    system: true
 
 - name: Create the Node Exporter user
   user:
     name: "node-exp"
     groups: "node-exp"
-    append: yes
+    append: true
     shell: /usr/sbin/nologin
-    system: yes
-    createhome: no
+    system: true
+    createhome: false
     home: /
 
 - name: Download Node exporter binary to local folder
-  become: no
+  become: false
   unarchive:
     src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
-    remote_src: yes
+    remote_src: true
     creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
   register: _download_binary
   until: _download_binary is succeeded
@@ -88,4 +88,4 @@
 - name: Ensure Node Exporter is enabled on boot
   systemd:
     name: node_exporter
-    enabled: yes
+    enabled: true

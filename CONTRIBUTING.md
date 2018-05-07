@@ -51,7 +51,7 @@ We try to have as much tests written in testinfra framework as possible, so when
 
 Please follow [ansible best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html) and especially provide meaningful names to tasks and even comments where needed.
 
-Our test framework automatically lints code with [`ansible-lint`](https://github.com/willthames/ansible-lint) command so be sure to follow it's rules.
+Our test framework automatically lints code with [`yamllint`](https://yamllint.readthedocs.io) and [`ansible-lint`](https://github.com/willthames/ansible-lint) programs so be sure to follow their rules.
 
 Remember: Code is generally read much more often than written.
 
