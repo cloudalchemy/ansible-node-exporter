@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- move to molecule 2.x [\#34](https://github.com/cloudalchemy/ansible-node-exporter/pull/34) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.6.18](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-13)
 **Merged pull requests:**
 
