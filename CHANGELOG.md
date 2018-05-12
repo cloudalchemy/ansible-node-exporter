@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- split download and unarchive and add checksum validation [\#35](https://github.com/cloudalchemy/ansible-node-exporter/pull/35) ([paulfantom](https://github.com/paulfantom))
 - move to molecule 2.x [\#34](https://github.com/cloudalchemy/ansible-node-exporter/pull/34) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.6.18](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-13)
