@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-node-exporter/pull/38) ([Porkepix](https://github.com/Porkepix))
+
 ## [0.6.19](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-23)
 **Merged pull requests:**
 
