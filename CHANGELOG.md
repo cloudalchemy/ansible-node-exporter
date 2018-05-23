@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.6.19](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-23)
 **Merged pull requests:**
 
+- Fix failing role on non-SELinux RedHat [\#37](https://github.com/cloudalchemy/ansible-node-exporter/pull/37) ([noraab](https://github.com/noraab))
 - split download and unarchive and add checksum validation [\#35](https://github.com/cloudalchemy/ansible-node-exporter/pull/35) ([paulfantom](https://github.com/paulfantom))
 - move to molecule 2.x [\#34](https://github.com/cloudalchemy/ansible-node-exporter/pull/34) ([paulfantom](https://github.com/paulfantom))
 
