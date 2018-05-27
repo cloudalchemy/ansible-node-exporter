@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.6.20](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-27)
 **Merged pull requests:**
 
+- Fix architecture var parsing [\#39](https://github.com/cloudalchemy/ansible-node-exporter/pull/39) ([SuperQ](https://github.com/SuperQ))
 - Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-node-exporter/pull/38) ([Porkepix](https://github.com/Porkepix))
 
 ## [0.6.19](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-23)
