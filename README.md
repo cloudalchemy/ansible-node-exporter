@@ -22,9 +22,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `node_exporter_version` | 0.15.2 | Node exporter package version |
+| `node_exporter_version` | 0.16.0 | Node exporter package version |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
-| `node_exporter_enabled_collectors` | [ systemd ] | List of additionally enabled collectors. It adds collectors to those enabled by [default](https://github.com/prometheus/node_exporter#enabled-by-default) |
+| `node_exporter_enabled_collectors` | [ systemd ] | List of additionally enabled collectors. It adds collectors to [those enabled by default](https://github.com/prometheus/node_exporter#enabled-by-default) |
 | `node_exporter_disabled_collectors` | [] | List of disabled collectors. By default node_exporter disables collectors listed [here](https://github.com/prometheus/node_exporter#disabled-by-default). |
 
 ## Example
