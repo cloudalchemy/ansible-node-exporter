@@ -22,10 +22,10 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `node_exporter_version` | 0.15.2 | Node exporter package version |
+| `node_exporter_version` | 0.16.0 | Node exporter package version |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
-| `node_exporter_enabled_collectors` | [ conntrack, diskstats, entropy, filefd, filesystem, hwmon, loadavg, mdadm, meminfo, netdev, netstat, stat, textfile, time, vmstat, systemd, ntp ] | List of enabled collectors |
-| `node_exporter_disabled_collectors` | [ logind ] | List of disabled collectors | 
+| `node_exporter_enabled_collectors` | [ systemd ] | List of additionally enabled collectors. It adds collectors to [those enabled by default](https://github.com/prometheus/node_exporter#enabled-by-default) |
+| `node_exporter_disabled_collectors` | [] | List of disabled collectors. By default node_exporter disables collectors listed [here](https://github.com/prometheus/node_exporter#disabled-by-default). |
 
 ## Example
 
@@ -59,7 +59,7 @@ For more information about molecule go to their [docs](http://molecule.readthedo
 
 ## Travis CI
 
-Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix (42 parallel role executions in case of [ansible-prometheus](https://github.com/cloudalchemy/ansible-prometheus)) which will take more time than local testing, so please be patient.
+Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix which will take more time than local testing, so please be patient.
 
 ## Contributing
 
