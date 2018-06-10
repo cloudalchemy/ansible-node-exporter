@@ -50,6 +50,16 @@
     - restart node exporter
   when: not ansible_check_mode
 
+- name: Create texfile collector dir
+  file:
+    path: "{{ node_exporter_textfile_dir }}"
+    state: directory
+    owner: "node-exp"
+    group: "node-exp"
+    recurse: true
+    mode: 0755
+  when: node_exporter_textfile_dir != ""
+
 - name: Install libcap on Debian systems
   package:
     name: "libcap2-bin"
