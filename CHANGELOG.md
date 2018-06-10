@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.8.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
+**Merged pull requests:**
+
+- Add support for textfile collector [\#42](https://github.com/cloudalchemy/ansible-node-exporter/pull/42) ([SuperQ](https://github.com/SuperQ))
+
 ## [0.7.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
 **Implemented enhancements:**
 
@@ -176,12 +181,12 @@
 ## [0.4.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-10-05)
 ## [0.4.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-26)
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-20)
-## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
+## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
+## [0.2.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
 ## [0.1.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-06)
