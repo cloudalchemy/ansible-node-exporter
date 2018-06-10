@@ -1,10 +1,14 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+## [0.7.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
+**Implemented enhancements:**
+
+- Socket activation [\#41](https://github.com/cloudalchemy/ansible-node-exporter/issues/41)
 
 **Merged pull requests:**
 
 - specify file name for dest in get\_url call [\#40](https://github.com/cloudalchemy/ansible-node-exporter/pull/40) ([sarphram](https://github.com/sarphram))
+- Install newer node\_exporter by default [\#36](https://github.com/cloudalchemy/ansible-node-exporter/pull/36) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.6.20](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-27)
 **Merged pull requests:**
