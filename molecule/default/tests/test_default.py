@@ -5,6 +5,16 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
+def test_directories(host):
+    dirs = [
+        "/var/lib/node_exporter"
+    ]
+    for dir in dirs:
+        d = host.file(dir)
+        assert d.is_directory
+        assert d.exists
+
+
 def test_files(host):
     files = [
         "/etc/systemd/system/node_exporter.service",
