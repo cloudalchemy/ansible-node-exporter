@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Fixed bugs:**
+
+- Problems with `node\_exporter\_textfile\_dir` [\#43](https://github.com/cloudalchemy/ansible-node-exporter/issues/43)
+
 ## [0.8.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
 **Merged pull requests:**
 
