@@ -6,6 +6,14 @@
 
 - Problems with `node\_exporter\_textfile\_dir` [\#43](https://github.com/cloudalchemy/ansible-node-exporter/issues/43)
 
+**Closed issues:**
+
+- node-exporter service handler is triggered before deployment [\#44](https://github.com/cloudalchemy/ansible-node-exporter/issues/44)
+
+**Merged pull requests:**
+
+- use tox for running test matrix [\#45](https://github.com/cloudalchemy/ansible-node-exporter/pull/45) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.8.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
 **Merged pull requests:**
 
