@@ -1,12 +1,15 @@
+---
 sudo: required
 language: python
 cache: pip
 services:
   - docker
 env:
-  - ANSIBLE=2.3
   - ANSIBLE=2.4
   - ANSIBLE=2.5
+  - ANSIBLE=2.6
+matrix:
+  fast_finish: true
 install:
   - pip install tox-travis git-semver
 script:
@@ -14,7 +17,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./.travis/releaser.sh
+  script: .travis/releaser.sh
   on:
     branch: master
 branches:
