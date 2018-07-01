@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.9.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-01)
 **Fixed bugs:**
 
 - Problems with `node\_exporter\_textfile\_dir` [\#43](https://github.com/cloudalchemy/ansible-node-exporter/issues/43)
@@ -12,6 +11,7 @@
 
 **Merged pull requests:**
 
+- ansible 2.6 + allow remote docker host [\#46](https://github.com/cloudalchemy/ansible-node-exporter/pull/46) ([paulfantom](https://github.com/paulfantom))
 - use tox for running test matrix [\#45](https://github.com/cloudalchemy/ansible-node-exporter/pull/45) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.8.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
