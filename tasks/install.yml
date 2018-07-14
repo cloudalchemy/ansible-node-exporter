@@ -1,0 +1,55 @@
+---
+
+- name: Install required packages
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ node_exporter__required_packages_names }}'
+
+- name: Download node_exporter binary to local folder
+  become: false
+  get_url:
+    url: '{{ node_exporter__download_url }}'
+    dest: '/tmp/node_exporter-{{ node_exporter__version }}.linux-{{ go_arch_map[ansible_architecture]|d(ansible_architecture) }}.tar.gz'
+    checksum: 'sha256:{{ _node_exporter__checksum }}'
+  register: _node_exporter__download_binary
+  until: _node_exporter__download_binary is succeeded
+  retries: 5
+  delay: 2
+  check_mode: false
+  delegate_to: localhost
+
+- name: Unpack node_exporter binary
+  become: false
+  unarchive:
+    src: '/tmp/node_exporter-{{ node_exporter__version }}.linux-{{ go_arch_map[ansible_architecture]|d(ansible_architecture) }}.tar.gz'
+    dest: /tmp
+    creates: '/tmp/node_exporter-{{ node_exporter__version }}.linux-{{ go_arch_map[ansible_architecture]|d(ansible_architecture) }}/node_exporter'
+  check_mode: false
+  delegate_to: localhost
+
+- name: Create the Node Exporter group
+  group:
+    name: '{{ node_exporter__service_group }}'
+    system: true
+    state: present
+
+- name: Create the Node Exporter user
+  user:
+    name: '{{ node_exporter__service_user }}'
+    groups: '{{ node_exporter__service_group }}'
+    append: true
+    shell: /usr/sbin/nologin
+    system: true
+    createhome: false
+    home: /nonexistent
+    state: present
+
+- name: Upload Node Exporter binaries to host
+  copy:
+    src: '/tmp/node_exporter-{{ node_exporter__version }}.linux-{{ go_arch_map[ansible_architecture]|d(ansible_architecture) }}/node_exporter'
+    dest: '{{ node_exporter__service_executable }}'
+    owner: '{{ node_exporter__service_user }}'
+    group: '{{ node_exporter__service_group }}'
+    mode: 0750
+  notify: ['restart-node-exporter']

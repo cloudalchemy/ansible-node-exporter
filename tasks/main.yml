@@ -1,110 +1,38 @@
 ---
-- include: preflight.yml
+# tasks file for node-exporter
 
-- name: Create the Node Exporter group
-  group:
-    name: "node-exp"
-    state: present
-    system: true
+- name: Include the OS specific variables
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - defaults.yml
+      skip: true
+  tags: ['always']
 
-- name: Create the Node Exporter user
-  user:
-    name: "node-exp"
-    groups: "node-exp"
-    append: true
-    shell: /usr/sbin/nologin
-    system: true
-    createhome: false
-    home: /
+- name: Check role availability
+  fail:
+    msg: This module only works with systemd
+  when: ansible_service_mgr != 'systemd'
 
-- name: Download node_exporter binary to local folder
-  become: false
-  get_url:
-    url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    checksum: "sha256:{{ node_exporter_checksum }}"
-  register: _download_binary
-  until: _download_binary is succeeded
-  retries: 5
-  delay: 2
-  delegate_to: localhost
-  check_mode: false
+- import_tasks: init.yml
+  tags: ['always']
 
-- name: Unpack node_exporter binary
-  become: false
-  unarchive:
-    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    dest: "/tmp"
-    creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
-  delegate_to: localhost
-  check_mode: false
+- name: Import install tasks
+  import_tasks: install.yml
+  tags: ['node-exporter', 'node-exporter-install']
 
-- name: Propagate Node Exporter binaries
-  copy:
-    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/node_exporter"
-    dest: "/usr/local/bin/node_exporter"
-    mode: 0750
-    owner: "node-exp"
-    group: "node-exp"
-  notify:
-    - restart node exporter
-  when: not ansible_check_mode
+- name: Import configuration tasks
+  import_tasks: configure.yml
+  tags: ['node-exporter', 'node-exporter-configure']
 
-- name: Create texfile collector dir
-  file:
-    path: "{{ node_exporter_textfile_dir }}"
-    state: directory
-    owner: "node-exp"
-    group: "node-exp"
-    recurse: true
-    mode: 0755
-  when: node_exporter_textfile_dir != ""
+- name: Import service tasks
+  import_tasks: service.yml
+  tags: ['node-exporter', 'node-exporter-service']
 
-- name: Install libcap on Debian systems
-  package:
-    name: "libcap2-bin"
-    state: present
-  when: ansible_os_family | lower == "debian"
-
-- name: Node exporter can read anything (omit file permissions)
-  capabilities:
-    path: '/usr/local/bin/node_exporter'
-    capability: cap_dac_read_search+ep
-    state: present
-  when:
-    not ansible_check_mode
-
-- name: Copy the Node Exporter systemd service file
-  template:
-    src: node_exporter.service.j2
-    dest: /etc/systemd/system/node_exporter.service
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - restart node exporter
-
-- name: Install dependencies on RedHat OS family
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - libselinux-python
-    - policycoreutils-python
-  when:
-    - ansible_os_family == "RedHat"
-
-- name: Allow Node Exporter port in SELinux on RedHat OS family
-  seport:
-    ports: "{{ node_exporter_web_listen_address.split(':')[1] }}"
-    proto: tcp
-    setype: http_port_t
-    state: present
-  when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
-
-- name: Ensure Node Exporter is enabled on boot
-  systemd:
-    name: node_exporter
-    enabled: true
+- name: Optionally import facts tasks
+  include_tasks: facts.yml
+  when: node_exporter__facts|bool
+  tags: ['node-exporter', 'node-exporter-facts']

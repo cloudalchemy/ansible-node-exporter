@@ -1,0 +1,19 @@
+---
+
+- name: Assert required variables
+  assert:
+    that:
+      - "':' in node_exporter__web_listen_address"
+
+- name: Check collectors configuration
+  fail:
+    msg: Collector cannot be both disabled and enabled
+  when: item in node_exporter__enabled_collectors
+  with_items: '{{ node_exporter__disabled_collectors }}'
+
+- name: 'Get checksum for {{ go_arch_map[ansible_architecture]|default(ansible_architecture) }} architecture'
+  set_fact:
+    _node_exporter__checksum: "{{ item.split(' ')[0] }}"
+  with_items:
+    - "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter__version + '/sha256sums.txt', wantlist=True) | list }}"
+  when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"

@@ -1,0 +1,5 @@
+---
+
+node_exporter__required_packages_names:
+  - libselinux-python
+  - policycoreutils-python

@@ -1,0 +1,26 @@
+---
+
+- name: Create textfile collector directory
+  file:
+    path: '{{ node_exporter__textfile_directory }}'
+    state: directory
+    owner: '{{ node_exporter__service_user }}'
+    group: '{{ node_exporter__service_group }}'
+    recurse: true
+    mode: 0755
+
+- name: Node exporter can read anything (omit file permissions)
+  capabilities:
+    path: '{{ node_exporter__service_executable }}'
+    capability: cap_dac_read_search+ep
+    state: present
+
+- name: Allow Node Exporter port in SELinux on RedHat OS family
+  seport:
+    ports: "{{ node_exporter__web_listen_address.split(':')[1] }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when:
+    - ansible_version.full is version_compare('2.4', '>=')
+    - ansible_selinux.status == "enabled"

@@ -1,0 +1,19 @@
+---
+
+- name: Create custom fact directory
+  file:
+    path: "{{ facts__dir|d('/etc/ansible/facts.d') }}"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+  tags: ['node-exporter', 'node-exporter-facts']
+
+- name: Insert custom fact file
+  template:
+    src:   node_exporter.facts.py.j2
+    dest:  "{{ facts__dir|d('/etc/ansible/facts.d') }}/node_exporter.fact"
+    owner: root
+    group: root
+    mode:  0755
+  tags: ['node-exporter', 'node-exporter-facts']

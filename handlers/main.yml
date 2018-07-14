@@ -1,7 +1,7 @@
 ---
-- name: restart node exporter
-  become: true
-  systemd:
-    daemon_reload: true
-    name: node_exporter
+
+- name: restart-node-exporter
+  service:
+    name: '{{ node_exporter__service_name }}'
     state: restarted
+  when: node_exporter__service_enabled|bool
