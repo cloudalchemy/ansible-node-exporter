@@ -1,0 +1,24 @@
+---
+
+- name: Install systemd service unit file
+  template:
+    src:   node_exporter.service.j2
+    dest:  '/etc/systemd/system/{{ node_exporter__service_name }}.service'
+    owner: root
+    group: root
+    mode:  0644
+  register: _node_exporter__service
+  notify: [ 'restart-node-exporter' ]
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: true
+  when: _node_exporter__service is changed
+
+- meta: flush_handlers
+
+- name: Ensure Node Exporter is started and enabled on boot
+  service:
+    name: '{{ node_exporter__service_name }}'
+    enabled: '{{ node_exporter__service_enabled|bool }}'
+    state: "{{ node_exporter__service_enabled|bool|ternary('started', 'stopped') }}"

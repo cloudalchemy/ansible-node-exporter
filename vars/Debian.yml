@@ -1,0 +1,4 @@
+---
+
+node_exporter__required_packages_names:
+  - libcap2-bin

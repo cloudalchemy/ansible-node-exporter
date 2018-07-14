@@ -1,15 +1,77 @@
 ---
-node_exporter_version: 0.16.0
-node_exporter_web_listen_address: "0.0.0.0:9100"
+# defaults file for node-exporter
 
-node_exporter_textfile_dir: "/var/lib/node_exporter"
+# Enable facts deploiement
+node_exporter__facts: true
 
-node_exporter_enabled_collectors:
-  - systemd
-  - textfile:
-      directory: "{{ node_exporter_textfile_dir }}"
+
+### INSTALL CONFIGURATION
+# Select the exporter version to install
+node_exporter__version: 0.16.0
+
+# List of optional required packages to install
+node_exporter__required_packages_names: []
+
+# URL template from which to download the export binary
+node_exporter__download_url: "https://github.com/prometheus/node_exporter/releases/download/\
+  v{{ node_exporter__version }}/\
+  node_exporter-{{ node_exporter__version }}.linux\
+  -{{ go_arch_map[ansible_architecture]|d(ansible_architecture) }}.tar.gz"
+
+
+### SERVICE CONFIGURATION
+# ---------------------------------------
+# The user and group that bind will run as
+node_exporter__service_user: node-exporter
+node_exporter__service_group: '{{ node_exporter__service_user }}'
+
+# The name of the systemd node_exporter service
+node_exporter__service_name: node_exporter
+
+# If true the node_exporter service will be started and enabled
+node_exporter__service_enabled: true
+
+# Path to node exporter binary
+node_exporter__service_executable: /usr/local/bin/node_exporter
+
+
+### GENERAL CONFIGURATION
+# ---------------------------------------
+
+# Address on which to expose metrics and web interface
+node_exporter__web_listen_address: "0.0.0.0:9100"
+
+# Path under which to expose metrics
+node_exporter__web_telemetry_path: /metrics
+
+# Exposes statistics read from local disk.
+node_exporter__textfile_directory: /var/lib/node_exporter
+
+
+node_exporter__enabled_collectors_default: "{{ []
+  |union( ['systemd'] if ansible_service_mgr == 'systemd' else [] )
+  |union( [{ 'textfile': {'directory': node_exporter__textfile_directory} }] )
+}}"
+
+node_exporter__enabled_collectors_global: []
+node_exporter__enabled_collectors_group: []
+node_exporter__enabled_collectors_host: []
 #  - filesystem:
 #      ignored-mount-points: "^/(sys|proc|dev)($|/)"
 #      ignored-fs-types: "^(sys|proc|auto)fs$"
 
-node_exporter_disabled_collectors: []
+node_exporter__enabled_collectors: '{{
+  node_exporter__enabled_collectors_default
+  |union(node_exporter__enabled_collectors_global)
+  |union(node_exporter__enabled_collectors_group)
+  |union(node_exporter__enabled_collectors_host) }}'
+
+
+node_exporter__disabled_collectors_global: []
+node_exporter__disabled_collectors_group: []
+node_exporter__disabled_collectors_host: []
+
+node_exporter__disabled_collectors: '{{
+  node_exporter__disabled_collectors_global
+  |union(node_exporter__disabled_collectors_group)
+  |union(node_exporter__disabled_collectors_host) }}'

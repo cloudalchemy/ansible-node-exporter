@@ -4,26 +4,27 @@ After=network.target
 
 [Service]
 Type=simple
-User=node-exp
-Group=node-exp
+User={{ node_exporter__service_user }}
+Group={{ node_exporter__service_group }}
 Nice=-5
-ExecStart=/usr/local/bin/node_exporter \
-    --web.listen-address {{ node_exporter_web_listen_address }} \
-    {% for c in node_exporter_enabled_collectors -%}
-    {%   if not c is mapping -%}
-    --collector.{{ c }} \
-    {%   else -%}
-    {%     set name,opt = (c.items() | list)[0] -%}
-    {%     for k,v in opt.items() -%}
+ExecStart={{ node_exporter__service_executable }} \
+{% for collector in node_exporter__enabled_collectors -%}
+{%   if not collector is mapping %}
+    --collector.{{ collector }} \
+{%   else -%}
+{%     set name, options = (collector.items()|list)[0] -%}
+{%     for k,v in options|dictsort %}
     --collector.{{ name }}.{{ k }}={{ v }} \
-    {%     endfor -%}
-    {%   endif -%}
-    {% endfor -%}
-    {% for c in node_exporter_disabled_collectors -%}
-    --no-collector.{{ c }} \
-    {% endfor %}
+{%     endfor -%}
+{%   endif -%}
+{% endfor -%}
+{% for collector in node_exporter__disabled_collectors %}
+    --no-collector.{{ collector }} \
+{% endfor %}
+    --web.telemetry-path="{{ node_exporter__web_telemetry_path }}" \
+    --web.listen-address="{{ node_exporter__web_listen_address }}"
 
-SyslogIdentifier=node_exporter
+SyslogIdentifier={{ node_exporter__service_name }}
 Restart=always
 
 [Install]
