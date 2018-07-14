@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=node-exp
-Group=node-exp
+User={{ node_exporter_system_user }}
+Group={{ node_exporter_system_group }}
 Nice=-5
 ExecStart=/usr/local/bin/node_exporter \
     --web.listen-address {{ node_exporter_web_listen_address }} \

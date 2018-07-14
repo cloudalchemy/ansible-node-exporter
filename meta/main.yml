@@ -5,26 +5,25 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.4
   platforms:
-  - name: Ubuntu
-    versions:
-    - bionic
-    - xenial
-  - name: Debian
-    versions:
-    - jessie
-    - stretch
-  - name: EL
-    versions:
-    - 7
-  - name: Fedora
-    versions:
-    - 27
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: EL
+      versions:
+        - 7
+    - name: Fedora
+      versions:
+        - 27
   galaxy_tags:
-  - monitoring
-  - prometheus
-  - exporter
-  - metrics
-  - system
-
+    - monitoring
+    - prometheus
+    - exporter
+    - metrics
+    - system
 
 dependencies: []
