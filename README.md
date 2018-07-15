@@ -34,7 +34,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 Use it in a playbook as follows:
 ```yaml
 - hosts: all
-  become: yes
   roles:
     - cloudalchemy.node-exporter
 ```

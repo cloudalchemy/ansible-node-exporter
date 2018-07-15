@@ -1,5 +1,15 @@
 ---
-- name: check collectors
+- name: Naive assertion of proper listen address
+  assert:
+    that:
+      - "':' in node_exporter_web_listen_address"
+
+- name: Fail on unsupported init systems
+  fail:
+    msg: "This module only works with systemd"
+  when: ansible_service_mgr != 'systemd'
+
+- name: Check collectors
   fail:
     msg: "Collector cannot be both disabled and enabled"
   when: item in node_exporter_enabled_collectors
