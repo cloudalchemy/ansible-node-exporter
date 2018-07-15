@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.10.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-15)
+**Implemented enhancements:**
+
+- import\_tasks instead of include; bringing role up to ansible-prometheus standards; minor changes [\#48](https://github.com/cloudalchemy/ansible-node-exporter/pull/48) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.9.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-01)
 **Fixed bugs:**
 
