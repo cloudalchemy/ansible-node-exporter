@@ -15,9 +15,13 @@
   when: item in node_exporter_enabled_collectors
   with_items: "{{ node_exporter_disabled_collectors }}"
 
+- name: Get checksum list from github
+  set_fact:
+    _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+  run_once: true
+
 - name: "Get checksum for {{ go_arch_map[ansible_architecture] | default(ansible_architecture) }} architecture"
   set_fact:
     node_exporter_checksum: "{{ item.split(' ')[0] }}"
-  with_items:
-    - "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+  with_items: "{{ _checksums }}"
   when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
