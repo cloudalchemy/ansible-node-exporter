@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Fixed bugs:**
+
+- Rate limit errors due to checksum fetching [\#50](https://github.com/cloudalchemy/ansible-node-exporter/issues/50)
+
+## [0.10.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-08-15)
+**Merged pull requests:**
+
+- download checksum file only once [\#51](https://github.com/cloudalchemy/ansible-node-exporter/pull/51) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.10.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-15)
 **Implemented enhancements:**
 
