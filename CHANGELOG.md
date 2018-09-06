@@ -1,10 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.10.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-06)
 **Fixed bugs:**
 
 - Rate limit errors due to checksum fetching [\#50](https://github.com/cloudalchemy/ansible-node-exporter/issues/50)
+
+**Merged pull requests:**
+
+- reload-daemon on systemd enable [\#53](https://github.com/cloudalchemy/ansible-node-exporter/pull/53) ([jewzaam](https://github.com/jewzaam))
 
 ## [0.10.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-08-15)
 **Merged pull requests:**
@@ -211,8 +214,8 @@
 ## [0.4.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-10-05)
 ## [0.4.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-26)
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-20)
-## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
+## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
