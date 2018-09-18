@@ -6,7 +6,7 @@
     owner: "{{ node_exporter_system_user }}"
     group: "{{ node_exporter_system_group }}"
     recurse: true
-    mode: 0755
+    mode: 0775
   when: node_exporter_textfile_dir != ""
 
 - name: Node exporter can read anything (omit file permissions)
