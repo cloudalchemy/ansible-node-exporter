@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.11.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-19)
 **Closed issues:**
 
 - Python crashes when running role [\#54](https://github.com/cloudalchemy/ansible-node-exporter/issues/54)
@@ -9,6 +8,7 @@
 **Merged pull requests:**
 
 - make textfile dir writable by node-exp group [\#56](https://github.com/cloudalchemy/ansible-node-exporter/pull/56) ([guilro](https://github.com/guilro))
+- Add support for Clear linux [\#55](https://github.com/cloudalchemy/ansible-node-exporter/pull/55) ([bswinnerton](https://github.com/bswinnerton))
 
 ## [0.10.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-06)
 **Fixed bugs:**
