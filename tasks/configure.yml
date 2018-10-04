@@ -9,13 +9,6 @@
     mode: 0775
   when: node_exporter_textfile_dir != ""
 
-- name: Node exporter can read anything (omit file permissions)
-  capabilities:
-    path: '/usr/local/bin/node_exporter'
-    capability: cap_dac_read_search+ep
-    state: present
-  when: not ansible_check_mode
-
 - name: Allow Node Exporter port in SELinux on RedHat OS family
   seport:
     ports: "{{ node_exporter_web_listen_address.split(':')[1] }}"
