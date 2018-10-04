@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- do not set specific capabilities [\#57](https://github.com/cloudalchemy/ansible-node-exporter/pull/57) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.11.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-19)
 **Closed issues:**
 
