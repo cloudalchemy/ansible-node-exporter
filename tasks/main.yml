@@ -10,7 +10,8 @@
 
 - import_tasks: preflight.yml
   tags:
-    - always
+    - install
+    - configure
 
 - import_tasks: install.yml
   become: true
