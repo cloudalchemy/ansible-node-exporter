@@ -14,7 +14,7 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 
 ## Requirements
 
-- Ansible >= 2.4
+- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
 
 ## Role Variables
 
