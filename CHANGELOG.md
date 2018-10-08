@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.11.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-08)
+**Merged pull requests:**
+
+- move to ansible 2.7 [\#58](https://github.com/cloudalchemy/ansible-node-exporter/pull/58) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.11.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-04)
 **Merged pull requests:**
 
