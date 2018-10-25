@@ -8,7 +8,6 @@ After=network.target
 Type=simple
 User={{ node_exporter_system_user }}
 Group={{ node_exporter_system_group }}
-Nice=-5
 ExecStart=/usr/local/bin/node_exporter \
 {% for collector in node_exporter_enabled_collectors -%}
 {%   if not collector is mapping %}
