@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Closed issues:**
+
+- Nice'ness fails node\_exporter [\#59](https://github.com/cloudalchemy/ansible-node-exporter/issues/59)
+
+**Merged pull requests:**
+
+- Remove setting niceness in systemd service file [\#60](https://github.com/cloudalchemy/ansible-node-exporter/pull/60) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.11.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-08)
 **Merged pull requests:**
 
