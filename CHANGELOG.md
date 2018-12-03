@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.11.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-03)
 **Closed issues:**
 
 - Nice'ness fails node\_exporter [\#59](https://github.com/cloudalchemy/ansible-node-exporter/issues/59)
 
 **Merged pull requests:**
 
+- New node\_exporter upstream release! [\#62](https://github.com/cloudalchemy/ansible-node-exporter/pull/62) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Remove setting niceness in systemd service file [\#60](https://github.com/cloudalchemy/ansible-node-exporter/pull/60) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.11.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-08)
@@ -246,12 +246,12 @@
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-20)
 ## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
-## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
+## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
 ## [0.2.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
-## [0.1.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
+## [0.1.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-06)
 ## [0.0.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-05-18)
 ## [0.0.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-04-19)
