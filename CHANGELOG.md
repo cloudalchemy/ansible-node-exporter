@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.11.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-05)
+**Merged pull requests:**
+
+- Add support for multi-line ansible\_managed strings [\#63](https://github.com/cloudalchemy/ansible-node-exporter/pull/63) ([etcet](https://github.com/etcet))
+
 ## [0.11.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-03)
 **Closed issues:**
 
