@@ -3,6 +3,7 @@ galaxy_info:
   author: Roman Demachkovych, Pawel Krupa
   description: Prometheus Node Exporter
   license: MIT
+  company: none
   min_ansible_version: 2.5
   platforms:
     - name: Ubuntu
