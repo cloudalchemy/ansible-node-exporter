@@ -6,5 +6,7 @@ go_arch_map:
   armv7l: 'armv7'
   armv6l: 'armv6'
 
+cpu_architecture: "{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
+
 node_exporter_system_group: "node-exp"
 node_exporter_system_user: "{{ node_exporter_system_group }}"
