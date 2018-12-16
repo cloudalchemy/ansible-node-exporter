@@ -1,0 +1,10 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  roles:
+    - ansible-node-exporter
+  vars:
+    node_exporter_textfile_dir: ""
+    node_exporter_enabled_collectors:
+      - systemd
