@@ -58,12 +58,3 @@
     group: "{{ node_exporter_system_group }}"
   notify: restart node_exporter
   when: not ansible_check_mode
-
-- name: Copy the Node Exporter systemd service file
-  template:
-    src: node_exporter.service.j2
-    dest: /etc/systemd/system/node_exporter.service
-    owner: root
-    group: root
-    mode: 0644
-  notify: restart node_exporter
