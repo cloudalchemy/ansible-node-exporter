@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Better tags and configuration handling [\#66](https://github.com/cloudalchemy/ansible-node-exporter/pull/66) ([paulfantom](https://github.com/paulfantom))
 - add alternative tests [\#65](https://github.com/cloudalchemy/ansible-node-exporter/pull/65) ([paulfantom](https://github.com/paulfantom))
 - simplify automated CPU arch choosing [\#64](https://github.com/cloudalchemy/ansible-node-exporter/pull/64) ([paulfantom](https://github.com/paulfantom))
 
