@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.12.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-17)
 **Merged pull requests:**
 
 - Better tags and configuration handling [\#66](https://github.com/cloudalchemy/ansible-node-exporter/pull/66) ([paulfantom](https://github.com/paulfantom))
