@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - add alternative tests [\#65](https://github.com/cloudalchemy/ansible-node-exporter/pull/65) ([paulfantom](https://github.com/paulfantom))
+- simplify automated CPU arch choosing [\#64](https://github.com/cloudalchemy/ansible-node-exporter/pull/64) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.11.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-05)
 **Merged pull requests:**
