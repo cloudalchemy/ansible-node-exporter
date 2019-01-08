@@ -15,6 +15,14 @@
   when: item in node_exporter_enabled_collectors
   with_items: "{{ node_exporter_disabled_collectors }}"
 
+- name: Get systemd version
+  shell: systemctl --version | awk '$1 == "systemd" {print $2}'
+  changed_when: false
+  check_mode: false
+  register: node_exporter_systemd_version
+  tags:
+    - skip_ansible_lint
+
 - name: Get checksum list from github
   set_fact:
     _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"

@@ -27,5 +27,18 @@ ExecStart=/usr/local/bin/node_exporter \
 SyslogIdentifier=node_exporter
 Restart=always
 
+PrivateTmp=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+
+{% if node_exporter_systemd_version.stdout | int >= 232 %}
+ProtectSystem=strict
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+{% else %}
+ProtectSystem=full
+{% endif %}
+
 [Install]
 WantedBy=multi-user.target
