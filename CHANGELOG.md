@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- Lock down systemd service [\#68](https://github.com/cloudalchemy/ansible-node-exporter/pull/68) ([ecksun](https://github.com/ecksun))
+
 ## [0.12.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-17)
 **Merged pull requests:**
 
