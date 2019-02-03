@@ -56,5 +56,6 @@
     mode: 0750
     owner: "{{ node_exporter_system_user }}"
     group: "{{ node_exporter_system_group }}"
+    remote_src: yes
   notify: restart node_exporter
   when: not ansible_check_mode
