@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.12.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-02-19)
 **Merged pull requests:**
 
+- Correctly enable extra collectors [\#70](https://github.com/cloudalchemy/ansible-node-exporter/pull/70) ([SuperQ](https://github.com/SuperQ))
 - Lock down systemd service [\#68](https://github.com/cloudalchemy/ansible-node-exporter/pull/68) ([ecksun](https://github.com/ecksun))
 
 ## [0.12.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-17)
