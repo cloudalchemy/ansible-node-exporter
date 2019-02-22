@@ -6,6 +6,7 @@ node_exporter_system_group: "node-exp"
 node_exporter_system_user: "{{ node_exporter_system_group }}"
 
 node_exporter_textfile_dir: "/var/lib/node_exporter"
+node_exporter_destination: "/usr/local/bin/node_exporter"
 
 node_exporter_enabled_collectors:
   - systemd

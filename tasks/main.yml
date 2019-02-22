@@ -16,8 +16,31 @@
     - node_exporter_configure
     - node_exporter_run
 
+- name: Check if node_exporter is installed
+  stat:
+    path: "{{ node_exporter_destination }}"
+  register: __node_exporter_is_installed
+  tags:
+    - node_exporter_install
+
+- name: See stat (REMOVE THIS LATER)
+  debug:
+    msg: "{{ __node_exporter_is_installed }}"
+
+- name: Gather currently installed node_exporter version (if any)
+  command: "{{ node_exporter_destination }} --version"
+  args:
+    warn: false
+  changed_when: false
+  register: __node_exporter_current_version_output
+  when: __node_exporter_is_installed.stat.exists
+  tags:
+    - node_exporter_install
+    - skip_ansible_lint
+
 - import_tasks: install.yml
   become: true
+  when: (not __node_exporter_is_installed.stat.exists) or (__node_exporter_current_version_output.stderr_lines[0].split(" ")[2] != node_exporter_version)
   tags:
     - node_exporter_install
 

@@ -33,7 +33,7 @@
   until: _download_binary is succeeded
   retries: 5
   delay: 2
-  delegate_to: "{{ node_exporter_delegation | default(inventory_hostname) }}"
+  delegate_to: "{{ node_exporter_delegation | default(inventory_hostname) }}"
   check_mode: false
 
 - name: Unpack node_exporter binary
@@ -42,19 +42,19 @@
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
     dest: "/tmp"
     creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
-  delegate_to: "{{ node_exporter_delegation | default(inventory_hostname) }}"
+  delegate_to: "{{ node_exporter_delegation | default(inventory_hostname) }}"
   check_mode: false
 
-- name: Create /usr/local/bin
+- name: "Create {{ node_exporter_destination | dirname }}"
   file:
-    path: /usr/local/bin
+    path: "{{ node_exporter_destination | dirname }}"
     state: directory
     mode: 0755
 
 - name: Propagate node_exporter binaries
   copy:
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
-    dest: "/usr/local/bin/node_exporter"
+    dest: "{{ node_exporter_destination }}"
     mode: 0750
     owner: "{{ node_exporter_system_user }}"
     group: "{{ node_exporter_system_group }}"
