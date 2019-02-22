@@ -27,6 +27,24 @@
       - "item not in node_exporter_enabled_collectors"
   with_items: "{{ node_exporter_disabled_collectors }}"
 
+- name: Check if node_exporter is installed
+  stat:
+    path: "/usr/local/bin/node_exporter"
+  register: __node_exporter_is_installed
+  tags:
+    - node_exporter_install
+
+- name: Gather currently installed node_exporter version (if any)
+  command: "/usr/local/bin/node_exporter --version"
+  args:
+    warn: false
+  changed_when: false
+  register: __node_exporter_current_version_output
+  when: __node_exporter_is_installed.stat.exists
+  tags:
+    - node_exporter_install
+    - skip_ansible_lint
+
 - block:
     - name: Get latest release
       uri:
