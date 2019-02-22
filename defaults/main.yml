@@ -16,3 +16,5 @@ node_exporter_enabled_collectors:
 #      ignored-fs-types: "^(sys|proc|auto)fs$"
 
 node_exporter_disabled_collectors: []
+
+node_exporter_delegation: localhost
