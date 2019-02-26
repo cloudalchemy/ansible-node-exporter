@@ -26,6 +26,13 @@ def test_files(host):
         assert f.is_file
 
 
+def test_user(host):
+    assert host.group("node-exp").exists
+    assert "node-exp" in host.user("node-exp").groups
+    assert host.user("node-exp").shell == "/usr/sbin/nologin"
+    assert host.user("node-exp").home == "/"
+
+
 def test_service(host):
     s = host.service("node_exporter")
 #    assert s.is_enabled

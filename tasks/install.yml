@@ -10,6 +10,7 @@
     name: "{{ node_exporter_system_group }}"
     state: present
     system: true
+  when: node_exporter_system_group != "root"
 
 - name: Create the node_exporter user
   user:
@@ -20,6 +21,7 @@
     system: true
     createhome: false
     home: /
+  when: node_exporter_system_user != "root"
 
 - name: Download node_exporter binary to local folder
   become: false
