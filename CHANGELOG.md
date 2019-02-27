@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- reintroduce user management into defaults and add testing user creation [\#74](https://github.com/cloudalchemy/ansible-node-exporter/pull/74) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.12.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-02-19)
 **Merged pull requests:**
 
