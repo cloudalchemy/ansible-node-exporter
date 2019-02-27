@@ -5,6 +5,8 @@
   roles:
     - ansible-node-exporter
   vars:
+    node_exporter_system_group: "root"
+    node_exporter_system_user: "root"
     node_exporter_textfile_dir: ""
     node_exporter_enabled_collectors:
       - systemd
