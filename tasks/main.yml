@@ -32,5 +32,6 @@
     daemon_reload: true
     name: node_exporter
     enabled: true
+    state: started
   tags:
     - node_exporter_run
