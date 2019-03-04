@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - reintroduce user management into defaults and add testing user creation [\#74](https://github.com/cloudalchemy/ansible-node-exporter/pull/74) ([paulfantom](https://github.com/paulfantom))
+- Add systemd state to started for first run of the role [\#72](https://github.com/cloudalchemy/ansible-node-exporter/pull/72) ([MCyprien](https://github.com/MCyprien))
 
 ## [0.12.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-02-19)
 **Merged pull requests:**
