@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
 
+**Closed issues:**
+
+- Node\_exporter is not running with fresh install on Debian 9 [\#71](https://github.com/cloudalchemy/ansible-node-exporter/issues/71)
+
 **Merged pull requests:**
 
+- fix\(tasks/configure.yml\): typo in task name [\#77](https://github.com/cloudalchemy/ansible-node-exporter/pull/77) ([angristan](https://github.com/angristan))
 - reintroduce user management into defaults and add testing user creation [\#74](https://github.com/cloudalchemy/ansible-node-exporter/pull/74) ([paulfantom](https://github.com/paulfantom))
 - Add systemd state to started for first run of the role [\#72](https://github.com/cloudalchemy/ansible-node-exporter/pull/72) ([MCyprien](https://github.com/MCyprien))
 
