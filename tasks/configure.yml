@@ -8,7 +8,7 @@
     mode: 0644
   notify: restart node_exporter
 
-- name: Create texfile collector dir
+- name: Create textfile collector dir
   file:
     path: "{{ node_exporter_textfile_dir }}"
     state: directory
