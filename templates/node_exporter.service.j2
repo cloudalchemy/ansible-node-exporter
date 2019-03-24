@@ -32,7 +32,7 @@ PrivateTmp=yes
 ProtectHome=yes
 NoNewPrivileges=yes
 
-{% if node_exporter_systemd_version.stdout | int >= 232 %}
+{% if node_exporter_systemd_version | int >= 232 %}
 ProtectSystem=strict
 ProtectControlGroups=true
 ProtectKernelModules=true
