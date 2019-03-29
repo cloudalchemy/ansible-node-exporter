@@ -1,27 +1,54 @@
 ---
+- name: Assert usage of systemd as an init system
+  assert:
+    that: ansible_service_mgr == 'systemd'
+    msg: "This role only works with systemd"
+
+- name: Get systemd version
+  command: systemctl --version
+  changed_when: false
+  check_mode: false
+  register: __systemd_version
+  tags:
+    - skip_ansible_lint
+
+- name: Set systemd version fact
+  set_fact:
+    node_exporter_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[-1] }}"
+
 - name: Naive assertion of proper listen address
   assert:
     that:
       - "':' in node_exporter_web_listen_address"
 
-- name: Fail on unsupported init systems
-  fail:
-    msg: "This module only works with systemd"
-  when: ansible_service_mgr != 'systemd'
-
-- name: Check collectors
-  fail:
-    msg: "Collector cannot be both disabled and enabled"
-  when: item in node_exporter_enabled_collectors
+- name: Assert collectors are not both disabled and enabled at the same time
+  assert:
+    that:
+      - "item in node_exporter_enabled_collectors"
   with_items: "{{ node_exporter_disabled_collectors }}"
 
-- name: Get systemd version
-  shell: systemctl --version | awk '$1 == "systemd" {print $2}'
-  changed_when: false
-  check_mode: false
-  register: node_exporter_systemd_version
-  tags:
-    - skip_ansible_lint
+- block:
+    - name: Get latest release
+      uri:
+        url: "https://api.github.com/repos/prometheus/node_exporter/releases/latest"
+        method: GET
+        return_content: true
+        status_code: 200
+        body_format: json
+        validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: true
+      register: _latest_release
+      until: _latest_release.status == 200
+      retries: 5
+
+    - name: "Set node_exporter version to {{ _latest_release.json.tag_name[1:] }}"
+      set_fact:
+        node_exporter_version: "{{ _latest_release.json.tag_name[1:] }}"
+  when: node_exporter_version == "latest"
+  delegate_to: localhost
+  run_once: true
 
 - name: Get checksum list from github
   set_fact:
