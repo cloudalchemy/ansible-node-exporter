@@ -2,6 +2,11 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
 
+**Fixed bugs:**
+
+- Disable collectors [\#80](https://github.com/cloudalchemy/ansible-node-exporter/issues/80)
+
+## [0.13.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-04-01)
 **Closed issues:**
 
 - IPv4 assumption in SELinux tasks [\#75](https://github.com/cloudalchemy/ansible-node-exporter/issues/75)
@@ -9,6 +14,7 @@
 
 **Merged pull requests:**
 
+- fix preflight check responsible for collector enablement [\#81](https://github.com/cloudalchemy/ansible-node-exporter/pull/81) ([paulfantom](https://github.com/paulfantom))
 - Refactor preflight checks [\#79](https://github.com/cloudalchemy/ansible-node-exporter/pull/79) ([paulfantom](https://github.com/paulfantom))
 - make SELinux settings ipv6 compatible [\#78](https://github.com/cloudalchemy/ansible-node-exporter/pull/78) ([paulfantom](https://github.com/paulfantom))
 - fix\(tasks/configure.yml\): typo in task name [\#77](https://github.com/cloudalchemy/ansible-node-exporter/pull/77) ([angristan](https://github.com/angristan))
