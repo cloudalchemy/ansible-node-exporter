@@ -9,4 +9,6 @@
     node_exporter_system_user: "root"
     node_exporter_textfile_dir: ""
     node_exporter_enabled_collectors:
-      - systemd
+      - entropy
+    node_exporter_disabled_collectors:
+      - diskstats

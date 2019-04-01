@@ -24,7 +24,7 @@
 - name: Assert collectors are not both disabled and enabled at the same time
   assert:
     that:
-      - "item in node_exporter_enabled_collectors"
+      - "item not in node_exporter_enabled_collectors"
   with_items: "{{ node_exporter_disabled_collectors }}"
 
 - block:
