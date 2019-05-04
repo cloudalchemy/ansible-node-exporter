@@ -1,10 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.13.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-05-04)
 **Fixed bugs:**
 
 - Disable collectors [\#80](https://github.com/cloudalchemy/ansible-node-exporter/issues/80)
+
+**Merged pull requests:**
+
+- Fix systemd service startup ordering [\#83](https://github.com/cloudalchemy/ansible-node-exporter/pull/83) ([ko-zu](https://github.com/ko-zu))
 
 ## [0.13.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-04-01)
 **Closed issues:**
