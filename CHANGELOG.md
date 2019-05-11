@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- New prometheus/node\_exporter upstream release! [\#85](https://github.com/cloudalchemy/ansible-node-exporter/pull/85) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#84](https://github.com/cloudalchemy/ansible-node-exporter/pull/84) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.13.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-05-04)
