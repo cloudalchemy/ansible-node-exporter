@@ -4,6 +4,8 @@
 
 **Merged pull requests:**
 
+- Add retries to package installs [\#88](https://github.com/cloudalchemy/ansible-node-exporter/pull/88) ([denmat](https://github.com/denmat))
+- Create suse.yml [\#86](https://github.com/cloudalchemy/ansible-node-exporter/pull/86) ([jbhannah](https://github.com/jbhannah))
 - New prometheus/node\_exporter upstream release! [\#85](https://github.com/cloudalchemy/ansible-node-exporter/pull/85) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#84](https://github.com/cloudalchemy/ansible-node-exporter/pull/84) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
@@ -76,7 +78,7 @@
 
 **Merged pull requests:**
 
-- make textfile dir writable by node-exp group [\#56](https://github.com/cloudalchemy/ansible-node-exporter/pull/56) ([guilro](https://github.com/guilro))
+- make textfile dir writable by node-exp group [\#56](https://github.com/cloudalchemy/ansible-node-exporter/pull/56) ([jillro](https://github.com/jillro))
 - Add support for Clear linux [\#55](https://github.com/cloudalchemy/ansible-node-exporter/pull/55) ([bswinnerton](https://github.com/bswinnerton))
 
 ## [0.10.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-06)
