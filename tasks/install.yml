@@ -3,6 +3,9 @@
   package:
     name: "{{ item }}"
     state: present
+  register: package_ok
+  retries: 5
+  until: package_ok is success
   with_items: "{{ node_exporter_dependencies }}"
 
 - name: Create the node_exporter group
