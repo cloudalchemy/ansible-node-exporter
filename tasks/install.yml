@@ -59,8 +59,8 @@
   copy:
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
     dest: "/usr/local/bin/node_exporter"
-    mode: 0750
-    owner: "{{ node_exporter_system_user }}"
-    group: "{{ node_exporter_system_group }}"
+    mode: 0755
+    owner: root
+    group: root
   notify: restart node_exporter
   when: not ansible_check_mode
