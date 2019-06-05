@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- make node\_exporter executable file root-owned [\#89](https://github.com/cloudalchemy/ansible-node-exporter/pull/89) ([slrz](https://github.com/slrz))
 - Add retries to package installs [\#88](https://github.com/cloudalchemy/ansible-node-exporter/pull/88) ([denmat](https://github.com/denmat))
 - Create suse.yml [\#86](https://github.com/cloudalchemy/ansible-node-exporter/pull/86) ([jbhannah](https://github.com/jbhannah))
 - New prometheus/node\_exporter upstream release! [\#85](https://github.com/cloudalchemy/ansible-node-exporter/pull/85) ([cloudalchemybot](https://github.com/cloudalchemybot))
