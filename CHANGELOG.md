@@ -1,11 +1,12 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.14.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-06-05)
 **Merged pull requests:**
 
+- New prometheus/node\_exporter upstream release! [\#90](https://github.com/cloudalchemy/ansible-node-exporter/pull/90) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - make node\_exporter executable file root-owned [\#89](https://github.com/cloudalchemy/ansible-node-exporter/pull/89) ([slrz](https://github.com/slrz))
 - Add retries to package installs [\#88](https://github.com/cloudalchemy/ansible-node-exporter/pull/88) ([denmat](https://github.com/denmat))
+- Fix wrong size of /home shown by node-exporter [\#87](https://github.com/cloudalchemy/ansible-node-exporter/pull/87) ([laurvas](https://github.com/laurvas))
 - Create suse.yml [\#86](https://github.com/cloudalchemy/ansible-node-exporter/pull/86) ([jbhannah](https://github.com/jbhannah))
 - New prometheus/node\_exporter upstream release! [\#85](https://github.com/cloudalchemy/ansible-node-exporter/pull/85) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#84](https://github.com/cloudalchemy/ansible-node-exporter/pull/84) ([cloudalchemybot](https://github.com/cloudalchemybot))
@@ -298,8 +299,8 @@
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-20)
 ## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
 ## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
-## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
+## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
 ## [0.2.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
