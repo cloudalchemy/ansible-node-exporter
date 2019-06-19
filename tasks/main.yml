@@ -18,6 +18,7 @@
 
 - import_tasks: install.yml
   become: true
+  when: (not __node_exporter_is_installed.stat.exists) or (__node_exporter_current_version_output.stderr_lines[0].split(" ")[2] != node_exporter_version)
   tags:
     - node_exporter_install
 
