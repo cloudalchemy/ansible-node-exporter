@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Updated README with correct default value [\#92](https://github.com/cloudalchemy/ansible-node-exporter/pull/92) ([nicholasamorim](https://github.com/nicholasamorim))
 - node\_exporter version check [\#91](https://github.com/cloudalchemy/ansible-node-exporter/pull/91) ([rwos](https://github.com/rwos))
 
 ## [0.14.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-06-05)
