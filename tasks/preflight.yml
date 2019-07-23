@@ -21,6 +21,14 @@
     that:
       - "':' in node_exporter_web_listen_address"
 
+- name: Set listen port fact
+  set_fact:
+    node_exporter_web_listen_port: "{{ node_exporter_web_listen_address.split(':')[-1] }}"
+    
+- name: Assert listen port is a number
+  assert:
+    that: node_exporter_web_listen_port|int > 0
+
 - name: Assert collectors are not both disabled and enabled at the same time
   assert:
     that:

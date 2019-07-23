@@ -27,3 +27,16 @@
   when:
     - ansible_version.full is version_compare('2.4', '>=')
     - ansible_selinux.status == "enabled"
+
+- name: Check firewalld status
+  service:
+    name: firewalld
+  register: service_firewalld
+  
+- name: Add sshd port to firewalld if active
+  firewalld:
+    port: "{{ node_exporter_web_listen_port }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
+  when: service_firewalld.status.ActiveState|default('no') == 'active'
