@@ -14,7 +14,7 @@
 
 - name: Set systemd version fact
   set_fact:
-    node_exporter_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[-1] }}"
+    node_exporter_systemd_version: "{{ __systemd_version.stdout_lines[0] | regex_replace('^systemd\\s(\\d+).*$', '\\1') }}"
 
 - name: Naive assertion of proper listen address
   assert:
