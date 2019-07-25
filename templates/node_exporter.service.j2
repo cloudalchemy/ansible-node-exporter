@@ -3,6 +3,7 @@
 [Unit]
 Description=Prometheus Node Exporter
 After=network-online.target
+StartLimitInterval=0
 
 [Service]
 Type=simple
@@ -27,6 +28,7 @@ ExecStart=/usr/local/bin/node_exporter \
 
 SyslogIdentifier=node_exporter
 Restart=always
+RestartSec=1
 
 PrivateTmp=yes
 {% for m in ansible_mounts if m.mount == '/home' %}
