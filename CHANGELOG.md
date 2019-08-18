@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#97](https://github.com/cloudalchemy/ansible-node-exporter/pull/97) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - added restartsec and startlimitinterval configurations [\#96](https://github.com/cloudalchemy/ansible-node-exporter/pull/96) ([oguzhaninan](https://github.com/oguzhaninan))
 - preflight: Fix detection of systemd version for systemd 240+ [\#93](https://github.com/cloudalchemy/ansible-node-exporter/pull/93) ([0xFelix](https://github.com/0xFelix))
 - Updated README with correct default value [\#92](https://github.com/cloudalchemy/ansible-node-exporter/pull/92) ([nicholasamorim](https://github.com/nicholasamorim))
