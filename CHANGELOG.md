@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Update minimum required ansible version [\#100](https://github.com/cloudalchemy/ansible-node-exporter/pull/100) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#99](https://github.com/cloudalchemy/ansible-node-exporter/pull/99) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#97](https://github.com/cloudalchemy/ansible-node-exporter/pull/97) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - added restartsec and startlimitinterval configurations [\#96](https://github.com/cloudalchemy/ansible-node-exporter/pull/96) ([oguzhaninan](https://github.com/oguzhaninan))
