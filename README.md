@@ -14,7 +14,7 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 
 ## Requirements
 
-- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
+- Ansible >= 2.6 (It might work on previous versions, but we cannot guarantee it)
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
 
 ## Role Variables
