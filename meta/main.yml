@@ -4,7 +4,7 @@ galaxy_info:
   description: Prometheus Node Exporter
   license: MIT
   company: none
-  min_ansible_version: 2.5
+  min_ansible_version: 2.6
   platforms:
     - name: Ubuntu
       versions:
@@ -19,7 +19,7 @@ galaxy_info:
         - 7
     - name: Fedora
       versions:
-        - 27
+        - 30
   galaxy_tags:
     - monitoring
     - prometheus
