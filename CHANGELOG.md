@@ -4,6 +4,8 @@
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#102](https://github.com/cloudalchemy/ansible-node-exporter/pull/102) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- add RHEL8 and debian buster support; remove testing on debian jessie [\#101](https://github.com/cloudalchemy/ansible-node-exporter/pull/101) ([paulfantom](https://github.com/paulfantom))
 - Update minimum required ansible version [\#100](https://github.com/cloudalchemy/ansible-node-exporter/pull/100) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#99](https://github.com/cloudalchemy/ansible-node-exporter/pull/99) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#97](https://github.com/cloudalchemy/ansible-node-exporter/pull/97) ([cloudalchemybot](https://github.com/cloudalchemybot))
