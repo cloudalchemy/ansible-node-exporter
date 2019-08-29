@@ -1,6 +1,7 @@
 ---
 node_exporter_version: 0.18.1
 node_exporter_web_listen_address: "0.0.0.0:9100"
+node_exporter_url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
 
 node_exporter_system_group: "node-exp"
 node_exporter_system_user: "{{ node_exporter_system_group }}"

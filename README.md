@@ -24,6 +24,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `node_exporter_version` | 0.18.1 | Node exporter package version. Also accepts latest as parameter. |
+| `node_exporter_url` | https://github.com/prometheus/node_exporter/releases/download/... | Node exporter package download URL. |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
 | `node_exporter_system_group` | "node-exp" | System group used to run node_exporter |
 | `node_exporter_system_user` | "node-exp" | System user used to run node_exporter |
