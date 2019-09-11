@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.15.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-09-11)
 **Merged pull requests:**
 
 - Synchronize files from cloudalchemy/skeleton [\#102](https://github.com/cloudalchemy/ansible-node-exporter/pull/102) ([cloudalchemybot](https://github.com/cloudalchemybot))
