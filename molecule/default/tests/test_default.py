@@ -26,6 +26,21 @@ def test_files(host):
         assert f.is_file
 
 
+def test_permissions_didnt_change(host):
+    dirs = [
+        "/etc",
+        "/root",
+        "/usr",
+        "/var"
+    ]
+    for file in dirs:
+        f = host.file(file)
+        assert f.exists
+        assert f.is_directory
+        assert f.user == "root"
+        assert f.group == "root"
+
+
 def test_user(host):
     assert host.group("node-exp").exists
     assert "node-exp" in host.user("node-exp").groups
