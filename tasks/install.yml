@@ -23,7 +23,7 @@
     append: true
     shell: /usr/sbin/nologin
     system: true
-    createhome: false
+    create_home: false
     home: /
   when: node_exporter_system_user != "root"
 
