@@ -24,7 +24,6 @@
     shell: /usr/sbin/nologin
     system: true
     createhome: false
-    home: /
   when: node_exporter_system_user != "root"
 
 - name: Download node_exporter binary to local folder
