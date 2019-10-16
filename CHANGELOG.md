@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Fixed bugs:**
+
+- Do not use createhome alias as it seems to break whole system permissions [\#111](https://github.com/cloudalchemy/ansible-node-exporter/pull/111) ([paulfantom](https://github.com/paulfantom))
+
+**Closed issues:**
+
+- allow custom ignored-mount-points [\#106](https://github.com/cloudalchemy/ansible-node-exporter/issues/106)
+
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-09-11)
 **Merged pull requests:**
 
