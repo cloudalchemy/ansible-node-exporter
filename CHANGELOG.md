@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.16.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-10-18)
 **Fixed bugs:**
 
 - Do not use createhome alias as it seems to break whole system permissions [\#111](https://github.com/cloudalchemy/ansible-node-exporter/pull/111) ([paulfantom](https://github.com/paulfantom))
@@ -12,6 +11,7 @@
 
 **Merged pull requests:**
 
+- add official support for CentOS8 [\#114](https://github.com/cloudalchemy/ansible-node-exporter/pull/114) ([paulfantom](https://github.com/paulfantom))
 - molecule/default/tests: test if permissions of other files are unchanged [\#112](https://github.com/cloudalchemy/ansible-node-exporter/pull/112) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-09-11)
