@@ -10,6 +10,10 @@
 
 - allow custom ignored-mount-points [\#106](https://github.com/cloudalchemy/ansible-node-exporter/issues/106)
 
+**Merged pull requests:**
+
+- molecule/default/tests: test if permissions of other files are unchanged [\#112](https://github.com/cloudalchemy/ansible-node-exporter/pull/112) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-09-11)
 **Merged pull requests:**
 
