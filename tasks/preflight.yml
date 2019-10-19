@@ -31,6 +31,7 @@
   stat:
     path: "/usr/local/bin/node_exporter"
   register: __node_exporter_is_installed
+  check_mode: false
   tags:
     - node_exporter_install
 
@@ -40,6 +41,7 @@
     warn: false
   changed_when: false
   register: __node_exporter_current_version_output
+  check_mode: false
   when: __node_exporter_is_installed.stat.exists
   tags:
     - node_exporter_install
