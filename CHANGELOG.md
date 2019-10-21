@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] add support for CentOS8 [\#119](https://github.com/cloudalchemy/ansible-node-exporter/pull/119) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.16.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-10-18)
 **Fixed bugs:**
 
