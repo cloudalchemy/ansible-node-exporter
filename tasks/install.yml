@@ -49,12 +49,6 @@
   delegate_to: localhost
   check_mode: false
 
-- name: Create /usr/local/bin
-  file:
-    path: /usr/local/bin
-    state: directory
-    mode: 0755
-
 - name: Propagate node_exporter binaries
   copy:
     src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
