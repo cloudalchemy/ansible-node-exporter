@@ -2,9 +2,17 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
 
+**Closed issues:**
+
+- Check is not working [\#107](https://github.com/cloudalchemy/ansible-node-exporter/issues/107)
+
 **Merged pull requests:**
 
+- \[REPO SYNC\] Update releaser.sh [\#120](https://github.com/cloudalchemy/ansible-node-exporter/pull/120) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add support for CentOS8 [\#119](https://github.com/cloudalchemy/ansible-node-exporter/pull/119) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- tasks: remove already covered entries when choosing an OS specific vars [\#118](https://github.com/cloudalchemy/ansible-node-exporter/pull/118) ([paulfantom](https://github.com/paulfantom))
+- Run preflight tasks to register variables when check\_mode is enabled [\#117](https://github.com/cloudalchemy/ansible-node-exporter/pull/117) ([paulfantom](https://github.com/paulfantom))
+- tasks: do not touch any settings of system directory /usr/local/bin [\#116](https://github.com/cloudalchemy/ansible-node-exporter/pull/116) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.16.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-10-18)
 **Fixed bugs:**
