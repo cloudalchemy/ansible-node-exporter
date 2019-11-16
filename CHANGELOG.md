@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#123](https://github.com/cloudalchemy/ansible-node-exporter/pull/123) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.17.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-11-14)
 **Closed issues:**
 
