@@ -41,7 +41,7 @@
       delay: 2
       delegate_to: localhost
       check_mode: false
-    
+
     - name: Unpack node_exporter binary
       become: false
       unarchive:
@@ -50,7 +50,7 @@
         creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
       delegate_to: localhost
       check_mode: false
-    
+
     - name: Propagate node_exporter binaries
       copy:
         src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
@@ -59,7 +59,7 @@
         owner: root
         group: root
       notify: restart node_exporter
-  when: 
+  when:
     - not ansible_check_mode
     - node_exporter_binary_local_dir | length == 0
 
@@ -70,5 +70,5 @@
     mode: 0755
     owner: root
     group: root
-  when: node_exporter_binary_local_dir > length == 0
+  when: node_exporter_binary_local_dir | length > 0
   notify: restart node_exporter
