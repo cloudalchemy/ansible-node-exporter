@@ -1,0 +1,4 @@
+---
+node_exporter_dependencies:
+  - libselinux-python
+  - policycoreutils-python
