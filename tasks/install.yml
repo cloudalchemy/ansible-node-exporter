@@ -59,7 +59,7 @@
         group: root
       notify: restart node_exporter
       when: not ansible_check_mode
-  when: node_exporter_binary_local_dir | length = 0
+  when: node_exporter_binary_local_dir | length == 0
 
 - name: propagate locally distributed node_exporter binary
   copy:
