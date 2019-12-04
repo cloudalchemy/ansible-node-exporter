@@ -9,8 +9,8 @@
     - name: Download node_exporter binary to local folder
       become: false
       get_url:
-        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
-        dest: "/tmp/node_exporter-{{ version }}.linux-{{ go_arch }}.tar.gz"
+        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+        dest: "/tmp/node_exporter-{{ version }}.linux-amd64.tar.gz"
       register: _download_binary
       until: _download_binary is succeeded
       retries: 5
@@ -21,9 +21,9 @@
     - name: Unpack node_exporter binary
       become: false
       unarchive:
-        src: "/tmp/node_exporter-{{ version }}.linux-{{ go_arch }}.tar.gz"
+        src: "/tmp/node_exporter-{{ version }}.linux-amd64.tar.gz"
         dest: "/tmp"
-        creates: "/tmp/node_exporter-{{ version }}.linux-{{ go_arch }}/node_exporter"
+        creates: "/tmp/node_exporter-{{ version }}.linux-amd64/node_exporter"
       run_once: true
       check_mode: false
 
