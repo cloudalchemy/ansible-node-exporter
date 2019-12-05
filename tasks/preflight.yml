@@ -72,16 +72,16 @@
   delegate_to: localhost
   run_once: true
 
-- name: Get checksum list from github
-  set_fact:
-    _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
-  run_once: true
-  when: node_exporter_binary_local_dir | length == 0
+- block:
+    - name: Get checksum list from github
+      set_fact:
+        _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+      run_once: true
 
-- name: "Get checksum for {{ go_arch }} architecture"
-  set_fact:
-    node_exporter_checksum: "{{ item.split(' ')[0] }}"
-  with_items: "{{ _checksums }}"
-  when:
-    - "('linux-' + go_arch + '.tar.gz') in item"
-    - node_exporter_binary_local_dir | length == 0
+    - name: "Get checksum for {{ go_arch }} architecture"
+      set_fact:
+        node_exporter_checksum: "{{ item.split(' ')[0] }}"
+      with_items: "{{ _checksums }}"
+      when:
+        - "('linux-' + go_arch + '.tar.gz') in item"
+  when: node_exporter_binary_local_dir | length == 0

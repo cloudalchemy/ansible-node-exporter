@@ -5,7 +5,7 @@
   roles:
     - ansible-node-exporter
   vars:
-    node_exporter_binary_local_dir: '/tmp/node-exporter-linux-amd64'
+    node_exporter_binary_local_dir: "/tmp/node_exporter-linux-amd64"
     node_exporter_system_group: "root"
     node_exporter_system_user: "root"
     node_exporter_textfile_dir: ""

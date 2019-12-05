@@ -3,14 +3,14 @@
   hosts: localhost
   gather_facts: false
   vars:
-    # Version seeds to be specified here as molecule doesn't have access to ansible_version at this stage
-    version: 0.18.1
+    go_arch: amd64
+    node_eqxporter_version: 0.18.1
   tasks:
     - name: Download node_exporter binary to local folder
       become: false
       get_url:
-        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz"
-        dest: "/tmp/node_exporter-{{ version }}.linux-amd64.tar.gz"
+        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+        dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
       register: _download_binary
       until: _download_binary is succeeded
       retries: 5
@@ -21,16 +21,16 @@
     - name: Unpack node_exporter binary
       become: false
       unarchive:
-        src: "/tmp/node_exporter-{{ version }}.linux-amd64.tar.gz"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
         dest: "/tmp"
-        creates: "/tmp/node_exporter-{{ version }}.linux-amd64/node_exporter"
+        creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
       run_once: true
       check_mode: false
 
     - name: link to alertmanager binaries directory
       become: false
       file:
-        src: "/tmp/node_exporter-{{ version }}.linux-amd64"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64"
         dest: "/tmp/node_exporter-linux-amd64"
         state: link
       run_once: true
