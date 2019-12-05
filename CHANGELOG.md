@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- add option to propagate binaries without access to internet [\#126](https://github.com/cloudalchemy/ansible-node-exporter/pull/126) ([DaazKu](https://github.com/DaazKu))
 - \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#123](https://github.com/cloudalchemy/ansible-node-exporter/pull/123) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.17.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-11-14)
