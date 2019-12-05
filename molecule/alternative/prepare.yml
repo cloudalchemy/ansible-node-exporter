@@ -27,7 +27,7 @@
       run_once: true
       check_mode: false
 
-    - name: link to alertmanager binaries directory
+    - name: link to node_exporter binaries directory
       become: false
       file:
         src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64"
