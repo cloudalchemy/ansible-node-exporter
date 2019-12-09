@@ -53,7 +53,7 @@
     - name: Propagate node_exporter binaries
       copy:
         src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
-        dest: "/usr/local/bin/node_exporter"
+        dest: "{{ node_exporter_binary_install }}/node_exporter"
         mode: 0755
         owner: root
         group: root
@@ -64,7 +64,7 @@
 - name: propagate locally distributed node_exporter binary
   copy:
     src: "{{ node_exporter_binary_local_dir }}/node_exporter"
-    dest: "/usr/local/bin/node_exporter"
+    dest: "{{ node_exporter_binary_install }}/node_exporter"
     mode: 0755
     owner: root
     group: root

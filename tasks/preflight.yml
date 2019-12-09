@@ -29,14 +29,14 @@
 
 - name: Check if node_exporter is installed
   stat:
-    path: "/usr/local/bin/node_exporter"
+    path: "{{ node_exporter_binary_install }}/node_exporter"
   register: __node_exporter_is_installed
   check_mode: false
   tags:
     - node_exporter_install
 
 - name: Gather currently installed node_exporter version (if any)
-  command: "/usr/local/bin/node_exporter --version"
+  command: "{{ node_exporter_binary_install }}/node_exporter --version"
   args:
     warn: false
   changed_when: false
