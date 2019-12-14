@@ -24,7 +24,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `node_exporter_version` | 0.18.1 | Node exporter package version. Also accepts latest as parameter. |
-| `node_exporter_binaries_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `node_exporter` binary is stored on host on which ansible is ran. This overrides `node_exporter_version` parameter |
+| `node_exporter_binary_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `node_exporter` binary is stored on host on which ansible is ran. This overrides `node_exporter_version` parameter |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
 | `node_exporter_system_group` | "node-exp" | System group used to run node_exporter |
 | `node_exporter_system_user` | "node-exp" | System user used to run node_exporter |
