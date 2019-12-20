@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] remove IRC link [\#133](https://github.com/cloudalchemy/ansible-node-exporter/pull/133) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Updated README.md [\#129](https://github.com/cloudalchemy/ansible-node-exporter/pull/129) ([envy7](https://github.com/envy7))
 - add option to propagate binaries without access to internet [\#126](https://github.com/cloudalchemy/ansible-node-exporter/pull/126) ([DaazKu](https://github.com/DaazKu))
 - \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#123](https://github.com/cloudalchemy/ansible-node-exporter/pull/123) ([cloudalchemybot](https://github.com/cloudalchemybot))
