@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] use latest available python [\#136](https://github.com/cloudalchemy/ansible-node-exporter/pull/136) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Fix syntax on SELinux installation for clearlinux [\#134](https://github.com/cloudalchemy/ansible-node-exporter/pull/134) ([paretl](https://github.com/paretl))
 - \[REPO SYNC\] remove IRC link [\#133](https://github.com/cloudalchemy/ansible-node-exporter/pull/133) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - move installing selinux package dependencies into separate tasks [\#132](https://github.com/cloudalchemy/ansible-node-exporter/pull/132) ([paulfantom](https://github.com/paulfantom))
