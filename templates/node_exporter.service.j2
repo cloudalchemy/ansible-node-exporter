@@ -9,7 +9,7 @@ StartLimitInterval=0
 Type=simple
 User={{ node_exporter_system_user }}
 Group={{ node_exporter_system_group }}
-ExecStart=/usr/local/bin/node_exporter \
+ExecStart={{ _node_exporter_binary_install_dir }}/node_exporter \
 {% for collector in node_exporter_enabled_collectors -%}
 {%   if not collector is mapping %}
     --collector.{{ collector }} \
