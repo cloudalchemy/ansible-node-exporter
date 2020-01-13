@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
 
+**Closed issues:**
+
+- Node exporter fails on ec2 builds with ""No file was found when using first\_found" [\#115](https://github.com/cloudalchemy/ansible-node-exporter/issues/115)
+
 **Merged pull requests:**
 
+- \[REPO SYNC\] Merge pull request \#4 from cloudalchemy/travis\_fix [\#138](https://github.com/cloudalchemy/ansible-node-exporter/pull/138) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] use latest available python [\#136](https://github.com/cloudalchemy/ansible-node-exporter/pull/136) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Fix syntax on SELinux installation for clearlinux [\#134](https://github.com/cloudalchemy/ansible-node-exporter/pull/134) ([paretl](https://github.com/paretl))
 - \[REPO SYNC\] remove IRC link [\#133](https://github.com/cloudalchemy/ansible-node-exporter/pull/133) ([cloudalchemybot](https://github.com/cloudalchemybot))
