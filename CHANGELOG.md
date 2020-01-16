@@ -1,8 +1,6 @@
 # Change Log
 
-
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.18.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-16)
 **Closed issues:**
 
 - Node exporter fails on ec2 builds with ""No file was found when using first\_found" [\#115](https://github.com/cloudalchemy/ansible-node-exporter/issues/115)
