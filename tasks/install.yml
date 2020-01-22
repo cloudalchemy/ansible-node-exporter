@@ -1,11 +1,4 @@
 ---
-- name: create node_exporter binary install directory
-  file:
-    path: "{{ _node_exporter_binary_install_dir }}"
-    state: directory
-    owner: root
-    group: root
-
 - name: Create the node_exporter group
   group:
     name: "{{ node_exporter_system_group }}"
