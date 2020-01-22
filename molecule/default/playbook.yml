@@ -5,3 +5,4 @@
     - ansible-node-exporter
   vars:
     node_exporter_web_listen_address: "127.0.0.1:9100"
+    node_exporter_textfile_dir: ""

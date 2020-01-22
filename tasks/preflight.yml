@@ -27,6 +27,23 @@
       - "item not in node_exporter_enabled_collectors"
   with_items: "{{ node_exporter_disabled_collectors }}"
 
+- block:
+    - name: Check for "/etc/crontab"
+      stat:
+        path: "/etc/crontab"
+      register: __node_exportert_etc_crontab
+
+    - name: Assert /etc/crontab exists when using textfile collector scripts
+      assert:
+        that:
+          __node_exportert_etc_crontab.stat.exists
+
+    - name: Assert node_exporter_textfile_dir is not empty when using collector scripts
+      assert:
+        that:
+          - node_exporter_textfile_dir | length != 0
+  when: node_exporter_textfile_collectors | length != 0
+
 - name: Check if node_exporter is installed
   stat:
     path: "{{ _node_exporter_binary_install_dir }}/node_exporter"

@@ -8,16 +8,6 @@
     mode: 0644
   notify: restart node_exporter
 
-- name: Create textfile collector dir
-  file:
-    path: "{{ node_exporter_textfile_dir }}"
-    state: directory
-    owner: "{{ _node_exporter_system_user }}"
-    group: "{{ _node_exporter_system_group }}"
-    recurse: true
-    mode: u+rwX,g+rwX,o=rX
-  when: node_exporter_textfile_dir | length > 0
-
 - name: Allow Node Exporter port in SELinux on RedHat OS family
   seport:
     ports: "{{ node_exporter_web_listen_address.split(':')[-1] }}"
@@ -27,3 +17,45 @@
   when:
     - ansible_version.full is version_compare('2.4', '>=')
     - ansible_selinux.status == "enabled"
+
+- block:
+    - name: Create textfile collector dir
+      file:
+        path: "{{ node_exporter_textfile_dir }}"
+        state: directory
+        owner: "{{ _node_exporter_system_user }}"
+        group: "{{ _node_exporter_system_group }}"
+        recurse: true
+        mode: u+rwX,g+rwX,o=rX
+
+    - name: Download textfile collector scripts
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ _node_exporter_binary_install_dir }}/{{ item.src | basename }}"
+        owner: root
+        group: root
+        mode: "0755"
+      with_items: "{{ node_exporter_textfile_collectors }}"
+
+    - name: Setup textfile collector script systemd cron service
+      template:
+        src: "cron.service.j2"
+        dest: "/etc/systemd/systemd/textfile-collector-{{ item.src | basename }}.service"
+      with_items: "{{ node_exporter_textfile_collectors }}"
+      notify: reload cron
+
+    - name: Setup textfile collector script systemd cron timer
+      template:
+        src: "cron.timer.j2"
+        dest: "/etc/systemd/systemd/textfile-collector-{{ item.src | basename }}.timer"
+      with_items: "{{ node_exporter_textfile_collectors }}"
+      notify: reload cron
+
+    - name: Enable textfile collector
+      systemd:
+        daemon_reload: true
+        name: "textfile-collector-{{ item.src | basename }}.timer"
+        enabled: true
+        state: started
+      with_items: "{{ node_exporter_textfile_collectors }}"
+  when: node_exporter_textfile_dir | length > 0

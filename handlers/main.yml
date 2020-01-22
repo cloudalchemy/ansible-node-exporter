@@ -5,3 +5,11 @@
     daemon_reload: true
     name: node_exporter
     state: restarted
+
+- name: reload cron
+  become: true
+  systemd:
+    daemon_reload: true
+    name: "textfile-collector-{{ item.src | basename }}.timer"
+    state: restarted
+  with_items: "{{ node_exporter_textfile_collectors }}"

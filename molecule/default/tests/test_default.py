@@ -11,8 +11,7 @@ def test_directories(host):
     ]
     for dir in dirs:
         d = host.file(dir)
-        assert d.is_directory
-        assert d.exists
+        assert not d.exists
 
 
 def test_files(host):

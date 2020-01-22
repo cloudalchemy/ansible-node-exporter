@@ -1,5 +1,5 @@
 ---
-- name: Prepare
+- name: Prepare localhost
   hosts: localhost
   gather_facts: false
   vars:
@@ -35,3 +35,19 @@
         state: link
       run_once: true
       check_mode: false
+
+    - name: get collector scripts
+      become: false
+      get_url:
+        url: "{{ item }}"
+        dest: "/tmp/{{ item.split('/')[-1] }}"
+      with_items:
+        - https://raw.githubusercontent.com/prometheus-community/node-exporter-textfile-collector-scripts/master/apt.sh
+
+- name: Prepare instances
+  hosts: all
+  tasks:
+    - name: Install cron
+      package:
+        name: "{{ 'cronie' if (ansible_os_family | lower == 'redhat') else 'cron' }}"
+        state: present

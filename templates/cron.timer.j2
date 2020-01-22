@@ -1,0 +1,14 @@
+[Unit]
+Description=Textfile Collector {{ item.src | basename }} timer
+
+[Timer]
+Unit=textfile-collector-{{ item.src | basename }}.service
+OnCalendar={{ item.calendar }}
+OnBootSec={{ item.boot_sec }}
+OnActiveSec={{ item.active_sec }}
+OnStartupSec={{ item.startup_sec }}
+OnUnitActiveSec={{ item.unit_active_sec }}
+OnUnitInactiveSec={{ item.unit_inactive_sec }}
+
+[Install]
+WantedBy=multi-user.target

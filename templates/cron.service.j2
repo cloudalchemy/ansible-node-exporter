@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Textfile Collector {{ item.src | basename }}
+
+[Service]
+User={{ item.user | default("root") }}
+ExecStart=/bin/sh -c '\
+  TEMP=$(mktemp -q) && \
+  {{ _node_exporter_binary_install_dir }}/{{ item.src | basename }} > $TEMP && \
+  mv $TEMP {{ node_exporter_textfile_dir }}/{{ item.src | basename }}.prom'

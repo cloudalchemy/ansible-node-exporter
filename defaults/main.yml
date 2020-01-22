@@ -4,6 +4,17 @@ node_exporter_binary_local_dir: ""
 node_exporter_web_listen_address: "0.0.0.0:9100"
 
 node_exporter_textfile_dir: "/var/lib/node_exporter"
+node_exporter_textfile_collectors: []
+# node_exporter_textfile_collectors:
+#   - src: "/tmp/apt.sh"
+#     user: root
+#     calendar: ""
+#     active_sec: ""
+#     boot_sec: ""
+#     startup_sec: ""
+#     unit_active_sec: ""
+#     unit_inactive_sec: ""
+
 
 node_exporter_enabled_collectors:
   - systemd

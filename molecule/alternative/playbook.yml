@@ -11,3 +11,8 @@
       - entropy
     node_exporter_disabled_collectors:
       - diskstats
+    node_exporter_textfile_collectors:
+      - src: "/tmp/apt.sh"
+        user: root
+        calendar: "1h 30min"
+        boot_sec: 90
