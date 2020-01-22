@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Implemented enhancements:**
+
+- Hardcode node-exporter username and group [\#139](https://github.com/cloudalchemy/ansible-node-exporter/issues/139)
+
+**Merged pull requests:**
+
+- Add binary install directory [\#137](https://github.com/cloudalchemy/ansible-node-exporter/pull/137) ([guimaluf](https://github.com/guimaluf))
+
 ## [0.18.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-16)
 **Closed issues:**
 
