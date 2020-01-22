@@ -1,4 +1,11 @@
 ---
+- name: create node_exporter binary install directory
+  file:
+    path: "{{ _node_exporter_binary_install_dir }}"
+    state: directory
+    owner: root
+    group: root
+
 - name: Create the node_exporter group
   group:
     name: "{{ node_exporter_system_group }}"
@@ -43,7 +50,7 @@
     - name: Propagate node_exporter binaries
       copy:
         src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
-        dest: "/usr/local/bin/node_exporter"
+        dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
         mode: 0755
         owner: root
         group: root
@@ -54,7 +61,7 @@
 - name: propagate locally distributed node_exporter binary
   copy:
     src: "{{ node_exporter_binary_local_dir }}/node_exporter"
-    dest: "/usr/local/bin/node_exporter"
+    dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
     mode: 0755
     owner: root
     group: root
