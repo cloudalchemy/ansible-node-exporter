@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Do not manage system directories [\#140](https://github.com/cloudalchemy/ansible-node-exporter/pull/140) ([paulfantom](https://github.com/paulfantom))
 - Add binary install directory [\#137](https://github.com/cloudalchemy/ansible-node-exporter/pull/137) ([guimaluf](https://github.com/guimaluf))
 
 ## [0.18.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-16)
