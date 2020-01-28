@@ -14,11 +14,6 @@ def test_directories(host):
         assert not d.exists
 
 
-def test_user(host):
-    assert not host.group("node-exp").exists
-    assert not host.user("node-exp").exists
-
-
 def test_service(host):
     s = host.service("node_exporter")
 #    assert s.is_enabled
