@@ -6,8 +6,10 @@
 
 - Hardcode node-exporter username and group [\#139](https://github.com/cloudalchemy/ansible-node-exporter/issues/139)
 
+## [0.19.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-31)
 **Merged pull requests:**
 
+- remove system user management and convert variables to internal ones [\#142](https://github.com/cloudalchemy/ansible-node-exporter/pull/142) ([paulfantom](https://github.com/paulfantom))
 - Do not manage system directories [\#140](https://github.com/cloudalchemy/ansible-node-exporter/pull/140) ([paulfantom](https://github.com/paulfantom))
 - Add binary install directory [\#137](https://github.com/cloudalchemy/ansible-node-exporter/pull/137) ([guimaluf](https://github.com/guimaluf))
 
