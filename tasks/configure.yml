@@ -12,8 +12,8 @@
   file:
     path: "{{ node_exporter_textfile_dir }}"
     state: directory
-    owner: "{{ node_exporter_system_user }}"
-    group: "{{ node_exporter_system_group }}"
+    owner: "{{ _node_exporter_system_user }}"
+    group: "{{ _node_exporter_system_group }}"
     recurse: true
     mode: 0775
   when: node_exporter_textfile_dir | length > 0
