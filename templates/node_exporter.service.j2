@@ -17,7 +17,7 @@ ExecStart={{ _node_exporter_binary_install_dir }}/node_exporter \
 {%     set name, options = (collector.items()|list)[0] -%}
     --collector.{{ name }} \
 {%     for k,v in options|dictsort %}
-    --collector.{{ name }}.{{ k }}={{ v }} \
+    --collector.{{ name }}.{{ k }}={{ v | quote }} \
 {%     endfor -%}
 {%   endif -%}
 {% endfor -%}
