@@ -6,6 +6,19 @@
 
 - Hardcode node-exporter username and group [\#139](https://github.com/cloudalchemy/ansible-node-exporter/issues/139)
 
+**Fixed bugs:**
+
+- Add Support for over proxy installation [\#147](https://github.com/cloudalchemy/ansible-node-exporter/issues/147)
+- Checksum error [\#146](https://github.com/cloudalchemy/ansible-node-exporter/issues/146)
+- Problem downloading sha256sum.txt from github [\#143](https://github.com/cloudalchemy/ansible-node-exporter/issues/143)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] lock molecule to v2 [\#149](https://github.com/cloudalchemy/ansible-node-exporter/pull/149) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- always validate GitHub certificate as there is no reason not to trust it [\#148](https://github.com/cloudalchemy/ansible-node-exporter/pull/148) ([paulfantom](https://github.com/paulfantom))
+- Install 'policycoreutils-python' on redhat/centos \< 8 and fedora \< 29… [\#145](https://github.com/cloudalchemy/ansible-node-exporter/pull/145) ([wikro](https://github.com/wikro))
+- Add quotes to node\_exporter parametrs in systemd service [\#144](https://github.com/cloudalchemy/ansible-node-exporter/pull/144) ([ruzickap](https://github.com/ruzickap))
+
 ## [0.19.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-31)
 **Merged pull requests:**
 
