@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Use symbolic permissions for textfile collector dir [\#150](https://github.com/cloudalchemy/ansible-node-exporter/pull/150) ([friesenkiwi](https://github.com/friesenkiwi))
 - \[REPO SYNC\] lock molecule to v2 [\#149](https://github.com/cloudalchemy/ansible-node-exporter/pull/149) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - always validate GitHub certificate as there is no reason not to trust it [\#148](https://github.com/cloudalchemy/ansible-node-exporter/pull/148) ([paulfantom](https://github.com/paulfantom))
 - Install 'policycoreutils-python' on redhat/centos \< 8 and fedora \< 29… [\#145](https://github.com/cloudalchemy/ansible-node-exporter/pull/145) ([wikro](https://github.com/wikro))
