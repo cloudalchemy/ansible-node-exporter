@@ -15,7 +15,7 @@
     owner: "{{ _node_exporter_system_user }}"
     group: "{{ _node_exporter_system_group }}"
     recurse: true
-    mode: 0775
+    mode: u+rwX,g+rwX,o=rX
   when: node_exporter_textfile_dir | length > 0
 
 - name: Allow Node Exporter port in SELinux on RedHat OS family
