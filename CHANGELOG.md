@@ -1,14 +1,13 @@
-
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.20.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-04-30)
 **Implemented enhancements:**
 
 - Hardcode node-exporter username and group [\#139](https://github.com/cloudalchemy/ansible-node-exporter/issues/139)
 
 **Fixed bugs:**
 
+- Task "Allow Node Exporter port in SELinux on RedHat OS family" fails on centos 7 [\#152](https://github.com/cloudalchemy/ansible-node-exporter/issues/152)
 - Add Support for over proxy installation [\#147](https://github.com/cloudalchemy/ansible-node-exporter/issues/147)
 - Checksum error [\#146](https://github.com/cloudalchemy/ansible-node-exporter/issues/146)
 - Problem downloading sha256sum.txt from github [\#143](https://github.com/cloudalchemy/ansible-node-exporter/issues/143)
