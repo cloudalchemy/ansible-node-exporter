@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.21.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-05-31)
+**Merged pull requests:**
+
+- \*: add support for node\_exporter TLS settings [\#156](https://github.com/cloudalchemy/ansible-node-exporter/pull/156) ([paulfantom](https://github.com/paulfantom))
+- New prometheus/node\_exporter upstream release! [\#155](https://github.com/cloudalchemy/ansible-node-exporter/pull/155) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.20.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-04-30)
 **Implemented enhancements:**
 
