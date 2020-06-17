@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.21.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-16)
+**Merged pull requests:**
+
+- New prometheus/node\_exporter upstream release! [\#159](https://github.com/cloudalchemy/ansible-node-exporter/pull/159) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.21.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-05-31)
 **Merged pull requests:**
 
