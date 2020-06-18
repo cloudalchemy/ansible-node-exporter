@@ -1,10 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.21.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
 **Fixed bugs:**
 
 - node\_exporter can not be updated when node\_exporter\_binary\_local\_dir is set [\#160](https://github.com/cloudalchemy/ansible-node-exporter/issues/160)
+
+**Merged pull requests:**
+
+- add missing backslash when using TLS configuration [\#163](https://github.com/cloudalchemy/ansible-node-exporter/pull/163) ([sengel](https://github.com/sengel))
 
 ## [0.21.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
 **Merged pull requests:**
