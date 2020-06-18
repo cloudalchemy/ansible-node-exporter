@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Fixed bugs:**
+
+- node\_exporter can not be updated when node\_exporter\_binary\_local\_dir is set [\#160](https://github.com/cloudalchemy/ansible-node-exporter/issues/160)
+
+## [0.21.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
+**Merged pull requests:**
+
+- always import install.yml when using local dir [\#162](https://github.com/cloudalchemy/ansible-node-exporter/pull/162) ([appliedprivacy](https://github.com/appliedprivacy))
+
 ## [0.21.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-16)
 **Merged pull requests:**
 
