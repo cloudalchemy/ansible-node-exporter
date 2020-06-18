@@ -22,6 +22,7 @@
           dest: "{{ node_exporter_tls_server_config.key_file }}"
   vars:
     node_exporter_binary_local_dir: "/tmp/node_exporter-linux-amd64"
+    node_exporter_web_listen_address: "127.0.0.1:8080"
     node_exporter_textfile_dir: ""
     node_exporter_enabled_collectors:
       - entropy
