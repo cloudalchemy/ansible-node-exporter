@@ -107,4 +107,7 @@
       with_items: "{{ _checksums }}"
       when:
         - "('linux-' + go_arch + '.tar.gz') in item"
-  when: node_exporter_binary_local_dir | length == 0
+  when:
+    - node_exporter_binary_local_dir | length == 0
+    - not __node_exporter_is_installed.stat.exists or
+      (__node_exporter_current_version_output.stderr_lines[0].split(" ")[2] != node_exporter_version)
