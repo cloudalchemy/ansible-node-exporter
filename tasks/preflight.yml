@@ -96,9 +96,26 @@
   run_once: true
 
 - block:
+    - name: Setup variable with GH_TOKEN
+      set_fact:
+        _gh_token: "{{ lookup('env', 'GH_TOKEN') | default('') }}"
+      delegate_to: localhost
+      run_once: true
+
+    - name: Setup Authorization headers with GH_TOKEN
+      set_fact:
+        _lookup_headers:
+          Authorization: "Bearer {{ hostvars['localhost']['_gh_token'] }}"
+      when: (hostvars['localhost']['_gh_token'] is defined)
+
+    - name: Setup empty headers
+      set_fact:
+        _lookup_headers: {}
+      when: _lookup_headers is not defined
+
     - name: Get checksum list from github
       set_fact:
-        _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+        _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', headers=_lookup_headers, wantlist=True) | list }}"
       run_once: true
 
     - name: "Get checksum for {{ go_arch }} architecture"
