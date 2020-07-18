@@ -72,6 +72,12 @@ Before running node_exporter role, user needs to provision their own certificate
       randomuser: examplepassword 
 ```
 
+### GitHub rate-limiting
+
+When this role fails with 400 errors during requests while downloading node-exporter (and checksums) from GitHub, you can use the following environment variables to authenticate yourself with GitHub:
+
+ - `GH_USER`: user name of your GitHub account
+ - `GH_TOKEN`: a personal access token (scope: `public_repo`)
 
 ### Demo site
 
