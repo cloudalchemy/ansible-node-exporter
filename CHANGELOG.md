@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Implemented enhancements:**
+
+- Use a github token for checksums? [\#165](https://github.com/cloudalchemy/ansible-node-exporter/issues/165)
+
+## [0.21.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-20)
+**Merged pull requests:**
+
+- Use localhost to fetch checksums [\#169](https://github.com/cloudalchemy/ansible-node-exporter/pull/169) ([SuperQ](https://github.com/SuperQ))
+
 ## [0.21.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
 **Fixed bugs:**
 
