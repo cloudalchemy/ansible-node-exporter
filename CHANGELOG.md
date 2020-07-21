@@ -1,10 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.21.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-21)
 **Implemented enhancements:**
 
 - Use a github token for checksums? [\#165](https://github.com/cloudalchemy/ansible-node-exporter/issues/165)
+
+**Fixed bugs:**
+
+- Move StartLimitInterval to \[Service\] section [\#170](https://github.com/cloudalchemy/ansible-node-exporter/pull/170) ([bittopaz](https://github.com/bittopaz))
 
 ## [0.21.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-20)
 **Merged pull requests:**
