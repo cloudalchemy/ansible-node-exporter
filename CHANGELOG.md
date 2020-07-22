@@ -1,10 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Fixed bugs:**
+
+- Checksum download sometimes fails \(status: 400\) [\#171](https://github.com/cloudalchemy/ansible-node-exporter/issues/171)
+
+**Merged pull requests:**
+
+- Chore: troubleshooting document [\#172](https://github.com/cloudalchemy/ansible-node-exporter/pull/172) ([till](https://github.com/till))
+
 ## [0.21.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-21)
-**Implemented enhancements:**
-
-- Use a github token for checksums? [\#165](https://github.com/cloudalchemy/ansible-node-exporter/issues/165)
-
 **Fixed bugs:**
 
 - Move StartLimitInterval to \[Service\] section [\#170](https://github.com/cloudalchemy/ansible-node-exporter/pull/170) ([bittopaz](https://github.com/bittopaz))
