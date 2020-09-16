@@ -4,10 +4,12 @@
 
 **Fixed bugs:**
 
+- Role fails to unpack node\_exporter binary [\#177](https://github.com/cloudalchemy/ansible-node-exporter/issues/177)
 - Checksum download sometimes fails \(status: 400\) [\#171](https://github.com/cloudalchemy/ansible-node-exporter/issues/171)
 
 **Merged pull requests:**
 
+- set file mode explicitly when downloading binary [\#178](https://github.com/cloudalchemy/ansible-node-exporter/pull/178) ([FilippoProjetto](https://github.com/FilippoProjetto))
 - Chore: troubleshooting document [\#172](https://github.com/cloudalchemy/ansible-node-exporter/pull/172) ([till](https://github.com/till))
 
 ## [0.21.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-21)
