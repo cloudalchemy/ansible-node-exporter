@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
-
+## [0.22.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-10-02)
 **Fixed bugs:**
 
 - Role fails to unpack node\_exporter binary [\#177](https://github.com/cloudalchemy/ansible-node-exporter/issues/177)
@@ -9,7 +8,8 @@
 
 **Merged pull requests:**
 
-- set file mode explicitly when downloading binary [\#178](https://github.com/cloudalchemy/ansible-node-exporter/pull/178) ([FilippoProjetto](https://github.com/FilippoProjetto))
+- optionally allow node\_exporter access to shared /tmp [\#179](https://github.com/cloudalchemy/ansible-node-exporter/pull/179) ([kklimonda](https://github.com/kklimonda))
+- set file mode explicitly when downloading binary [\#178](https://github.com/cloudalchemy/ansible-node-exporter/pull/178) ([filippoprojetto](https://github.com/filippoprojetto))
 - Chore: troubleshooting document [\#172](https://github.com/cloudalchemy/ansible-node-exporter/pull/172) ([till](https://github.com/till))
 
 ## [0.21.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-21)
