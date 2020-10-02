@@ -33,7 +33,6 @@ Restart=always
 RestartSec=1
 StartLimitInterval=0
 
-PrivateTmp=yes
 {% for m in ansible_mounts if m.mount == '/home' %}
 ProtectHome=read-only
 {% else %}
