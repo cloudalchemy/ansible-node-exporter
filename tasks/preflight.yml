@@ -106,4 +106,5 @@
       with_items: "{{ _checksums }}"
       when:
         - "('linux-' + go_arch + '.tar.gz') in item"
+  delegate_to: localhost
   when: node_exporter_binary_local_dir | length == 0

@@ -3,7 +3,6 @@
 [Unit]
 Description=Prometheus Node Exporter
 After=network-online.target
-StartLimitInterval=0
 
 [Service]
 Type=simple
@@ -32,8 +31,8 @@ ExecStart={{ _node_exporter_binary_install_dir }}/node_exporter \
 SyslogIdentifier=node_exporter
 Restart=always
 RestartSec=1
+StartLimitInterval=0
 
-PrivateTmp=yes
 {% for m in ansible_mounts if m.mount == '/home' %}
 ProtectHome=read-only
 {% else %}
