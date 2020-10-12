@@ -18,16 +18,16 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 
 ## Role Variables
 
-All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below.
+All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) and are listed in the table below.
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `node_exporter_version` | 1.0.1 | Node exporter package version. Also accepts latest as parameter. |
 | `node_exporter_binary_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `node_exporter` binary is stored on host on which ansible is ran. This overrides `node_exporter_version` parameter |
 | `node_exporter_web_listen_address` | "0.0.0.0:9100" | Address on which node exporter will listen |
-| `node_exporter_enabled_collectors` | [ systemd, textfile ] | List of additionally enabled collectors. It adds collectors to [those enabled by default](https://github.com/prometheus/node_exporter#enabled-by-default) |
+| `node_exporter_enabled_collectors` | ```["systemd",{textfile: {directory: "{{node_exporter_textfile_dir}}"}}]``` | List of dicts defining additionally enabled collectors and their configuration. It adds collectors to [those enabled by default](https://github.com/prometheus/node_exporter#enabled-by-default). |
 | `node_exporter_disabled_collectors` | [] | List of disabled collectors. By default node_exporter disables collectors listed [here](https://github.com/prometheus/node_exporter#disabled-by-default). |
-| `node_exporter_textfile_dir` | "/var/lib/node_exporter" | Directory used by the [Textfile Collector](https://github.com/prometheus/node_exporter#textfile-collector). To get permissions to write metrics in this directory, users must be in `node-exp` system group.
+| `node_exporter_textfile_dir` | "/var/lib/node_exporter" | Directory used by the [Textfile Collector](https://github.com/prometheus/node_exporter#textfile-collector). To get permissions to write metrics in this directory, users must be in `node-exp` system group. __Note__: This variable will have no effect if `node_exporter_enabled_collectors` is overridden.
 | `node_exporter_tls_server_config` | {} | Configuration for TLS authentication. Keys and values are the same as in [node_exporter docs](https://github.com/prometheus/node_exporter/blob/master/https/README.md#sample-config). |
 | `node_exporter_http_server_config` | {} | Config for HTTP/2 support. Keys and values are the same as in [node_exporter docs](https://github.com/prometheus/node_exporter/blob/master/https/README.md#sample-config). |
 | `node_exporter_basic_auth_users` | {} | Dictionary of users and password for basic authentication. Passwords are automatically hashed with bcrypt. |
