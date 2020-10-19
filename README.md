@@ -15,6 +15,7 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 
 - Ansible >= 2.7 (It might work on previous versions, but we cannot guarantee it)
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
+- Passlib is required when using the basic authentatication feature (`pip install passlib[bcrypt]`)
 
 ## Role Variables
 
