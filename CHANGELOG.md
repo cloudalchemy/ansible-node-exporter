@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+
+**Merged pull requests:**
+
+- Updated readme to include passlib dependency [\#184](https://github.com/cloudalchemy/ansible-node-exporter/pull/184) ([thdhondt](https://github.com/thdhondt))
+
 ## [0.22.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-10-02)
 **Fixed bugs:**
 
