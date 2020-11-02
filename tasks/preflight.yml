@@ -1,20 +1,39 @@
 ---
-- name: Assert usage of systemd as an init system
+- name: Assert usage of supported init system
   assert:
-    that: ansible_service_mgr == 'systemd'
-    msg: "This role only works with systemd"
+    that:
+      ansible_service_mgr == 'sysvinit' or
+      ansible_service_mgr == 'upstart' or
+      ansible_service_mgr == 'systemd'
+    msg: "This role only works with systemd,upstart,sysvinit"
 
 - name: Get systemd version
   command: systemctl --version
   changed_when: false
   check_mode: false
   register: __systemd_version
+  when: ansible_service_mgr == 'systemd'
   tags:
     - skip_ansible_lint
 
 - name: Set systemd version fact
   set_fact:
     node_exporter_systemd_version: "{{ __systemd_version.stdout_lines[0] | regex_replace('^systemd\\s(\\d+).*$', '\\1') }}"
+  when: ansible_service_mgr == 'systemd'
+
+- name: Get upstart version
+  command: initctl --version
+  changed_when: false
+  check_mode: false
+  register: __upstart_version
+  when: ansible_service_mgr == 'upstart'
+  tags:
+    - skip_ansible_lint
+
+- name: Set upstart version fact
+  set_fact:
+    node_exporter_upstart_version: "{{ __upstart_version.stdout_lines[0] | regex_replace('^initctl\\s\\(upstart\\s([0-9.]+).*$', '\\1') }}"
+  when: ansible_service_mgr == 'upstart'
 
 - name: Naive assertion of proper listen address
   assert:
