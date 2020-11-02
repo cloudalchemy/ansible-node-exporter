@@ -1,11 +1,11 @@
 ---
-- name: Copy the node_exporter systemd service file
+- name: Copy the node_exporter service file
   template:
-    src: node_exporter.service.j2
-    dest: /etc/systemd/system/node_exporter.service
+    src: "node_exporter.{{ ansible_service_mgr | lower }}.j2"
+    dest: "{{ lookup('vars', '_node_exporter_' + ansible_service_mgr + '_service').file }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "{{ lookup('vars', '_node_exporter_' + ansible_service_mgr + '_service').mode }}"
   notify: restart node_exporter
 
 - block:
