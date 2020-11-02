@@ -1,0 +1,156 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: node_exporter
+# Required-Start: $local_fs $network $named $time $syslog
+# Required-Stop: $local_fs $network $named $time $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Prometheus Node Exporter
+### END INIT INFO
+PROG="node_exporter"
+EXEC="{{ _node_exporter_binary_install_dir }}/node_exporter"
+OPTIONS="{% for collector in node_exporter_enabled_collectors -%}
+{%   if not collector is mapping %}
+{% if not 'systemd' in collector %}
+    --collector.{{ collector }} \
+{% endif -%}
+{%   else -%}
+{%     set name, options = (collector.items()|list)[0] -%}
+    --collector.{{ name }} \
+{%     for k,v in options|dictsort %}
+    --collector.{{ name }}.{{ k }}={{ v | quote }} \
+{%     endfor -%}
+{%   endif -%}
+{% endfor -%}
+{% for collector in node_exporter_disabled_collectors %}
+    --no-collector.{{ collector }} \
+{% endfor %}
+{% if node_exporter_tls_server_config | length > 0 or node_exporter_http_server_config | length > 0 or node_exporter_basic_auth_users | length > 0 %}
+    --web.config=/etc/node_exporter/config.yaml \
+{% endif %}
+    --web.listen-address={{ node_exporter_web_listen_address }}"
+DESC="Prometheus Node Exporter"
+USER="{{ _node_exporter_system_user }}"
+GROUP="{{ _node_exporter_system_group }}"
+LOGFILE="/var/log/node_exporter.log"
+
+# Source function library.
+if [ -e /etc/rc.d/init.d/functions ]; then
+  . /etc/rc.d/init.d/functions
+elif [ -e /lib/lsb/init-functions ]; then
+  . /lib/lsb/init-functions
+fi
+
+# Choose correct location for lock file
+if [ -d /var/lock/subsys ]; then
+  LOCKFILE="/var/lock/subsys/$PROG/$PROG.lock"
+else
+  LOCKFILE="/var/run/$PROG/$PROG.lock"
+fi
+if [ ! -d `dirname $LOCKFILE` ]; then
+  mkdir -p `dirname $LOCKFILE`
+  chown -R $USER:$GROUP `dirname $LOCKFILE`
+fi
+
+
+is_suse="no"
+if [ -e /etc/SuSE-release ]; then
+  is_suse="yes"
+fi
+
+start() {
+  if [ -f $LOCKFILE ]; then
+    PID=$(cat $LOCKFILE)
+        if [ -z "$(ps axf | grep -w ${PID} | grep -v grep)" ]; then
+            echo "$PROG process is dead but stale lockfile exists: $LOCKFILE"
+        else
+            echo "$PROG is already running!"
+        fi
+  else
+    echo "Starting $PROG "
+    if [ "x${is_suse}" = "xyes" ]; then
+      start_daemon -p ${LOCKFILE} -u ${USER} -l $LOGFILE $EXEC $OPTIONS > $LOGFILE 2>&1  &
+    elif type start-stop-daemon >/dev/null 2>&1; then
+      start-stop-daemon --chuid $USER:$GROUP --no-close --background --start --name $PROG --pidfile $LOCKFILE --make-pidfile --exec $EXEC -- $OPTIONS > $LOGFILE 2>&1 &
+    else
+      daemon --user=$USER $EXEC $OPTIONS > $LOGFILE 2>&1  &
+    fi
+    retval=$?
+    echo $! > $LOCKFILE
+  fi
+}
+
+stop() {
+  if [ ! -f $LOCKFILE ]; then
+    return 0
+  else
+   PID=$(cat $LOCKFILE)
+    if [ -z "$(ps axf | grep -w ${PID} | grep -v grep)" ]; then
+     echo "Already stopped, stale lock file removed $LOCKFILE"
+     rm -f $LOCKFILE
+    else
+      echo -n "Stopping $PROG "
+      if [ "x${is_suse}" = "xyes" ]; then
+          killproc -p ${LOCKFILE} -t 90 $EXEC
+      elif type start-stop-daemon >/dev/null 2>&1; then
+          start-stop-daemon --stop --name ${PROG} --pidfile ${LOCKFILE} --exec ${EXEC}
+      elif [ -e /etc/redhat-release ]; then
+          killproc -d 90 ${PROG}
+      else
+          killproc -p ${PROG}
+      fi
+      retval=$?
+      echo
+      test $retval -eq 0 && rm -f $LOCKFILE
+      return $retval
+    fi
+  fi
+}
+
+restart ()
+{
+if [ -f $LOCKFILE ]; then
+  stop
+  sleep 2
+  start
+else
+  start
+fi
+}
+
+status() {
+  if [ -f $LOCKFILE ]; then
+      PID=$(cat $LOCKFILE)
+          if [ -z "$(ps axf | grep -w ${PID} | grep -v grep)" ]; then
+              echo "$PROG process is dead but stale lockfile exists: $LOCKFILE"
+          else    
+              echo "$PROG is running"
+          fi
+  else
+      return 0
+  fi
+}
+
+
+force_reload() {
+    restart
+}
+
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+    status
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+esac

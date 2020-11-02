@@ -1,0 +1,37 @@
+{{ ansible_managed | comment }}
+description "Prometheus Node Exporter"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [016]
+
+respawn
+respawn limit 10 5
+{% if node_exporter_upstart_version | int >= 1.4 %}
+setuid {{ _node_exporter_system_user }}
+setgid {{ _node_exporter_system_group }}
+{% endif %}
+
+exec \
+{% if node_exporter_upstart_version | int < 1.4 %}
+su -s /bin/sh -c 'exec "$0" "$@"' {{ _node_exporter_system_user }} -- \
+{% endif %}
+{{ _node_exporter_binary_install_dir }}/node_exporter \
+{% for collector in node_exporter_enabled_collectors -%}
+{%   if not collector is mapping %}
+{% if not 'systemd' in collector %}
+    --collector.{{ collector }} \
+{% endif -%}
+{%   else -%}
+{%     set name, options = (collector.items()|list)[0] -%}
+    --collector.{{ name }} \
+{%     for k,v in options|dictsort %}
+    --collector.{{ name }}.{{ k }}={{ v | quote }} \
+{%     endfor -%}
+{%   endif -%}
+{% endfor -%}
+{% for collector in node_exporter_disabled_collectors %}
+    --no-collector.{{ collector }} \
+{% endfor %}
+{% if node_exporter_tls_server_config | length > 0 or node_exporter_http_server_config | length > 0 or node_exporter_basic_auth_users | length > 0 %}
+    --web.config=/etc/node_exporter/config.yaml \
+{% endif %}
+    --web.listen-address={{ node_exporter_web_listen_address }}
