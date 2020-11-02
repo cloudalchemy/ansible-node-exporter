@@ -6,14 +6,20 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: bionic
-    image: quay.io/paulfantom/molecule-systemd:ubuntu-18.04
+  - name: trusty
+    image: geerlingguy/docker-ubuntu1404-ansible:latest
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: xenial
     image: quay.io/paulfantom/molecule-systemd:ubuntu-16.04
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: bionic
+    image: quay.io/paulfantom/molecule-systemd:ubuntu-18.04
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
@@ -26,6 +32,12 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: buster
     image: quay.io/paulfantom/molecule-systemd:debian-10
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: centos6
+    image: geerlingguy/docker-centos6-ansible:latest
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:

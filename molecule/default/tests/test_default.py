@@ -16,10 +16,15 @@ def test_directories(host):
 
 
 def test_files(host):
-    files = [
-        "/etc/systemd/system/node_exporter.service",
-        "/usr/local/bin/node_exporter"
-    ]
+    ansible_service_mgr = host.ansible(
+            "setup")["ansible_facts"]["ansible_service_mgr"]
+    files = ["/usr/local/bin/node_exporter"]
+    if ansible_service_mgr == 'systemd':
+        files.append("/etc/systemd/system/node_exporter.service")
+    if ansible_service_mgr == 'sysvinit':
+        files.append("/etc/init.d/node_exporter")
+    if ansible_service_mgr == 'upstart':
+        files.append("/etc/init/node_exporter.conf")
     for file in files:
         f = host.file(file)
         assert f.exists
