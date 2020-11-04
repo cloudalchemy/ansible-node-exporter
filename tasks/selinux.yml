@@ -11,7 +11,8 @@
   delay: 2
   when:
     - (ansible_distribution | lower == "redhat") or
-      (ansible_distribution | lower == "centos")
+      (ansible_distribution | lower == "centos") or
+      (ansible_distribution | lower == "oraclelinux")
 
 - name: Install selinux python packages [Fedora]
   package:
