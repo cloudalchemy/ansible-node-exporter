@@ -7,6 +7,15 @@ executors:
       - image: cimg/python:3.9
 
 jobs:
+  lint:
+    executor: python
+    steps:
+      - checkout
+      - run: pip install ansible-lint yamllint flake8
+      - run: ansible-lint
+      - run: yamllint .
+      - run: flake8
+
   test:
     executor: python
     parameters:
@@ -89,18 +98,24 @@ workflows:
   version: 2
   molecule:
     jobs:
+      - lint:
+          filters:
+            tags:
+              only: /.*/
+
       - test:
           matrix:
             parameters:
-               ansible:
-                 - "2.9"
-                 - "2.10"
+              ansible:
+                - "2.9"
+                - "2.10"
           filters:
             tags:
               only: /.*/
       - release:
           context: release
           requires:
+            - lint
             - test
           filters:
             branches:
@@ -108,9 +123,9 @@ workflows:
       - galaxy:
           context: galaxy
           requires:
+            - lint
             - test
             - release
           filters:
             branches:
               only: master
-
