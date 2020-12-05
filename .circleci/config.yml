@@ -78,6 +78,12 @@ jobs:
             -n ${GIT_TAG} \
             -b "$(sed -n -e '/## \[0.22.0\]/,/## \[/ p' CHANGELOG.md | sed -e '$ d')" \
             ${GIT_TAG} ./artifacts/  # We don't have artifacts but ghr still needs sth
+  galaxy:
+    executor: python
+    steps:
+      - checkout
+      - run: pip install ansible
+      - run: ansible-galaxy role import --token "${GALAXY_TOKEN}" "${CIRCLE_PROJECT_USERNAME}" "${CIRCLE_PROJECT_REPONAME}"
 
 workflows:
   version: 2
@@ -96,6 +102,14 @@ workflows:
           context: release
           requires:
             - test
+          filters:
+            branches:
+              only: master
+      - galaxy:
+          context: galaxy
+          requires:
+            - test
+            - release
           filters:
             branches:
               only: master
