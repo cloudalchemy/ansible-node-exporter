@@ -1,0 +1,49 @@
+---
+version: 2.1
+
+executors:
+  python:
+    docker:
+      - image: cimg/python:3.9
+
+jobs:
+  test:
+    executor: python
+    parameters:
+      ansible:
+        type: string
+    environment:
+      ANSIBLE: "<< parameters.ansible >>"
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: ln -s ~/project ~/${CIRCLE_PROJECT_REPONAME}
+      - run: pip install -r test-requirements.txt
+      - run: molecule test -s default --destroy always
+      - run: |
+         if [[ -d 'molecule/alternative' ]]; then
+           molecule test -s alternative --destroy never
+         else
+           echo 'No alternative test'
+         fi
+      - run: |
+         if [[ -z "${CIRCLE_PULL_REQUEST}" ]]; then
+           molecule test -s latest --destroy never
+         else
+           echo 'Not running latest on PR'
+         fi
+
+workflows:
+  version: 2
+  molecule:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+               ansible:
+                 - "2.9"
+                 - "2.10"
+          filters:
+            tags:
+              only: /.*/
+
