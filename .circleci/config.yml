@@ -100,7 +100,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-
       - test:
           matrix:
             parameters:
@@ -118,6 +117,8 @@ workflows:
           filters:
             branches:
               only: master
+            tags:
+              ignore: /.*/
       - galaxy:
           context: galaxy
           requires:
