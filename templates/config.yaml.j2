@@ -13,6 +13,7 @@ http_server_config:
 {% if node_exporter_basic_auth_users | length > 0 %}
 basic_auth_users:
 {% for k, v in node_exporter_basic_auth_users.items() %}
-  {{ k }}: {{ v | password_hash('bcrypt', ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890' | shuffle(seed=inventory_hostname) | join)[:22], rounds=9) }}
+  {# 'Oeu' is added as a workaround fix for https://github.com/ansible/ansible/issues/36129#issuecomment-660504404 #}
+  {{ k }}: {{ v | password_hash('bcrypt', ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890' | shuffle(seed=inventory_hostname) | join)[:21] + ('Oeu' | shuffle(seed=inventory_hostname) | join)[1], rounds=9) }}
 {% endfor %}
 {% endif %}
