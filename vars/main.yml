@@ -8,10 +8,6 @@ go_arch_map:
 
 go_arch: "{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
 
-_node_exporter_binary_install_dir: "/usr/local/bin"
-_node_exporter_system_group: "node-exp"
-_node_exporter_system_user: "{{ _node_exporter_system_group }}"
-
 _node_exporter_systemd_service:
   file: "/etc/systemd/system/node_exporter.service"
   mode: "0644"

@@ -6,7 +6,7 @@
     name: node_exporter
     state: restarted
   listen: restart node_exporter
-  when: ansible_service_mgr == 'systemd'
+  when: ansible_service_mgr == 'systemd' and not ansible_check_mode
 
 - name: restart node_exporter service
   become: true
@@ -14,4 +14,4 @@
     name: node_exporter
     state: restarted
   listen: restart node_exporter
-  when: ansible_service_mgr != 'systemd'
+  when: ansible_service_mgr != 'systemd' and not ansible_check_mode

@@ -31,7 +31,7 @@
     name: node_exporter
     enabled: true
     state: started
-  when: ansible_service_mgr != 'systemd'
+  when: ansible_service_mgr != 'systemd' and not ansible_check_mode
   tags:
     - node_exporter_run
 
@@ -42,6 +42,6 @@
     name: node_exporter
     enabled: true
     state: started
-  when: ansible_service_mgr == 'systemd'
+  when: ansible_service_mgr == 'systemd' and not ansible_check_mode
   tags:
     - node_exporter_run
