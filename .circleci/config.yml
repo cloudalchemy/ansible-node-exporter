@@ -55,8 +55,7 @@ jobs:
       - run: git config --global user.name "${GIT_USER}"
       - run: |
           GIT_TAG=none
-          echo "Last commit message: ${GIT_COMMIT_DESC}"
-          case "${GIT_COMMIT_DESC}" in
+          case "$(git log --format=oneline -n 1 $CIRCLE_SHA1)" in
             *"[patch]"*|*"[fix]"*|*"[bugfix]"* )   GIT_TAG=$(git semver --next-patch) ;;
             *"[minor]"*|*"[feat]"*|*"[feature]"* ) GIT_TAG=$(git semver --next-minor) ;;
             *"[major]"*|*"[breaking change]"* )    GIT_TAG=$(git semver --next-major) ;;
