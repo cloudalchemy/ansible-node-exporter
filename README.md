@@ -42,7 +42,7 @@ Use it in a playbook as follows:
 ```yaml
 - hosts: all
   roles:
-    - cloudalchemy.node-exporter
+    - ansible-node-exporter
 ```
 
 ### TLS config
