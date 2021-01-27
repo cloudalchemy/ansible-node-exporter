@@ -41,6 +41,10 @@ ProtectHome=yes
 {% endfor %}
 NoNewPrivileges=yes
 
+{% if node_exporter_ambient_capabilities | length > 0 %}
+AmbientCapabilities={{ node_exporter_ambient_capabilities | join(" ") }}
+{% endif %}
+
 {% if node_exporter_systemd_version | int >= 232 %}
 ProtectSystem=strict
 ProtectControlGroups=true

@@ -22,6 +22,10 @@ node_exporter_enabled_collectors:
 
 node_exporter_disabled_collectors: []
 
+# A list of Ambient Capabilities to enable for the `node_exporter` process.
+# See the systemd.exec manpage for more information.
+node_exporter_ambient_capabilities: []
+
 # Internal variables.
 _node_exporter_binary_install_dir: "/usr/local/bin"
 _node_exporter_system_group: "node-exp"
