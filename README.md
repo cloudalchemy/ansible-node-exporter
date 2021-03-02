@@ -69,7 +69,7 @@ Before running node_exporter role, user needs to provision their own certificate
         privatekey_path: /etc/node_exporter/tls.key
         provider: selfsigned
   roles:
-    - cloudalchemy.node-exporter
+    - cloudalchemy.node_exporter
   vars:
     node_exporter_tls_server_config:
       cert_file: /etc/node_exporter/tls.cert
