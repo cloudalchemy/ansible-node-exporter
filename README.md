@@ -4,8 +4,12 @@
 
 [![Build Status](https://travis-ci.org/cloudalchemy/ansible-node-exporter.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-node-exporter)
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.node_exporter-blue.svg)](https://galaxy.ansible.com/cloudalchemy/node-exporter/)
+[![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.node_exporter-blue.svg)](https://galaxy.ansible.com/cloudalchemy/node_exporter/)
 [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-node-exporter.svg)](https://github.com/cloudalchemy/ansible-node-exporter/tags)
+
+## Warning
+
+Due to limitations of galaxy.ansible.com we had to move role to https://galaxy.ansible.com/cloudalchemy/node_exporter and use `_` instead of `-` in role name. This is a breaking change and unfortunatelly it affects all versions of node_exporter role as ansible galaxy doesn't offer any form of redirection. We are sorry for the inconvenience.
 
 ## Description
 
@@ -42,7 +46,7 @@ Use it in a playbook as follows:
 ```yaml
 - hosts: all
   roles:
-    - cloudalchemy.node-exporter
+    - cloudalchemy.node_exporter
 ```
 
 ### TLS config
