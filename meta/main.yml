@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych, Pawel Krupa
+  author: cloudalchemy
+  role_name: node_exporter
   description: Prometheus Node Exporter
   license: MIT
   company: none
