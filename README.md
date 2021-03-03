@@ -9,7 +9,7 @@
 
 ## Warning
 
-Due to limitations of galaxy.ansible.com we had to move role to https://galaxy.ansible.com/cloudalchemy/node_exporter and use `_` instead of `-` in role name. This is a breaking change and unfortunatelly it affects all versions of node_exporter role as ansible galaxy doesn't offer any form of redirection. We are sorry for the inconvenience.
+Due to limitations of galaxy.ansible.com we had to move the role to https://galaxy.ansible.com/cloudalchemy/node_exporter and use `_` instead of `-` in role name. This is a breaking change and unfortunately, it affects all versions of node_exporter role as ansible galaxy doesn't offer any form of redirection. We are sorry for the inconvenience.
 
 ## Description
 
@@ -19,7 +19,7 @@ Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) u
 
 - Ansible >= 2.9 (It might work on previous versions, but we cannot guarantee it)
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
-- Passlib is required when using the basic authentatication feature (`pip install passlib[bcrypt]`)
+- Passlib is required when using the basic authentication feature (`pip install passlib[bcrypt]`)
 
 ## Role Variables
 
@@ -51,7 +51,7 @@ Use it in a playbook as follows:
 
 ### TLS config
 
-Before running node_exporter role, user needs to provision their own certificate and key.
+Before running node_exporter role, the user needs to provision their own certificate and key.
 ```yaml
 - hosts: all
   pre_tasks:
@@ -85,8 +85,8 @@ We provide demo site for full monitoring solution based on prometheus and grafan
 
 ## Local Testing
 
-The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v2.x). You will have to install Docker on your system. See "Get started" for a Docker package suitable to for your system.
-We are using tox to simplify process of testing on multiple ansible versions. To install tox execute:
+The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v2.x). You will have to install Docker on your system. See "Get started" for a Docker package suitable for your system.
+We are using tox to simplify the process of testing on multiple ansible versions. To install tox execute:
 ```sh
 pip3 install tox
 ```
@@ -94,17 +94,17 @@ To run tests on all ansible versions (WARNING: this can take some time)
 ```sh
 tox
 ```
-To run a custom molecule command on custom environment with only default test scenario:
+To run a custom molecule command on a custom environment with only default test scenario:
 ```sh
 tox -e py35-ansible28 -- molecule test -s default
 ```
 For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/latest/).
 
-If you would like to run tests on remote docker host just specify `DOCKER_HOST` variable before running tox tests.
+If you would like to run tests on a remote docker host just specify `DOCKER_HOST` variable before running tox tests.
 
 ## Travis CI
 
-Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix which will take more time than local testing, so please be patient.
+Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows creating test scenarios for different role configurations. As a result, we have a quite large test matrix which will take more time than local testing, so please be patient.
 
 ## Contributing
 
