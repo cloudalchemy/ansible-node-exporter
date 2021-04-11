@@ -2,6 +2,31 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node_exporter)
 
+## [1.0.0] - 2021-04-11
+**Merged pull requests:**
+
+- Merge pull request [#214](https://github.com/cloudalchemy/ansible-node-exporter/issues/214) from cloudalchemy/superq/envs
+- Merge pull request [#213](https://github.com/cloudalchemy/ansible-node-exporter/issues/213) from cloudalchemy/superq/chglog
+- Merge pull request [#212](https://github.com/cloudalchemy/ansible-node-exporter/issues/212) from cloudalchemy/superq/publisher_image
+- Merge pull request [#209](https://github.com/cloudalchemy/ansible-node-exporter/issues/209) from cloudalchemy/autoupdate
+- Merge pull request [#208](https://github.com/cloudalchemy/ansible-node-exporter/issues/208) from cloudalchemy/autoupdate
+- Merge pull request [#207](https://github.com/cloudalchemy/ansible-node-exporter/issues/207) from nop33/fix-typos
+- Merge pull request [#206](https://github.com/cloudalchemy/ansible-node-exporter/issues/206) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#204](https://github.com/cloudalchemy/ansible-node-exporter/issues/204) from cloudalchemy/bjk/update_requirements
+- Merge pull request [#202](https://github.com/cloudalchemy/ansible-node-exporter/issues/202) from cloudalchemy/autoupdate
+- Merge pull request [#197](https://github.com/cloudalchemy/ansible-node-exporter/issues/197) from cloudalchemy/paulfantom/fix-release
+- Merge pull request [#196](https://github.com/cloudalchemy/ansible-node-exporter/issues/196) from kmille/master
+- Merge pull request [#195](https://github.com/cloudalchemy/ansible-node-exporter/issues/195) from cloudalchemy/paulfantom/scenario-latest
+- Merge pull request [#182](https://github.com/cloudalchemy/ansible-node-exporter/issues/182) from parmsib/patch-1
+- Merge pull request [#187](https://github.com/cloudalchemy/ansible-node-exporter/issues/187) from cloudalchemy/superq/internal_defaults
+- Merge pull request [#193](https://github.com/cloudalchemy/ansible-node-exporter/issues/193) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#188](https://github.com/cloudalchemy/ansible-node-exporter/issues/188) from ctrlaltdel/master
+- Merge pull request [#191](https://github.com/cloudalchemy/ansible-node-exporter/issues/191) from cloudalchemy/superq/circle_release
+- Merge pull request [#190](https://github.com/cloudalchemy/ansible-node-exporter/issues/190) from cloudalchemy/superq/circleci
+- Merge pull request [#189](https://github.com/cloudalchemy/ansible-node-exporter/issues/189) from cloudalchemy/moleculev3
+- Merge pull request [#184](https://github.com/cloudalchemy/ansible-node-exporter/issues/184) from thdhondt/patch-1
+
+
 ## [0.22.0] - 2020-10-02
 ### Chore
 - troubleshooting document
@@ -468,7 +493,8 @@
 
 ## 0.0.1 - 2017-05-04
 
-[Unreleased]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.22.0...HEAD
+[Unreleased]: https://github.com/cloudalchemy/ansible-node-exporter/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.22.0...1.0.0
 [0.22.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.5...0.22.0
 [0.21.5]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.4...0.21.5
 [0.21.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.3...0.21.4
