@@ -46,12 +46,12 @@ jobs:
          fi
   release:
     executor: publisher
-    environment:
-      PROJECT_USERNAME: $CIRCLE_PROJECT_USERNAME
-      PROJECT_REPONAME: $CIRCLE_PROJECT_REPONAME
     steps:
       - checkout
-      - run: create_release
+      - run: |
+          PROJECT_USERNAME="${CIRCLE_PROJECT_USERNAME}" \
+          PROJECT_REPONAME="${CIRCLE_PROJECT_REPONAME}" \
+          create_release
 
   galaxy:
     executor: python
