@@ -1,450 +1,546 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node-exporter)
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node_exporter)
+
+## [0.22.0] - 2020-10-02
+### Chore
+- troubleshooting document
 
 **Merged pull requests:**
 
-- Updated readme to include passlib dependency [\#184](https://github.com/cloudalchemy/ansible-node-exporter/pull/184) ([thdhondt](https://github.com/thdhondt))
+- Merge pull request [#179](https://github.com/cloudalchemy/ansible-node-exporter/issues/179) from kklimonda/master
+- Merge pull request [#178](https://github.com/cloudalchemy/ansible-node-exporter/issues/178) from FilippoProjetto/patch-1
+- Merge pull request [#172](https://github.com/cloudalchemy/ansible-node-exporter/issues/172) from pngmbh/troubleshooting
 
-## [0.22.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-10-02)
-**Fixed bugs:**
 
-- Role fails to unpack node\_exporter binary [\#177](https://github.com/cloudalchemy/ansible-node-exporter/issues/177)
-- Checksum download sometimes fails \(status: 400\) [\#171](https://github.com/cloudalchemy/ansible-node-exporter/issues/171)
-
+## [0.21.5] - 2020-07-21
 **Merged pull requests:**
 
-- optionally allow node\_exporter access to shared /tmp [\#179](https://github.com/cloudalchemy/ansible-node-exporter/pull/179) ([kklimonda](https://github.com/kklimonda))
-- set file mode explicitly when downloading binary [\#178](https://github.com/cloudalchemy/ansible-node-exporter/pull/178) ([filippoprojetto](https://github.com/filippoprojetto))
-- Chore: troubleshooting document [\#172](https://github.com/cloudalchemy/ansible-node-exporter/pull/172) ([till](https://github.com/till))
+- Merge pull request [#170](https://github.com/cloudalchemy/ansible-node-exporter/issues/170) from bittopaz/patch-1
 
-## [0.21.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-21)
-**Fixed bugs:**
 
-- Move StartLimitInterval to \[Service\] section [\#170](https://github.com/cloudalchemy/ansible-node-exporter/pull/170) ([bittopaz](https://github.com/bittopaz))
-
-## [0.21.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-07-20)
+## [0.21.4] - 2020-07-20
 **Merged pull requests:**
 
-- Use localhost to fetch checksums [\#169](https://github.com/cloudalchemy/ansible-node-exporter/pull/169) ([SuperQ](https://github.com/SuperQ))
+- Merge pull request [#169](https://github.com/cloudalchemy/ansible-node-exporter/issues/169) from cloudalchemy/superq/localhost_checksums
 
-## [0.21.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
-**Fixed bugs:**
 
-- node\_exporter can not be updated when node\_exporter\_binary\_local\_dir is set [\#160](https://github.com/cloudalchemy/ansible-node-exporter/issues/160)
-
+## [0.21.3] - 2020-06-18
 **Merged pull requests:**
 
-- add missing backslash when using TLS configuration [\#163](https://github.com/cloudalchemy/ansible-node-exporter/pull/163) ([sengel](https://github.com/sengel))
+- Merge pull request [#163](https://github.com/cloudalchemy/ansible-node-exporter/issues/163) from sengel/missing_backslash
 
-## [0.21.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-18)
+
+## [0.21.2] - 2020-06-18
 **Merged pull requests:**
 
-- always import install.yml when using local dir [\#162](https://github.com/cloudalchemy/ansible-node-exporter/pull/162) ([appliedprivacy](https://github.com/appliedprivacy))
+- always import install.yml when using local dir ([#162](https://github.com/cloudalchemy/ansible-node-exporter/issues/162))
 
-## [0.21.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-06-16)
+
+## [0.21.1] - 2020-06-17
 **Merged pull requests:**
 
-- New prometheus/node\_exporter upstream release! [\#159](https://github.com/cloudalchemy/ansible-node-exporter/pull/159) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/node_exporter upstream release! ([#159](https://github.com/cloudalchemy/ansible-node-exporter/issues/159))
 
-## [0.21.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-05-31)
+
+## [0.21.0] - 2020-05-31
 **Merged pull requests:**
 
-- \*: add support for node\_exporter TLS settings [\#156](https://github.com/cloudalchemy/ansible-node-exporter/pull/156) ([paulfantom](https://github.com/paulfantom))
-- New prometheus/node\_exporter upstream release! [\#155](https://github.com/cloudalchemy/ansible-node-exporter/pull/155) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- *: add support for node_exporter TLS settings ([#156](https://github.com/cloudalchemy/ansible-node-exporter/issues/156))
 
-## [0.20.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-04-30)
-**Implemented enhancements:**
 
-- Hardcode node-exporter username and group [\#139](https://github.com/cloudalchemy/ansible-node-exporter/issues/139)
-
-**Fixed bugs:**
-
-- Task "Allow Node Exporter port in SELinux on RedHat OS family" fails on centos 7 [\#152](https://github.com/cloudalchemy/ansible-node-exporter/issues/152)
-- Add Support for over proxy installation [\#147](https://github.com/cloudalchemy/ansible-node-exporter/issues/147)
-- Checksum error [\#146](https://github.com/cloudalchemy/ansible-node-exporter/issues/146)
-- Problem downloading sha256sum.txt from github [\#143](https://github.com/cloudalchemy/ansible-node-exporter/issues/143)
-
+## [0.20.0] - 2020-04-30
 **Merged pull requests:**
 
-- Use symbolic permissions for textfile collector dir [\#150](https://github.com/cloudalchemy/ansible-node-exporter/pull/150) ([friesenkiwi](https://github.com/friesenkiwi))
-- \[REPO SYNC\] lock molecule to v2 [\#149](https://github.com/cloudalchemy/ansible-node-exporter/pull/149) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- always validate GitHub certificate as there is no reason not to trust it [\#148](https://github.com/cloudalchemy/ansible-node-exporter/pull/148) ([paulfantom](https://github.com/paulfantom))
-- Install 'policycoreutils-python' on redhat/centos \< 8 and fedora \< 29… [\#145](https://github.com/cloudalchemy/ansible-node-exporter/pull/145) ([wikro](https://github.com/wikro))
-- Add quotes to node\_exporter parametrs in systemd service [\#144](https://github.com/cloudalchemy/ansible-node-exporter/pull/144) ([ruzickap](https://github.com/ruzickap))
+- Use symbolic permissions for textfile collector dir ([#150](https://github.com/cloudalchemy/ansible-node-exporter/issues/150))
+- :robot: sync with cloudalchemy/skeleton (SHA: 40e7ce18): lock molecule to v2 ([#149](https://github.com/cloudalchemy/ansible-node-exporter/issues/149))
+- always validate GitHub certificate as there is no reason not to… ([#148](https://github.com/cloudalchemy/ansible-node-exporter/issues/148))
+- Install 'policycoreutils-python' on redhat/centos < 8 and fedora… ([#145](https://github.com/cloudalchemy/ansible-node-exporter/issues/145))
+- Add quotes to node_exporter parametrs in systemd service ([#144](https://github.com/cloudalchemy/ansible-node-exporter/issues/144))
 
-## [0.19.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-31)
+
+## [0.19.0] - 2020-01-31
 **Merged pull requests:**
 
-- remove system user management and convert variables to internal ones [\#142](https://github.com/cloudalchemy/ansible-node-exporter/pull/142) ([paulfantom](https://github.com/paulfantom))
-- Do not manage system directories [\#140](https://github.com/cloudalchemy/ansible-node-exporter/pull/140) ([paulfantom](https://github.com/paulfantom))
-- Add binary install directory [\#137](https://github.com/cloudalchemy/ansible-node-exporter/pull/137) ([guimaluf](https://github.com/guimaluf))
+- remove system user management and convert variables to internal ones ([#142](https://github.com/cloudalchemy/ansible-node-exporter/issues/142))
+- Do not manage system directories ([#140](https://github.com/cloudalchemy/ansible-node-exporter/issues/140))
+- Add binary install directory ([#137](https://github.com/cloudalchemy/ansible-node-exporter/issues/137))
 
-## [0.18.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2020-01-16)
-**Closed issues:**
 
-- Node exporter fails on ec2 builds with ""No file was found when using first\_found" [\#115](https://github.com/cloudalchemy/ansible-node-exporter/issues/115)
-
+## [0.18.0] - 2020-01-16
 **Merged pull requests:**
 
-- \[REPO SYNC\] Merge pull request \#4 from cloudalchemy/travis\_fix [\#138](https://github.com/cloudalchemy/ansible-node-exporter/pull/138) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] use latest available python [\#136](https://github.com/cloudalchemy/ansible-node-exporter/pull/136) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Fix syntax on SELinux installation for clearlinux [\#134](https://github.com/cloudalchemy/ansible-node-exporter/pull/134) ([paretl](https://github.com/paretl))
-- \[REPO SYNC\] remove IRC link [\#133](https://github.com/cloudalchemy/ansible-node-exporter/pull/133) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- move installing selinux package dependencies into separate tasks [\#132](https://github.com/cloudalchemy/ansible-node-exporter/pull/132) ([paulfantom](https://github.com/paulfantom))
-- Updated README.md [\#129](https://github.com/cloudalchemy/ansible-node-exporter/pull/129) ([envy7](https://github.com/envy7))
-- add option to propagate binaries without access to internet [\#126](https://github.com/cloudalchemy/ansible-node-exporter/pull/126) ([DaazKu](https://github.com/DaazKu))
-- \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#123](https://github.com/cloudalchemy/ansible-node-exporter/pull/123) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- :robot: sync with cloudalchemy/skeleton (SHA: 69fc5be8): Merge pull request [#4](https://github.com/cloudalchemy/ansible-node-exporter/issues/4) from cloudalchemy/travis_fix ([#138](https://github.com/cloudalchemy/ansible-node-exporter/issues/138))
+- :robot: sync with cloudalchemy/skeleton (SHA: f4521f6a): use latest available python ([#136](https://github.com/cloudalchemy/ansible-node-exporter/issues/136))
+- Fix syntax on SELinux installation for clearlinux ([#134](https://github.com/cloudalchemy/ansible-node-exporter/issues/134))
+- tasks,vars: move selinux package dependencies into separate tasks to allow potential ootb support for more OSes ([#132](https://github.com/cloudalchemy/ansible-node-exporter/issues/132))
+- :robot: sync with cloudalchemy/skeleton (SHA: bb0f0949): remove IRC link ([#133](https://github.com/cloudalchemy/ansible-node-exporter/issues/133))
+- Updated README.md ([#129](https://github.com/cloudalchemy/ansible-node-exporter/issues/129))
+- add option to propagate binaries without access to internet ([#126](https://github.com/cloudalchemy/ansible-node-exporter/issues/126))
+- [REPO SYNC] add declarative label sync; add autolabelling PRs ([#123](https://github.com/cloudalchemy/ansible-node-exporter/issues/123))
 
-## [0.17.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-11-14)
-**Closed issues:**
 
-- Check is not working [\#107](https://github.com/cloudalchemy/ansible-node-exporter/issues/107)
-
+## [0.17.0] - 2019-11-14
 **Merged pull requests:**
 
-- \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#121](https://github.com/cloudalchemy/ansible-node-exporter/pull/121) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] Update releaser.sh [\#120](https://github.com/cloudalchemy/ansible-node-exporter/pull/120) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] add support for CentOS8 [\#119](https://github.com/cloudalchemy/ansible-node-exporter/pull/119) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- tasks: remove already covered entries when choosing an OS specific vars [\#118](https://github.com/cloudalchemy/ansible-node-exporter/pull/118) ([paulfantom](https://github.com/paulfantom))
-- Run preflight tasks to register variables when check\_mode is enabled [\#117](https://github.com/cloudalchemy/ansible-node-exporter/pull/117) ([paulfantom](https://github.com/paulfantom))
-- tasks: do not touch any settings of system directory /usr/local/bin [\#116](https://github.com/cloudalchemy/ansible-node-exporter/pull/116) ([paulfantom](https://github.com/paulfantom))
+- [REPO SYNC] molecule: use CI images from quay.io instead of dock… ([#121](https://github.com/cloudalchemy/ansible-node-exporter/issues/121))
+- tasks: remove already covered entries when choosing an OS specific vars ([#118](https://github.com/cloudalchemy/ansible-node-exporter/issues/118))
+- Run preflight tasks to register variables when check_mode is enabled ([#117](https://github.com/cloudalchemy/ansible-node-exporter/issues/117))
+- tasks: do not touch any settings of system directory /usr/local/bin ([#116](https://github.com/cloudalchemy/ansible-node-exporter/issues/116))
+- [REPO SYNC] Update releaser.sh ([#120](https://github.com/cloudalchemy/ansible-node-exporter/issues/120))
+- [REPO SYNC] add support for CentOS8 ([#119](https://github.com/cloudalchemy/ansible-node-exporter/issues/119))
 
-## [0.16.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-10-18)
-**Fixed bugs:**
 
-- Do not use createhome alias as it seems to break whole system permissions [\#111](https://github.com/cloudalchemy/ansible-node-exporter/pull/111) ([paulfantom](https://github.com/paulfantom))
-
-**Closed issues:**
-
-- allow custom ignored-mount-points [\#106](https://github.com/cloudalchemy/ansible-node-exporter/issues/106)
-
+## [0.16.0] - 2019-10-18
 **Merged pull requests:**
 
-- add official support for CentOS8 [\#114](https://github.com/cloudalchemy/ansible-node-exporter/pull/114) ([paulfantom](https://github.com/paulfantom))
-- molecule/default/tests: test if permissions of other files are unchanged [\#112](https://github.com/cloudalchemy/ansible-node-exporter/pull/112) ([paulfantom](https://github.com/paulfantom))
+- add official support for CentOS8 ([#114](https://github.com/cloudalchemy/ansible-node-exporter/issues/114))
+- molecule/default/tests: test if permissions of other files are u… ([#112](https://github.com/cloudalchemy/ansible-node-exporter/issues/112))
+- tasks: do not use alias for createhome as it seems to be broken ([#111](https://github.com/cloudalchemy/ansible-node-exporter/issues/111))
 
-## [0.15.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-09-11)
+
+## [0.15.0] - 2019-09-11
 **Merged pull requests:**
 
-- Synchronize files from cloudalchemy/skeleton [\#102](https://github.com/cloudalchemy/ansible-node-exporter/pull/102) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- add RHEL8 and debian buster support; remove testing on debian jessie [\#101](https://github.com/cloudalchemy/ansible-node-exporter/pull/101) ([paulfantom](https://github.com/paulfantom))
-- Update minimum required ansible version [\#100](https://github.com/cloudalchemy/ansible-node-exporter/pull/100) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#99](https://github.com/cloudalchemy/ansible-node-exporter/pull/99) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Synchronize files from cloudalchemy/skeleton [\#97](https://github.com/cloudalchemy/ansible-node-exporter/pull/97) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- added restartsec and startlimitinterval configurations [\#96](https://github.com/cloudalchemy/ansible-node-exporter/pull/96) ([oguzhaninan](https://github.com/oguzhaninan))
-- preflight: Fix detection of systemd version for systemd 240+ [\#93](https://github.com/cloudalchemy/ansible-node-exporter/pull/93) ([0xFelix](https://github.com/0xFelix))
-- Updated README with correct default value [\#92](https://github.com/cloudalchemy/ansible-node-exporter/pull/92) ([nicholasamorim](https://github.com/nicholasamorim))
-- node\_exporter version check [\#91](https://github.com/cloudalchemy/ansible-node-exporter/pull/91) ([rwos](https://github.com/rwos))
+- add RHEL8 and debian buster support; remove testing on debian jessie ([#101](https://github.com/cloudalchemy/ansible-node-exporter/issues/101))
+- Synchronize files from cloudalchemy/skeleton ([#102](https://github.com/cloudalchemy/ansible-node-exporter/issues/102))
+- :robot: synchronize with last commit in cloudalchemy/skeleton (SHA: 1f68dc21) ([#100](https://github.com/cloudalchemy/ansible-node-exporter/issues/100))
+- Moving to python 3 and dropping support for python 2.x (on deploy… ([#99](https://github.com/cloudalchemy/ansible-node-exporter/issues/99))
+- :robot: synchronize files from cloudalchemy/skeleton ([#97](https://github.com/cloudalchemy/ansible-node-exporter/issues/97))
+- added restartsec and startlimitinterval configurations ([#96](https://github.com/cloudalchemy/ansible-node-exporter/issues/96))
+- preflight: Fix detection of systemd version for systemd 240+ ([#93](https://github.com/cloudalchemy/ansible-node-exporter/issues/93))
+- Updated README with correct default value ([#92](https://github.com/cloudalchemy/ansible-node-exporter/issues/92))
+- node_exporter version check ([#91](https://github.com/cloudalchemy/ansible-node-exporter/issues/91))
 
-## [0.14.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-06-05)
+
+## [0.14.0] - 2019-06-05
 **Merged pull requests:**
 
-- New prometheus/node\_exporter upstream release! [\#90](https://github.com/cloudalchemy/ansible-node-exporter/pull/90) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- make node\_exporter executable file root-owned [\#89](https://github.com/cloudalchemy/ansible-node-exporter/pull/89) ([slrz](https://github.com/slrz))
-- Add retries to package installs [\#88](https://github.com/cloudalchemy/ansible-node-exporter/pull/88) ([denmat](https://github.com/denmat))
-- Fix wrong size of /home shown by node-exporter [\#87](https://github.com/cloudalchemy/ansible-node-exporter/pull/87) ([laurvas](https://github.com/laurvas))
-- Create suse.yml [\#86](https://github.com/cloudalchemy/ansible-node-exporter/pull/86) ([jbhannah](https://github.com/jbhannah))
-- New prometheus/node\_exporter upstream release! [\#85](https://github.com/cloudalchemy/ansible-node-exporter/pull/85) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Synchronize files from cloudalchemy/skeleton [\#84](https://github.com/cloudalchemy/ansible-node-exporter/pull/84) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Fix wrong size of /home shown by node-exporter ([#87](https://github.com/cloudalchemy/ansible-node-exporter/issues/87))
+- :tada: automated upstream release update ([#90](https://github.com/cloudalchemy/ansible-node-exporter/issues/90))
+- make node_exporter executable file root-owned ([#89](https://github.com/cloudalchemy/ansible-node-exporter/issues/89))
+- Add retries to package installs ([#88](https://github.com/cloudalchemy/ansible-node-exporter/issues/88))
+- Create suse.yml ([#86](https://github.com/cloudalchemy/ansible-node-exporter/issues/86))
+- New prometheus/node_exporter upstream release! ([#85](https://github.com/cloudalchemy/ansible-node-exporter/issues/85))
+- Synchronize files from cloudalchemy/skeleton ([#84](https://github.com/cloudalchemy/ansible-node-exporter/issues/84))
 
-## [0.13.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-05-04)
-**Fixed bugs:**
 
-- Disable collectors [\#80](https://github.com/cloudalchemy/ansible-node-exporter/issues/80)
-
+## [0.13.1] - 2019-05-04
 **Merged pull requests:**
 
-- Fix systemd service startup ordering [\#83](https://github.com/cloudalchemy/ansible-node-exporter/pull/83) ([ko-zu](https://github.com/ko-zu))
+- Fix systemd service startup ordering ([#83](https://github.com/cloudalchemy/ansible-node-exporter/issues/83))
 
-## [0.13.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-04-01)
-**Closed issues:**
 
-- IPv4 assumption in SELinux tasks [\#75](https://github.com/cloudalchemy/ansible-node-exporter/issues/75)
-- Node\_exporter is not running with fresh install on Debian 9 [\#71](https://github.com/cloudalchemy/ansible-node-exporter/issues/71)
-
+## [0.13.0] - 2019-04-01
 **Merged pull requests:**
 
-- fix preflight check responsible for collector enablement [\#81](https://github.com/cloudalchemy/ansible-node-exporter/pull/81) ([paulfantom](https://github.com/paulfantom))
-- Refactor preflight checks [\#79](https://github.com/cloudalchemy/ansible-node-exporter/pull/79) ([paulfantom](https://github.com/paulfantom))
-- make SELinux settings ipv6 compatible [\#78](https://github.com/cloudalchemy/ansible-node-exporter/pull/78) ([paulfantom](https://github.com/paulfantom))
-- fix\(tasks/configure.yml\): typo in task name [\#77](https://github.com/cloudalchemy/ansible-node-exporter/pull/77) ([angristan](https://github.com/angristan))
-- reintroduce user management into defaults and add testing user creation [\#74](https://github.com/cloudalchemy/ansible-node-exporter/pull/74) ([paulfantom](https://github.com/paulfantom))
-- Add systemd state to started for first run of the role [\#72](https://github.com/cloudalchemy/ansible-node-exporter/pull/72) ([MCyprien](https://github.com/MCyprien))
+- fix preflight check responsible for collector enablement ([#81](https://github.com/cloudalchemy/ansible-node-exporter/issues/81))
+- Refactor preflight checks ([#79](https://github.com/cloudalchemy/ansible-node-exporter/issues/79))
+- make SELinux settings ipv6 compatible ([#78](https://github.com/cloudalchemy/ansible-node-exporter/issues/78))
+- fix(tasks/configure.yml): typo in task name ([#77](https://github.com/cloudalchemy/ansible-node-exporter/issues/77))
+- Add systemd state to started for first run of the role ([#72](https://github.com/cloudalchemy/ansible-node-exporter/issues/72))
+- reintroduce user management into defaults and add testing user creation ([#74](https://github.com/cloudalchemy/ansible-node-exporter/issues/74))
 
-## [0.12.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2019-02-19)
+
+## [0.12.1] - 2019-02-19
 **Merged pull requests:**
 
-- Correctly enable extra collectors [\#70](https://github.com/cloudalchemy/ansible-node-exporter/pull/70) ([SuperQ](https://github.com/SuperQ))
-- Lock down systemd service [\#68](https://github.com/cloudalchemy/ansible-node-exporter/pull/68) ([ecksun](https://github.com/ecksun))
+- Correctly enable extra collectors ([#70](https://github.com/cloudalchemy/ansible-node-exporter/issues/70))
+- Lock down systemd service ([#68](https://github.com/cloudalchemy/ansible-node-exporter/issues/68))
 
-## [0.12.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-17)
+
+## [0.12.0] - 2018-12-17
 **Merged pull requests:**
 
-- Better tags and configuration handling [\#66](https://github.com/cloudalchemy/ansible-node-exporter/pull/66) ([paulfantom](https://github.com/paulfantom))
-- add alternative tests [\#65](https://github.com/cloudalchemy/ansible-node-exporter/pull/65) ([paulfantom](https://github.com/paulfantom))
-- simplify automated CPU arch choosing [\#64](https://github.com/cloudalchemy/ansible-node-exporter/pull/64) ([paulfantom](https://github.com/paulfantom))
+- Better tags and configuration handling ([#66](https://github.com/cloudalchemy/ansible-node-exporter/issues/66))
+- simplify automated CPU arch choosing ([#64](https://github.com/cloudalchemy/ansible-node-exporter/issues/64))
+- add alternative tests ([#65](https://github.com/cloudalchemy/ansible-node-exporter/issues/65))
 
-## [0.11.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-05)
+
+## [0.11.4] - 2018-12-05
 **Merged pull requests:**
 
-- Add support for multi-line ansible\_managed strings [\#63](https://github.com/cloudalchemy/ansible-node-exporter/pull/63) ([etcet](https://github.com/etcet))
+- Add support for multi-line ansible_managed strings ([#63](https://github.com/cloudalchemy/ansible-node-exporter/issues/63))
 
-## [0.11.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-12-03)
-**Closed issues:**
 
-- Nice'ness fails node\_exporter [\#59](https://github.com/cloudalchemy/ansible-node-exporter/issues/59)
-
+## [0.11.3] - 2018-12-03
 **Merged pull requests:**
 
-- New node\_exporter upstream release! [\#62](https://github.com/cloudalchemy/ansible-node-exporter/pull/62) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Remove setting niceness in systemd service file [\#60](https://github.com/cloudalchemy/ansible-node-exporter/pull/60) ([paulfantom](https://github.com/paulfantom))
+- New node_exporter upstream release! ([#62](https://github.com/cloudalchemy/ansible-node-exporter/issues/62))
+- Remove setting niceness in systemd service file ([#60](https://github.com/cloudalchemy/ansible-node-exporter/issues/60))
 
-## [0.11.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-08)
+
+## [0.11.2] - 2018-10-08
 **Merged pull requests:**
 
-- move to ansible 2.7 [\#58](https://github.com/cloudalchemy/ansible-node-exporter/pull/58) ([paulfantom](https://github.com/paulfantom))
+- move to ansible 2.7 ([#58](https://github.com/cloudalchemy/ansible-node-exporter/issues/58))
 
-## [0.11.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-10-04)
+
+## [0.11.1] - 2018-10-04
 **Merged pull requests:**
 
-- do not set specific capabilities [\#57](https://github.com/cloudalchemy/ansible-node-exporter/pull/57) ([paulfantom](https://github.com/paulfantom))
+- do not set specific capabilities ([#57](https://github.com/cloudalchemy/ansible-node-exporter/issues/57))
 
-## [0.11.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-19)
-**Closed issues:**
 
-- Python crashes when running role [\#54](https://github.com/cloudalchemy/ansible-node-exporter/issues/54)
-
+## [0.11.0] - 2018-09-19
 **Merged pull requests:**
 
-- make textfile dir writable by node-exp group [\#56](https://github.com/cloudalchemy/ansible-node-exporter/pull/56) ([jillro](https://github.com/jillro))
-- Add support for Clear linux [\#55](https://github.com/cloudalchemy/ansible-node-exporter/pull/55) ([bswinnerton](https://github.com/bswinnerton))
+- Add support for Clear linux ([#55](https://github.com/cloudalchemy/ansible-node-exporter/issues/55))
+- make textfile dir writable by node-exp group ([#56](https://github.com/cloudalchemy/ansible-node-exporter/issues/56))
 
-## [0.10.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-09-06)
-**Fixed bugs:**
 
-- Rate limit errors due to checksum fetching [\#50](https://github.com/cloudalchemy/ansible-node-exporter/issues/50)
-
+## [0.10.2] - 2018-09-06
 **Merged pull requests:**
 
-- reload-daemon on systemd enable [\#53](https://github.com/cloudalchemy/ansible-node-exporter/pull/53) ([jewzaam](https://github.com/jewzaam))
+- reload-daemon on systemd enable ([#53](https://github.com/cloudalchemy/ansible-node-exporter/issues/53))
 
-## [0.10.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-08-15)
+
+## [0.10.1] - 2018-08-15
 **Merged pull requests:**
 
-- download checksum file only once [\#51](https://github.com/cloudalchemy/ansible-node-exporter/pull/51) ([paulfantom](https://github.com/paulfantom))
+- download checksum file only once ([#51](https://github.com/cloudalchemy/ansible-node-exporter/issues/51))
 
-## [0.10.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-15)
-**Implemented enhancements:**
 
-- import\_tasks instead of include; bringing role up to ansible-prometheus standards; minor changes [\#48](https://github.com/cloudalchemy/ansible-node-exporter/pull/48) ([paulfantom](https://github.com/paulfantom))
-
-## [0.9.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-07-01)
-**Fixed bugs:**
-
-- Problems with `node\_exporter\_textfile\_dir` [\#43](https://github.com/cloudalchemy/ansible-node-exporter/issues/43)
-
-**Closed issues:**
-
-- node-exporter service handler is triggered before deployment [\#44](https://github.com/cloudalchemy/ansible-node-exporter/issues/44)
-
+## [0.10.0] - 2018-07-15
 **Merged pull requests:**
 
-- ansible 2.6 + allow remote docker host [\#46](https://github.com/cloudalchemy/ansible-node-exporter/pull/46) ([paulfantom](https://github.com/paulfantom))
-- use tox for running test matrix [\#45](https://github.com/cloudalchemy/ansible-node-exporter/pull/45) ([paulfantom](https://github.com/paulfantom))
+- import_tasks instead of include; bringing role up to ansible-prometheus standards; minor changes ([#48](https://github.com/cloudalchemy/ansible-node-exporter/issues/48))
 
-## [0.8.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
+
+## [0.9.0] - 2018-07-01
 **Merged pull requests:**
 
-- Add support for textfile collector [\#42](https://github.com/cloudalchemy/ansible-node-exporter/pull/42) ([SuperQ](https://github.com/SuperQ))
+- ansible 2.6 + allow remote docker host ([#46](https://github.com/cloudalchemy/ansible-node-exporter/issues/46))
+- use tox for running test matrix ([#45](https://github.com/cloudalchemy/ansible-node-exporter/issues/45))
 
-## [0.7.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-06-10)
-**Implemented enhancements:**
 
-- Socket activation [\#41](https://github.com/cloudalchemy/ansible-node-exporter/issues/41)
-
+## [0.8.0] - 2018-06-10
 **Merged pull requests:**
 
-- specify file name for dest in get\_url call [\#40](https://github.com/cloudalchemy/ansible-node-exporter/pull/40) ([sarphram](https://github.com/sarphram))
-- Install newer node\_exporter by default [\#36](https://github.com/cloudalchemy/ansible-node-exporter/pull/36) ([paulfantom](https://github.com/paulfantom))
+- Add support for textfile collector ([#42](https://github.com/cloudalchemy/ansible-node-exporter/issues/42))
 
-## [0.6.20](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-27)
+
+## [0.7.0] - 2018-06-10
 **Merged pull requests:**
 
-- Fix architecture var parsing [\#39](https://github.com/cloudalchemy/ansible-node-exporter/pull/39) ([SuperQ](https://github.com/SuperQ))
-- Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-node-exporter/pull/38) ([Porkepix](https://github.com/Porkepix))
+- Install newer node_exporter by default ([#36](https://github.com/cloudalchemy/ansible-node-exporter/issues/36))
+- specify file name for dest in get_url call ([#40](https://github.com/cloudalchemy/ansible-node-exporter/issues/40))
 
-## [0.6.19](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-05-23)
+
+## [0.6.20] - 2018-05-27
 **Merged pull requests:**
 
-- Fix failing role on non-SELinux RedHat [\#37](https://github.com/cloudalchemy/ansible-node-exporter/pull/37) ([noraab](https://github.com/noraab))
-- split download and unarchive and add checksum validation [\#35](https://github.com/cloudalchemy/ansible-node-exporter/pull/35) ([paulfantom](https://github.com/paulfantom))
-- move to molecule 2.x [\#34](https://github.com/cloudalchemy/ansible-node-exporter/pull/34) ([paulfantom](https://github.com/paulfantom))
+- Fix architecture var parsing ([#39](https://github.com/cloudalchemy/ansible-node-exporter/issues/39))
+- Offer a better IRC Web clients to users ([#38](https://github.com/cloudalchemy/ansible-node-exporter/issues/38))
 
-## [0.6.18](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-13)
+
+## [0.6.19] - 2018-05-23
 **Merged pull requests:**
 
-- Make node\_exporter.service template compatible with both Python 2 and 3 [\#33](https://github.com/cloudalchemy/ansible-node-exporter/pull/33) ([nikosgraser](https://github.com/nikosgraser))
+- Fix failing role on non-SELinux RedHat ([#37](https://github.com/cloudalchemy/ansible-node-exporter/issues/37))
+- split download and unarchive and add checksum validation ([#35](https://github.com/cloudalchemy/ansible-node-exporter/issues/35))
+- move to molecule 2.x ([#34](https://github.com/cloudalchemy/ansible-node-exporter/issues/34))
 
-## [0.6.17](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-12)
+
+## [0.6.18] - 2018-04-13
 **Merged pull requests:**
 
-- Skip capabilities set in check\_mode [\#32](https://github.com/cloudalchemy/ansible-node-exporter/pull/32) ([Porkepix](https://github.com/Porkepix))
+- Merge pull request [#33](https://github.com/cloudalchemy/ansible-node-exporter/issues/33) from nikosgraser/master
 
-## [0.6.16](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-06)
+
+## [0.6.17] - 2018-04-12
 **Merged pull requests:**
 
-- Fix test done using a filter [\#31](https://github.com/cloudalchemy/ansible-node-exporter/pull/31) ([Porkepix](https://github.com/Porkepix))
-- Fix \_\_pycache\_\_ in .gitignore [\#30](https://github.com/cloudalchemy/ansible-node-exporter/pull/30) ([Porkepix](https://github.com/Porkepix))
+- Merge pull request [#32](https://github.com/cloudalchemy/ansible-node-exporter/issues/32) from Porkepix/skip_capabilities_check_mode
 
-## [0.6.15](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-05)
-## [0.6.14](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-04-02)
+
+## [0.6.16] - 2018-04-06
 **Merged pull requests:**
 
-- retry downloads [\#29](https://github.com/cloudalchemy/ansible-node-exporter/pull/29) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#31](https://github.com/cloudalchemy/ansible-node-exporter/issues/31) from Porkepix/fix_tests_as_filter
+- Merge pull request [#30](https://github.com/cloudalchemy/ansible-node-exporter/issues/30) from Porkepix/fix_gitignore
 
-## [0.6.13](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-03-30)
+
+## [0.6.15] - 2018-04-05
+
+## [0.6.14] - 2018-04-02
 **Merged pull requests:**
 
-- Fix check mode [\#28](https://github.com/cloudalchemy/ansible-node-exporter/pull/28) ([Porkepix](https://github.com/Porkepix))
+- retry downloads ([#29](https://github.com/cloudalchemy/ansible-node-exporter/issues/29))
 
-## [0.6.12](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-03-26)
+
+## [0.6.13] - 2018-03-30
 **Merged pull requests:**
 
-- Ubuntu bionic \(18.04\) support [\#26](https://github.com/cloudalchemy/ansible-node-exporter/pull/26) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#28](https://github.com/cloudalchemy/ansible-node-exporter/issues/28) from Porkepix/fix-check_mode
 
-## [0.6.11](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-03-24)
+
+## [0.6.12] - 2018-03-26
 **Merged pull requests:**
 
-- ansible 2.5 [\#27](https://github.com/cloudalchemy/ansible-node-exporter/pull/27) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#26](https://github.com/cloudalchemy/ansible-node-exporter/issues/26) from cloudalchemy/bionic
 
-## [0.6.10](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-03-05)
-**Closed issues:**
 
-- Adding option to configure collectors [\#18](https://github.com/cloudalchemy/ansible-node-exporter/issues/18)
-
+## [0.6.11] - 2018-03-24
 **Merged pull requests:**
 
-- Modify when-statement to not include jinja2 templating delimiters such [\#25](https://github.com/cloudalchemy/ansible-node-exporter/pull/25) ([swesterveld](https://github.com/swesterveld))
+- Merge pull request [#27](https://github.com/cloudalchemy/ansible-node-exporter/issues/27) from cloudalchemy/new_ansible
 
-## [0.6.9](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-02-18)
-**Closed issues:**
 
-- Preflight checks [\#16](https://github.com/cloudalchemy/ansible-node-exporter/issues/16)
-
+## [0.6.10] - 2018-03-05
 **Merged pull requests:**
 
-- fedora support + issue 18 [\#24](https://github.com/cloudalchemy/ansible-node-exporter/pull/24) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#25](https://github.com/cloudalchemy/ansible-node-exporter/issues/25) from swesterveld/fix-warning-jinja-templating-delimiters
 
-## [0.6.8](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-02-14)
+
+## [0.6.9] - 2018-02-18
 **Merged pull requests:**
 
-- Make Prometheus node exporter restart/reload with sudo privileges. [\#23](https://github.com/cloudalchemy/ansible-node-exporter/pull/23) ([swesterveld](https://github.com/swesterveld))
+- Merge pull request [#24](https://github.com/cloudalchemy/ansible-node-exporter/issues/24) from cloudalchemy/fedora_support
+- resolve [#18](https://github.com/cloudalchemy/ansible-node-exporter/issues/18)
 
-## [0.6.7](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-14)
+
+## [0.6.8] - 2018-02-14
 **Merged pull requests:**
 
-- custom docker images; support more OSes [\#21](https://github.com/cloudalchemy/ansible-node-exporter/pull/21) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#23](https://github.com/cloudalchemy/ansible-node-exporter/issues/23) from swesterveld/fix_daemon_reload_for_role_include
 
-## [0.6.6](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-13)
+
+## [0.6.7] - 2018-01-14
 **Merged pull requests:**
 
-- Add preflight checks [\#22](https://github.com/cloudalchemy/ansible-node-exporter/pull/22) ([jkrol2](https://github.com/jkrol2))
+- custom dockerfiles; support more OSes ([#21](https://github.com/cloudalchemy/ansible-node-exporter/issues/21))
 
-## [0.6.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-13)
-**Closed issues:**
 
-- Permission denied to fs [\#17](https://github.com/cloudalchemy/ansible-node-exporter/issues/17)
-
+## [0.6.6] - 2018-01-13
 **Merged pull requests:**
 
-- Set home directory for node-exp user [\#20](https://github.com/cloudalchemy/ansible-node-exporter/pull/20) ([paulfantom](https://github.com/paulfantom))
+- Add preflight checks ([#22](https://github.com/cloudalchemy/ansible-node-exporter/issues/22))
 
-## [0.6.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-09)
+
+## [0.6.5] - 2018-01-13
 **Merged pull requests:**
 
-- Fix \#17 [\#19](https://github.com/cloudalchemy/ansible-node-exporter/pull/19) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#20](https://github.com/cloudalchemy/ansible-node-exporter/issues/20) from cloudalchemy/paulfantom-patch-1
 
-## [0.6.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-08)
-## [0.6.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-06)
+
+## [0.6.4] - 2018-01-09
 **Merged pull requests:**
 
-- minor fix, added i386 to arch [\#15](https://github.com/cloudalchemy/ansible-node-exporter/pull/15) ([rdemachkovych](https://github.com/rdemachkovych))
+- Merge pull request [#19](https://github.com/cloudalchemy/ansible-node-exporter/issues/19) from cloudalchemy/issue17
 
-## [0.6.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-04)
+
+## [0.6.3] - 2018-01-08
+
+## [0.6.2] - 2018-01-06
 **Merged pull requests:**
 
-- Lower niceness to increase app priority [\#14](https://github.com/cloudalchemy/ansible-node-exporter/pull/14) ([paulfantom](https://github.com/paulfantom))
-- docs [\#13](https://github.com/cloudalchemy/ansible-node-exporter/pull/13) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#15](https://github.com/cloudalchemy/ansible-node-exporter/issues/15) from cloudalchemy/minor_fix
 
-## [0.6.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-02)
+
+## [0.6.1] - 2018-01-04
 **Merged pull requests:**
 
-- Update generatetag.sh [\#12](https://github.com/cloudalchemy/ansible-node-exporter/pull/12) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#14](https://github.com/cloudalchemy/ansible-node-exporter/issues/14) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#13](https://github.com/cloudalchemy/ansible-node-exporter/issues/13) from cloudalchemy/docs
 
-## [0.5.11](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-02)
+
+## [0.6.0] - 2018-01-02
 **Merged pull requests:**
 
-- support older raspberry pi [\#11](https://github.com/cloudalchemy/ansible-node-exporter/pull/11) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#12](https://github.com/cloudalchemy/ansible-node-exporter/issues/12) from cloudalchemy/paulfantom-patch-1
 
-## [0.5.10](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2018-01-01)
-**Closed issues:**
 
-- Option to disable collectors [\#2](https://github.com/cloudalchemy/ansible-node-exporter/issues/2)
-
+## [0.5.11] - 2018-01-02
 **Merged pull requests:**
 
-- added node exporter disabled collectors option [\#10](https://github.com/cloudalchemy/ansible-node-exporter/pull/10) ([rdemachkovych](https://github.com/rdemachkovych))
+- Merge pull request [#11](https://github.com/cloudalchemy/ansible-node-exporter/issues/11) from cloudalchemy/raspberrypi
 
-## [0.5.9](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-12-27)
+
+## [0.5.10] - 2018-01-01
 **Merged pull requests:**
 
-- armv7l ansible arch translates to armv7 go arch [\#9](https://github.com/cloudalchemy/ansible-node-exporter/pull/9) ([anisse](https://github.com/anisse))
+- Merge pull request [#10](https://github.com/cloudalchemy/ansible-node-exporter/issues/10) from cloudalchemy/disabled_collectors
 
-## [0.5.8](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-12-27)
-**Implemented enhancements:**
 
-- Support multiple go architectures [\#5](https://github.com/cloudalchemy/ansible-node-exporter/issues/5)
-
+## [0.5.9] - 2017-12-27
 **Merged pull requests:**
 
-- Remove unused command line flags [\#8](https://github.com/cloudalchemy/ansible-node-exporter/pull/8) ([anisse](https://github.com/anisse))
+- Merge pull request [#9](https://github.com/cloudalchemy/ansible-node-exporter/issues/9) from anisse/patch-1
 
-## [0.5.7](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-12-15)
+
+## [0.5.8] - 2017-12-27
 **Merged pull requests:**
 
-- update node\_exporter version [\#7](https://github.com/cloudalchemy/ansible-node-exporter/pull/7) ([paulfantom](https://github.com/paulfantom))
-- auto set go architecture [\#6](https://github.com/cloudalchemy/ansible-node-exporter/pull/6) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#8](https://github.com/cloudalchemy/ansible-node-exporter/issues/8) from anisse/patch-3
 
-## [0.5.6](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-12-06)
+
+## [0.5.7] - 2017-12-15
 **Merged pull requests:**
 
-- Stop pipeline on any error [\#4](https://github.com/cloudalchemy/ansible-node-exporter/pull/4) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#6](https://github.com/cloudalchemy/ansible-node-exporter/issues/6) from cloudalchemy/go_arch
+- Merge pull request [#7](https://github.com/cloudalchemy/ansible-node-exporter/issues/7) from cloudalchemy/version
 
-## [0.5.5](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-11-30)
-## [0.5.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-11-30)
-## [0.5.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-11-28)
+
+## [0.5.6] - 2017-12-06
 **Merged pull requests:**
 
-- fix CI; remove company from role description [\#1](https://github.com/cloudalchemy/ansible-node-exporter/pull/1) ([paulfantom](https://github.com/paulfantom))
-
-## [0.5.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-11-09)
-## [0.5.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-10-16)
-## [0.4.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-10-12)
-## [0.4.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-10-05)
-## [0.4.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-26)
-## [0.4.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-09-20)
-## [0.3.4](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
-## [0.3.3](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-08-09)
-## [0.3.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
-## [0.3.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-26)
-## [0.3.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-07-21)
-## [0.1.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
-## [0.1.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-14)
-## [0.1.0](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-06-06)
-## [0.0.2](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-05-18)
-## [0.0.1](https://galaxy.ansible.com/cloudalchemy/node-exporter) (2017-04-19)
+- Merge pull request [#4](https://github.com/cloudalchemy/ansible-node-exporter/issues/4) from cloudalchemy/paulfantom-patch-1
 
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+## [0.5.5] - 2017-11-30
+
+## [0.5.4] - 2017-11-30
+
+## [0.5.3] - 2017-11-29
+**Merged pull requests:**
+
+- Merge pull request [#1](https://github.com/cloudalchemy/ansible-node-exporter/issues/1) from cloudalchemy/ci
+
+
+## [0.5.1] - 2017-11-09
+**Merged pull requests:**
+
+- Merge pull request [#10](https://github.com/cloudalchemy/ansible-node-exporter/issues/10) from SoInteractive/version_upgrade
+
+
+## [0.5.0] - 2017-10-16
+**Merged pull requests:**
+
+- Merge pull request [#9](https://github.com/cloudalchemy/ansible-node-exporter/issues/9) from SoInteractive/feature_travis
+
+
+## [0.4.3] - 2017-10-12
+**Merged pull requests:**
+
+- Merge pull request [#8](https://github.com/cloudalchemy/ansible-node-exporter/issues/8) from SoInteractive/Add_selinux
+
+
+## [0.4.2] - 2017-10-05
+**Merged pull requests:**
+
+- Merge pull request [#7](https://github.com/cloudalchemy/ansible-node-exporter/issues/7) from SoInteractive/systemd
+
+
+## [0.4.1] - 2017-09-26
+**Merged pull requests:**
+
+- Merge pull request [#6](https://github.com/cloudalchemy/ansible-node-exporter/issues/6) from SoInteractive/fix_typo
+
+
+## [0.4.0] - 2017-09-20
+**Merged pull requests:**
+
+- Merge pull request [#5](https://github.com/cloudalchemy/ansible-node-exporter/issues/5) from paulfantom/feature_installation
+
+
+## [0.3.4] - 2017-08-09
+
+## [0.3.3] - 2017-08-09
+**Merged pull requests:**
+
+- Merge pull request [#4](https://github.com/cloudalchemy/ansible-node-exporter/issues/4) from SoInteractive/testing_branch
+
+
+## [0.3.2] - 2017-07-26
+
+## [0.3.1] - 2017-07-26
+**Merged pull requests:**
+
+- Merge pull request [#3](https://github.com/cloudalchemy/ansible-node-exporter/issues/3) from SoInteractive/fix_user_uid
+
+
+## [0.3.0] - 2017-07-21
+
+## [0.2.0] - 2017-07-21
+**Merged pull requests:**
+
+- Merge pull request [#2](https://github.com/cloudalchemy/ansible-node-exporter/issues/2) from SoInteractive/feature_autoupdate_minor
+
+
+## [0.1.1] - 2017-06-14
+
+## [0.1.2] - 2017-06-14
+
+## [0.1.0] - 2017-06-06
+
+## [0.0.2] - 2017-05-18
+
+## 0.0.1 - 2017-05-04
+
+[Unreleased]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.22.0...HEAD
+[0.22.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.5...0.22.0
+[0.21.5]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.4...0.21.5
+[0.21.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.3...0.21.4
+[0.21.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.2...0.21.3
+[0.21.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.1...0.21.2
+[0.21.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.0...0.21.1
+[0.21.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.20.0...0.21.0
+[0.20.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.19.0...0.20.0
+[0.19.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.18.0...0.19.0
+[0.18.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.17.0...0.18.0
+[0.17.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.16.0...0.17.0
+[0.16.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.15.0...0.16.0
+[0.15.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.14.0...0.15.0
+[0.14.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.13.1...0.14.0
+[0.13.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.13.0...0.13.1
+[0.13.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.12.1...0.13.0
+[0.12.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.12.0...0.12.1
+[0.12.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.11.4...0.12.0
+[0.11.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.11.3...0.11.4
+[0.11.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.11.2...0.11.3
+[0.11.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.11.1...0.11.2
+[0.11.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.11.0...0.11.1
+[0.11.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.10.2...0.11.0
+[0.10.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.10.1...0.10.2
+[0.10.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.10.0...0.10.1
+[0.10.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.9.0...0.10.0
+[0.9.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.8.0...0.9.0
+[0.8.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.7.0...0.8.0
+[0.7.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.20...0.7.0
+[0.6.20]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.19...0.6.20
+[0.6.19]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.18...0.6.19
+[0.6.18]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.17...0.6.18
+[0.6.17]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.16...0.6.17
+[0.6.16]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.15...0.6.16
+[0.6.15]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.14...0.6.15
+[0.6.14]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.13...0.6.14
+[0.6.13]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.12...0.6.13
+[0.6.12]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.11...0.6.12
+[0.6.11]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.10...0.6.11
+[0.6.10]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.9...0.6.10
+[0.6.9]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.8...0.6.9
+[0.6.8]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.7...0.6.8
+[0.6.7]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.6...0.6.7
+[0.6.6]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.5...0.6.6
+[0.6.5]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.4...0.6.5
+[0.6.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.3...0.6.4
+[0.6.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.2...0.6.3
+[0.6.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.1...0.6.2
+[0.6.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.6.0...0.6.1
+[0.6.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.11...0.6.0
+[0.5.11]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.10...0.5.11
+[0.5.10]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.9...0.5.10
+[0.5.9]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.8...0.5.9
+[0.5.8]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.7...0.5.8
+[0.5.7]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.6...0.5.7
+[0.5.6]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.5...0.5.6
+[0.5.5]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.4...0.5.5
+[0.5.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.3...0.5.4
+[0.5.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.1...0.5.3
+[0.5.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.5.0...0.5.1
+[0.5.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.3...0.5.0
+[0.4.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.2...0.4.3
+[0.4.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.1...0.4.2
+[0.4.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.0...0.4.1
+[0.4.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.4...0.4.0
+[0.3.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.3...0.3.4
+[0.3.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.2...0.3.3
+[0.3.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.1...0.3.2
+[0.3.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.0...0.3.1
+[0.3.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.2.0...0.3.0
+[0.2.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.1...0.2.0
+[0.1.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.2...0.1.1
+[0.1.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.0...0.1.2
+[0.1.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.0.2...0.1.0
+[0.0.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.0.1...0.0.2
