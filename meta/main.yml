@@ -3,6 +3,7 @@ galaxy_info:
   author: cloudalchemy
   role_name: node_exporter
   description: Prometheus Node Exporter
+  role_name: node_exporter
   license: MIT
   company: none
   min_ansible_version: 2.7
