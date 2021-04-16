@@ -1,8 +1,5 @@
----
 extends: default
 ignore: |
-  .travis/
-  .travis.yml
   .github/
   meta/
 
