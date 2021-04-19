@@ -2,6 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/node_exporter)
 
+## [2.0.0] - 2021-04-19
+**Merged pull requests:**
+
+- Merge pull request [#219](https://github.com/cloudalchemy/ansible-node-exporter/issues/219) from cloudalchemy/skeleton
+- :robot: sync with cloudalchemy/skeleton (SHA: 5ca88c27): Merge pull request [#9](https://github.com/cloudalchemy/ansible-node-exporter/issues/9) from cloudalchemy/superq/more_updates
+
+
 ## [1.0.0] - 2021-04-11
 **Merged pull requests:**
 
@@ -459,9 +466,9 @@
 - Merge pull request [#5](https://github.com/cloudalchemy/ansible-node-exporter/issues/5) from paulfantom/feature_installation
 
 
-## [0.3.4] - 2017-08-09
-
 ## [0.3.3] - 2017-08-09
+
+## [0.3.4] - 2017-08-09
 **Merged pull requests:**
 
 - Merge pull request [#4](https://github.com/cloudalchemy/ansible-node-exporter/issues/4) from SoInteractive/testing_branch
@@ -483,9 +490,9 @@
 - Merge pull request [#2](https://github.com/cloudalchemy/ansible-node-exporter/issues/2) from SoInteractive/feature_autoupdate_minor
 
 
-## [0.1.1] - 2017-06-14
-
 ## [0.1.2] - 2017-06-14
+
+## [0.1.1] - 2017-06-14
 
 ## [0.1.0] - 2017-06-06
 
@@ -493,7 +500,8 @@
 
 ## 0.0.1 - 2017-05-04
 
-[Unreleased]: https://github.com/cloudalchemy/ansible-node-exporter/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/cloudalchemy/ansible-node-exporter/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.22.0...1.0.0
 [0.22.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.5...0.22.0
 [0.21.5]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.21.4...0.21.5
@@ -559,14 +567,14 @@
 [0.4.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.2...0.4.3
 [0.4.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.1...0.4.2
 [0.4.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.4.0...0.4.1
-[0.4.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.4...0.4.0
-[0.3.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.3...0.3.4
-[0.3.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.2...0.3.3
+[0.4.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.3...0.4.0
+[0.3.3]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.4...0.3.3
+[0.3.4]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.2...0.3.4
 [0.3.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.2.0...0.3.0
-[0.2.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.1...0.2.0
-[0.1.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.2...0.1.1
-[0.1.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.0...0.1.2
+[0.2.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.2...0.2.0
+[0.1.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.1...0.1.2
+[0.1.1]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.0.2...0.1.0
 [0.0.2]: https://github.com/cloudalchemy/ansible-node-exporter/compare/0.0.1...0.0.2
