@@ -1,4 +1,13 @@
 ---
+- name: Copy the node_exporter wrapper
+  template:
+    src: wrapper.sh.j2
+    dest: "{{ _node_exporter_binary_install_dir }}/node_exporter.wrapper.sh"
+    owner: root
+    group: root
+    mode: 0755
+  notify: restart node_exporter
+
 - name: Copy the node_exporter systemd service file
   template:
     src: node_exporter.service.j2

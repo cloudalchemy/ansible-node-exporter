@@ -1,0 +1,20 @@
+exec {{ _node_exporter_binary_install_dir }}/node_exporter \
+{% for collector in node_exporter_enabled_collectors -%}
+{%   if not collector is mapping %}
+    --collector.{{ collector }} \
+{%   else -%}
+{%     set name, options = (collector.items()|list)[0] -%}
+    --collector.{{ name }} \
+{%     for k,v in options|dictsort %}
+    --collector.{{ name }}.{{ k }}={{ v | quote }} \
+{%     endfor -%}
+{%   endif -%}
+{% endfor -%}
+{% for collector in node_exporter_disabled_collectors %}
+    --no-collector.{{ collector }} \
+{% endfor %}
+{% if node_exporter_tls_server_config | length > 0 or node_exporter_http_server_config | length > 0 or node_exporter_basic_auth_users | length > 0 %}
+    --web.config=/etc/node_exporter/config.yaml \
+{% endif %}
+    --web.listen-address={{ node_exporter_web_listen_address }} \
+    --web.telemetry-path={{ node_exporter_web_telemetry_path }}
