@@ -34,11 +34,11 @@ Restart=always
 RestartSec=1
 StartLimitInterval=0
 
-{% for m in ansible_mounts if m.mount == '/home' %}
+{% if (ansible_mounts | json_query('[?contains(@.mount, `/home`)].mount') | count) > 0 %}
 ProtectHome=read-only
 {% else %}
 ProtectHome=yes
-{% endfor %}
+{% endif %}
 NoNewPrivileges=yes
 
 {% if node_exporter_systemd_version | int >= 232 %}
