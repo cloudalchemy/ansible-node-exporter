@@ -26,3 +26,7 @@ node_exporter_disabled_collectors: []
 _node_exporter_binary_install_dir: "/usr/local/bin"
 _node_exporter_system_group: "node-exp"
 _node_exporter_system_user: "{{ _node_exporter_system_group }}"
+
+# node-exp user uid and gid, leave undefined for system default
+#_node_exporter_system_user_uid:
+#_node_exporter_system_group_gid:

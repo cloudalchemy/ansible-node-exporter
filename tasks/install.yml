@@ -4,6 +4,7 @@
     name: "{{ _node_exporter_system_group }}"
     state: present
     system: true
+    gid: "{{ _node_exporter_system_group_gid | default(omit) }}"
   when: _node_exporter_system_group != "root"
 
 - name: Create the node_exporter user
@@ -15,6 +16,7 @@
     system: true
     create_home: false
     home: /
+    uid: "{{ _node_exporter_system_user_uid | default(omit) }}"
   when: _node_exporter_system_user != "root"
 
 - block:
