@@ -84,6 +84,7 @@
       no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
       register: _latest_release
       until: _latest_release.status == 200
+      check_mode: False
       retries: 5
 
     - name: "Set node_exporter version to {{ _latest_release.json.tag_name[1:] }}"
