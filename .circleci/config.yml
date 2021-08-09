@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: pip install ansible ansible-lint yamllint flake8
-      - run: mkdir -p .cache/roles && ln -s ../.. .cache/roles/${CIRCLE_PROJECT_REPONAME}
+      - run: mkdir -p ~/.ansible/roles && ln -s ~/project ~/.ansible/roles/${CIRCLE_PROJECT_REPONAME}
       - run: ansible-lint
       - run: yamllint .
       - run: flake8
@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: ln -s ~/project ~/${CIRCLE_PROJECT_REPONAME}
+      - run: mkdir -p ~/.ansible/roles && ln -s ~/project ~/.ansible/roles/${CIRCLE_PROJECT_REPONAME}
       - run: pip install "ansible~=<<parameters.ansible >>.0"
       - run: pip install -r test-requirements.txt
       - run: molecule test -s default --destroy always
