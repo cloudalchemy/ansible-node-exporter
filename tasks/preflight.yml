@@ -73,6 +73,7 @@
 
 - block:
     - name: Get latest release
+      become: false
       uri:
         url: "https://api.github.com/repos/prometheus/node_exporter/releases/latest"
         method: GET
@@ -87,6 +88,7 @@
       retries: 5
 
     - name: "Set node_exporter version to {{ _latest_release.json.tag_name[1:] }}"
+      become: false
       set_fact:
         node_exporter_version: "{{ _latest_release.json.tag_name[1:] }}"
   when:
@@ -97,11 +99,13 @@
 
 - block:
     - name: Get checksum list from github
+      become: false
       set_fact:
         _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
       run_once: true
 
     - name: "Get checksum for {{ go_arch }} architecture"
+      become: false
       set_fact:
         node_exporter_checksum: "{{ item.split(' ')[0] }}"
       with_items: "{{ _checksums }}"
