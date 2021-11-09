@@ -27,7 +27,13 @@ ExecStart={{ _node_exporter_binary_install_dir }}/node_exporter \
     --web.config=/etc/node_exporter/config.yaml \
 {% endif %}
     --web.listen-address={{ node_exporter_web_listen_address }} \
-    --web.telemetry-path={{ node_exporter_web_telemetry_path }}
+    --web.telemetry-path={{ node_exporter_web_telemetry_path }} \
+{% if node_exporter_web_disable_exporter_metrics %}
+    --web.disable-exporter-metrics \
+{% endif %}
+    --web.max-requests={{ node_exporter_web_max_requests }} \
+    --log.level={{ node_exporter_log_level }} \
+    --log.format={{ node_exporter_log_format }}
 
 SyslogIdentifier=node_exporter
 Restart=always
