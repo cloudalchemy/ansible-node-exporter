@@ -3,7 +3,7 @@
   hosts: all
   any_errors_fatal: true
   roles:
-    - ansible-node-exporter
+    - cloudalchemy.node_exporter
   pre_tasks:
     - name: Create node_exporter cert dir
       file:

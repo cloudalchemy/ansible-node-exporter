@@ -3,6 +3,6 @@
   hosts: all
   any_errors_fatal: true
   roles:
-    - ansible-node-exporter
+    - cloudalchemy.node_exporter
   vars:
     node_exporter_version: latest
