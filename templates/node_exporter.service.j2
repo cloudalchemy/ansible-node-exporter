@@ -50,5 +50,84 @@ ProtectKernelTunables=yes
 ProtectSystem=full
 {% endif %}
 
+Umask=077
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=false
+PrivateUsers=true
+ProtectClock=true
+
+CapabilityBoundingSet=~CAP_SETUID CAP_SETGID CAP_SETPCAP
+CapabilityBoundingSet=~CAP_SYS_ADMIN
+CapabilityBoundingSet=~CAP_SYS_PTRACE
+CapabilityBoundingSet=~CAP_CHOWN CAP_FSETID CAP_SETFCAP
+CapabilityBoundingSet=~CAP_DAC_* CAP_FOWNER CAP_IPC_OWNER
+CapabilityBoundingSet=~CAP_NET_ADMIN
+CapabilityBoundingSet=~CAP_KILL
+CapabilityBoundingSet=~CAP_SYSLOG
+CapabilityBoundingSet=~CAP_NET_BIND_SERVICE CAP_NET_BROADCAST
+CapabilityBoundingSet=~CAP_SYS_NICE CAP_SYS_RESOURCE
+CapabilityBoundingSet=~CAP_SYS_MODULE
+CapabilityBoundingSet=~CAP_SYS_RAWIO
+CapabilityBoundingSet=~CAP_SYS_BOOT
+CapabilityBoundingSet=~CAP_LINUX_IMMUTABLE
+CapabilityBoundingSet=~CAP_SYS_CHROOT
+CapabilityBoundingSet=~CAP_IPC_LOCK
+CapabilityBoundingSet=~CAP_BLOCK_SUSPEND
+CapabilityBoundingSet=~CAP_LEASE
+CapabilityBoundingSet=~CAP_SYS_PACCT
+CapabilityBoundingSet=~CAP_SYS_TTY_CONFIG
+
+RestrictRealtime=true
+RestrictNamespaces=~user
+RestrictNamespaces=~mnt
+RestrictNamespaces=~CLONE_NEWUTS
+RestrictNamespaces=~CLONE_NEWPID
+RestrictNamespaces=~CLONE_NEWNET
+RestrictNamespaces=~CLONE_NEWIPC
+RestrictNamespaces=~CLONE_NEWCGROUP
+
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+IPAccounting=yes
+IPAddressAllow={{ node_exporter_systemd_ipaddressallow | default('localhost link-local multicast 10.0.0.0/8 192.168.0.0/16') }}
+
+{% if not (ansible_virtualization_type is defined and
+          ansible_virtualization_type == "docker"
+        )
+%}
+{% if (ansible_os_family == 'RedHat' and ansible_distribution_major_version|int >= 8) or (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 18) %}
+# FIXME! strangely, in either configurations, `systemd-analyze security node_exporter` still returns as nok
+#SystemCallFilter=@default @file-system @basic-io @system-service @signal @io-event @network-io @ipc @process @resources
+SystemCallFilter=~@debug
+SystemCallFilter=~@mount
+SystemCallFilter=~@cpu-emulation
+SystemCallFilter=~@obsolete
+SystemCallFilter=~@module
+SystemCallFilter=~@raw-io
+SystemCallFilter=~@reboot
+SystemCallFilter=~@swap
+SystemCallFilter=~@chown
+SystemCallFilter=~@keyring
+SystemCallFilter=~@memlock
+SystemCallFilter=~@setuid
+SystemCallFilter=~@sync
+SystemCallFilter=~@timer
+SystemCallArchitectures=native
+{% endif %}
+# When system call is disallowed, return error code instead of killing process
+SystemCallErrorNumber=EPERM
+
+{% endif %}
+{% if node_exporter_systemd_cgroups_restriction_enable is not defined or node_exporter_systemd_cgroups_restriction_enable|bool %}
+CPUShares={{ node_exporter_systemd_cgroups_cpushares | default('1024') }}
+CPUQuota={{ node_exporter_systemd_cgroups_cpuquota | default('40%') }}
+MemoryLimit={{ node_exporter_systemd_cgroups_memorylimit | default('1G') }}
+{% endif %}
+
 [Install]
 WantedBy=multi-user.target
