@@ -10,8 +10,7 @@
   retries: 5
   delay: 2
   when:
-    - (ansible_distribution | lower == "redhat") or
-      (ansible_distribution | lower == "centos")
+    - ansible_os_family | lower == "redhat"
 
 - name: Install selinux python packages [Fedora]
   package:
