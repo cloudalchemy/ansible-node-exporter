@@ -50,13 +50,17 @@ ProtectKernelTunables=yes
 ProtectSystem=full
 {% endif %}
 
+{% if node_exporter_systemd_version | int > 237 %}
 Umask=077
 
+{% endif %}
 PrivateTmp=true
 PrivateDevices=true
 PrivateNetwork=false
 PrivateUsers=true
+{% if node_exporter_systemd_version | int > 237 %}
 ProtectClock=true
+{% endif %}
 
 CapabilityBoundingSet=~CAP_SETUID CAP_SETGID CAP_SETPCAP
 CapabilityBoundingSet=~CAP_SYS_ADMIN
@@ -82,11 +86,13 @@ CapabilityBoundingSet=~CAP_SYS_TTY_CONFIG
 RestrictRealtime=true
 RestrictNamespaces=~user
 RestrictNamespaces=~mnt
+{% if node_exporter_systemd_version | int > 237 %}
 RestrictNamespaces=~CLONE_NEWUTS
 RestrictNamespaces=~CLONE_NEWPID
 RestrictNamespaces=~CLONE_NEWNET
 RestrictNamespaces=~CLONE_NEWIPC
 RestrictNamespaces=~CLONE_NEWCGROUP
+{% endif %}
 
 RestrictSUIDSGID=true
 LockPersonality=true
