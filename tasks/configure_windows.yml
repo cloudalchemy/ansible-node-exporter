@@ -1,0 +1,38 @@
+---
+- name: Create node_exporter binary and config directory
+  win_file:
+    path: "{{ _node_exporter_binary_install_dir_windows }}"
+    state: directory
+
+
+- name: Set default _node_exporter_web_config
+  set_fact:
+    _node_exporter_web_config: ""
+
+- block:
+    - name: Set _node_exporter_web_config
+      set_fact:
+        _node_exporter_web_config: "{{ _node_exporter_binary_install_dir_windows }}\\web.config.yaml"
+
+    - name: Copy the windows_exporter web config file
+      template:
+        src: config.yaml.j2
+        dest: "{{ _node_exporter_web_config }}"
+      notify: restart windows_exporter
+  when:
+    ( node_exporter_tls_server_config | length > 0 ) or
+    ( node_exporter_http_server_config | length > 0 ) or
+    ( node_exporter_basic_auth_users | length > 0 )
+
+- name: Copy the windows_exporter config file
+  template:
+    src: windows.config.yaml.j2
+    dest: "{{ _node_exporter_binary_install_dir_windows }}\\config.yaml"
+  notify: restart windows_exporter
+
+- name: Create textfile collector dir
+  win_file:
+    path: "{{ node_exporter_textfile_dir_windows }}"
+    state: directory
+    recurse: true
+  when: node_exporter_textfile_dir_windows | length > 0

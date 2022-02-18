@@ -1,0 +1,151 @@
+---
+name: ci
+'on':
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+      - feature/*
+
+jobs:
+  macos:
+    name: macos
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-10.15
+            ansible_python_interpreter: /usr/local/bin/python3
+        scenario:
+          - latest
+          - default
+          - alternative
+        ansible_version:
+          - "2.9"
+          - "2.10"
+          - "4.10"
+          - "5.1"
+
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v2
+
+      - name: Install ansible
+        run: sudo pip3 install "ansible~=${{ matrix.ansible_version }}.0"
+
+      - name: Set up the test environment
+        run: |
+          cp tests/test-inventory ./test-inventory
+          cp tests/ansible.cfg ./ansible.cfg
+          sudo pip3 install -r test-requirements.txt
+          mkdir -p /Users/runner/.ansible/roles
+          ln -s $GITHUB_WORKSPACE /Users/runner/.ansible/roles/cloudalchemy.node_exporter
+
+      - name: playbook tests
+        run: |
+          if [[ -n "${{ github.event.pull_request.number }}" ]] && [[ "${{ matrix.scenario }}" == 'latest' ]]; then
+            echo "Not testing 'latest' and 'pull request'"
+          else
+            echo "Test the playbook's syntax"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook.yml --syntax-check
+
+            echo "Run the prepare playbook"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/prepare.yml
+
+            echo "Run the main playbook"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook.yml
+
+            echo "Test the results"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" tests/${{ matrix.scenario }}/macosx.yml
+
+            echo "Idempotence check"
+            idempotence=$(mktemp)
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook.yml | tee -a ${idempotence}
+            tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+          fi
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+          OBJC_DISABLE_INITIALIZE_FORK_SAFETY: 'YES'
+          MOLECULE_DEBUG: 'true'
+
+  windows:
+    name: windows
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2019
+            # ansible_python_interpreter: C:\Python310\python.exe
+            # Tests run in WSL. This is the ansible_python_interpreter for that environment:
+            ansible_python_interpreter: /usr/bin/python3
+        scenario:
+          - latest
+          - default
+          - alternative
+        ansible_version:
+          - "2.10"
+          - "4.10"
+          - "5.1"
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v2
+
+      - name: install ssh
+        run: |
+          Set-PSDebug -Trace 1
+          net user runneradmin 9!test12345678
+          choco install -y --package-parameters=/SSHServerFeature openssh
+
+      - uses: Vampire/setup-wsl@v1
+        with:
+          distribution: Ubuntu-20.04
+          additional-packages:
+            python3-pip
+            net-tools
+            sshpass
+
+      - name: set up the test environment
+        shell: wsl-bash {0}
+        run: |
+          set -xe
+          mkdir -p /etc/ansible/roles
+          chmod -R 755 /etc/ansible
+          cp tests/test-inventory.windows /etc/ansible/hosts
+          cp tests/ansible.cfg.windows /etc/ansible/ansible.cfg
+          pip3 install "ansible~=${{ matrix.ansible_version }}.0"
+          pip3 install -r tests/test-requirements.windows.txt
+          # ansible-galaxy collection install ansible.windows
+          WORKSPACE_PATH=$(pwd)
+          ln -s $WORKSPACE_PATH /etc/ansible/roles/cloudalchemy.node_exporter
+          ls -al /etc/ansible/roles/cloudalchemy.node_exporter
+      - name: playbook tests
+        shell: wsl-bash {0}
+        run: |
+          set -xe
+          if [[ -n "${{ github.event.pull_request.number }}" ]] && [[ "${{ matrix.scenario }}" == 'latest' ]]; then
+            echo "Not testing 'latest' and 'pull request'"
+          else
+            echo "Test the playbook's syntax"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook-windows.yml --syntax-check
+
+            echo "Run the prepare playbook"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/prepare-windows.yml
+
+            echo "Run the main playbook"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook-windows.yml
+
+            echo "Test the results"
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" tests/${{ matrix.scenario }}/windows.yml
+
+            echo "Idempotence check"
+            idempotence=$(mktemp)
+            ansible-playbook -e "ansible_python_interpreter=${{ matrix.ansible_python_interpreter }}" molecule/${{ matrix.scenario }}/playbook-windows.yml | tee -a ${idempotence}
+            tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+          fi
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+          OBJC_DISABLE_INITIALIZE_FORK_SAFETY: 'YES'
+          ANSIBLE_CONFIG: '/etc/ansible/ansible.cfg'

@@ -4,7 +4,9 @@
     name: "{{ _node_exporter_system_group }}"
     state: present
     system: true
-  when: _node_exporter_system_group != "root"
+  when:
+    - ansible_system != 'Win32NT'
+    - _node_exporter_system_group != "root"
 
 - name: Create the node_exporter user
   user:
@@ -15,14 +17,58 @@
     system: true
     create_home: false
     home: /
-  when: _node_exporter_system_user != "root"
+  when:
+    - ansible_system != 'Win32NT'
+    - _node_exporter_system_user != "root"
+
+- name: check if _node_exporter_binary_install_dir directory exists
+  stat:
+    path: "{{ _node_exporter_binary_install_dir }}"
+  register: install_dir_check
+  when:
+    - ansible_system != 'Win32NT'
+
+- name: Create _node_exporter_binary_install_dir
+  file:
+    path: "{{ _node_exporter_binary_install_dir }}"
+    state: directory
+    owner: root
+    group: "{{ _node_exporter_root_group }}"
+    mode: u+rwX,g+rwX,o=rX
+  when:
+    - ansible_system != 'Win32NT'
+    - not install_dir_check.stat.exists
+
+- name: Make tmp dir - Windows
+  win_file:
+    path: 'C:\tmp'
+    state: directory
+  when:
+    - not ansible_check_mode
+    - ansible_system == 'Win32NT'
 
 - block:
-    - name: Download node_exporter binary to local folder
+    - name: Download node_exporter binary to local folder - Windows
       become: false
       get_url:
-        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
-        dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+        url: "https://github.com/prometheus-community/windows_exporter/releases/download/v{{ node_exporter_version_windows }}/windows_exporter-{{ node_exporter_version_windows }}-{{ go_arch }}.msi"
+        dest: "/tmp/windows_exporter-{{ node_exporter_version_windows }}-{{ go_arch }}.msi"
+        checksum: "sha256:{{ node_exporter_checksum_windows }}"
+        mode: '0644'
+      register: _download_binary_windows
+      until: _download_binary_windows is succeeded
+      retries: 5
+      delay: 2
+      delegate_to: localhost
+      check_mode: false
+      when:
+        - ansible_system == 'Win32NT'
+
+    - name: Download node_exporter binary to local folder - Linux
+      become: false
+      get_url:
+        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.{{ ansible_system |lower }}-{{ go_arch }}.tar.gz"
+        dest: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system |lower }}-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ node_exporter_checksum }}"
         mode: '0644'
       register: _download_binary
@@ -31,26 +77,75 @@
       delay: 2
       delegate_to: localhost
       check_mode: false
+      when:
+        - ansible_system != 'Win32NT'
 
     - name: Unpack node_exporter binary
       become: false
       unarchive:
-        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}.tar.gz"
         dest: "/tmp"
-        creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+        creates: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}/node_exporter"
       delegate_to: localhost
       check_mode: false
+      when:
+        - ansible_system != 'Win32NT'
+
+    - name: Propagate windows_exporter installer - Windows
+      win_copy:
+        src: "/tmp/windows_exporter-{{ node_exporter_version_windows }}-{{ go_arch }}.msi"
+        dest: 'C:\tmp\windows_exporter-{{ node_exporter_version_windows }}-{{ go_arch }}.msi'
+        mode: 0755
+        owner: root
+      when:
+        - not ansible_check_mode
+        - ansible_system == 'Win32NT'
 
     - name: Propagate node_exporter binaries
       copy:
-        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}/node_exporter"
         dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
         mode: 0755
         owner: root
-        group: root
       notify: restart node_exporter
-      when: not ansible_check_mode
-  when: node_exporter_binary_local_dir | length == 0
+      when:
+        - not ansible_check_mode
+        - ansible_system != 'Win32NT'
+
+    - name: install Windows exporter
+      win_package:
+        path: 'C:\tmp\windows_exporter-{{ node_exporter_version_windows }}-{{ go_arch }}.msi'
+        arguments: 'EXTRA_FLAGS="--config.file ""C:\Program Files\windows_exporter\config.yaml"""'
+        state: present
+      when:
+        - not ansible_check_mode
+        - ansible_system == 'Win32NT'
+      notify: restart windows_exporter
+  when:
+    - node_exporter_binary_local_dir | length == 0
+
+- name: propagate locally distributed windows installer
+  copy:
+    src: "{{ node_exporter_local_installer }}"
+    dest: 'C:\tmp\windows_exporter.msi'
+    mode: 0755
+    owner: root
+    group: "{{ _node_exporter_root_group }}"
+  when:
+    - ansible_system == 'Win32NT'
+    - node_exporter_local_installer | length > 0
+    - not ansible_check_mode
+
+- name: install locally distributed Windows exporter
+  win_package:
+    path: 'C:\tmp\windows_exporter.msi'
+    arguments: 'EXTRA_FLAGS="--config.file ""C:\Program Files\windows_exporter\config.yaml"""'
+    state: present
+  when:
+    - ansible_system == 'Win32NT'
+    - node_exporter_local_installer | length > 0
+    - not ansible_check_mode
+  notify: restart windows_exporter
 
 - name: propagate locally distributed node_exporter binary
   copy:
@@ -58,6 +153,8 @@
     dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
     mode: 0755
     owner: root
-    group: root
-  when: node_exporter_binary_local_dir | length > 0
+    group: "{{ _node_exporter_root_group }}"
+  when:
+    - ansible_system != 'Win32NT'
+    - node_exporter_binary_local_dir | length > 0
   notify: restart node_exporter

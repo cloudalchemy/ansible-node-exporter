@@ -1,0 +1,23 @@
+---
+- name: Test macos
+  hosts: localhost
+  tasks:
+    - name: check processes
+      shell: ps -ef | grep node || true
+      register: out
+      changed_when: false
+      failed_when: false
+    - debug: var=out.stdout_lines
+
+    - name: check ports
+      shell: netstat -anvp tcp | awk 'NR<3 || /LISTEN/'
+      register: out
+      changed_when: false
+      failed_when: false
+    - debug: var=out.stdout_lines
+
+    - name: check if node_exporter is listening on port 8080
+      command: curl -k -u randomuser:examplepassword https://localhost:8080
+      register: out
+    - debug: var=out.stdout_lines
+    - debug: var=out.stderr_lines

@@ -1,0 +1,21 @@
+---
+{{ ansible_managed | comment }}
+collectors:
+  enabled: "{{ node_exporter_enabled_collectors_windows | join(',') }}"
+collector:
+  service:
+    services-where: "{{ node_exporter_collector_service_services_where }}"
+  textfile:
+    directory: '{{ node_exporter_textfile_dir_windows }}'
+log:
+  level: "{{ node_exporter_log_level }}"
+scrape:
+  timeout-margin: "{{ node_exporter_scrape_timeout_margin }}"
+telemetry:
+  addr: ":{{ node_exporter_web_listen_address.split(':')[-1] }}"
+  path: "{{ node_exporter_web_telemetry_path }}"
+  max-requests: "{{ node_exporter_telemetry_max_requests }}"
+web:
+  config:
+    file: '{{ _node_exporter_web_config }}'
+

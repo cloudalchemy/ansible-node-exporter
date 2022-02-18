@@ -3,6 +3,8 @@
   assert:
     that: ansible_service_mgr == 'systemd'
     msg: "This role only works with systemd"
+  when:
+    - ansible_system == 'Linux'
 
 - name: Get systemd version
   command: systemctl --version
@@ -11,10 +13,14 @@
   register: __systemd_version
   tags:
     - skip_ansible_lint
+  when:
+    - ansible_system == 'Linux'
 
 - name: Set systemd version fact
   set_fact:
     node_exporter_systemd_version: "{{ __systemd_version.stdout_lines[0] | regex_replace('^systemd\\s(\\d+).*$', '\\1') }}"
+  when:
+    - ansible_system == 'Linux'
 
 - name: Naive assertion of proper listen address
   assert:
@@ -49,15 +55,74 @@
         that:
           - "{{ __node_exporter_cert_file.stat.exists }}"
           - "{{ __node_exporter_key_file.stat.exists }}"
-  when: node_exporter_tls_server_config | length > 0
+  when:
+    - node_exporter_tls_server_config | length > 0
+    - ansible_system != 'Win32NT'
 
-- name: Check if node_exporter is installed
+- block:
+    - name: Assert that TLS key and cert path are set
+      assert:
+        that:
+          - "node_exporter_tls_server_config.cert_file is defined"
+          - "node_exporter_tls_server_config.key_file is defined"
+
+    - name: Check existence of TLS cert file
+      win_stat:
+        path: "{{ node_exporter_tls_server_config.cert_file }}"
+      register: __node_exporter_cert_file
+
+    - name: Check existence of TLS key file
+      win_stat:
+        path: "{{ node_exporter_tls_server_config.key_file }}"
+      register: __node_exporter_key_file
+
+    - name: Assert that TLS key and cert are present
+      assert:
+        that:
+          - "{{ __node_exporter_cert_file.stat.exists }}"
+          - "{{ __node_exporter_key_file.stat.exists }}"
+  when:
+    - node_exporter_tls_server_config | length > 0
+    - ansible_system == 'Win32NT'
+
+- name: Check if node_exporter is installed - Windows
+  win_stat:
+    path: '{{ _node_exporter_binary_install_dir_windows }}\windows_exporter.exe'
+  register: __node_exporter_is_installed_windows
+  check_mode: false
+  tags:
+    - node_exporter_install
+  when:
+    - ansible_system == 'Win32NT'
+
+- name: Check if node_exporter is installed - Linux
   stat:
     path: "{{ _node_exporter_binary_install_dir }}/node_exporter"
   register: __node_exporter_is_installed
   check_mode: false
   tags:
     - node_exporter_install
+  when:
+    - ansible_system != 'Win32NT'
+
+- name: Set fact __node_exporter_is_installed
+  set_fact:
+    __node_exporter_is_installed: "{{ __node_exporter_is_installed_windows }}"
+  when: ansible_system == 'Win32NT'
+
+- name: Gather currently installed node_exporter version (if any) - Windows
+  win_command: '"{{ _node_exporter_binary_install_dir_windows }}\windows_exporter.exe" --version'
+  args:
+    warn: false
+  changed_when: false
+  register: __node_exporter_current_version_output_windows
+  check_mode: false
+  when:
+    - ansible_system == 'Win32NT'
+    - __node_exporter_is_installed.stat.exists
+  tags:
+    - node_exporter_install
+    - skip_ansible_lint
 
 - name: Gather currently installed node_exporter version (if any)
   command: "{{ _node_exporter_binary_install_dir }}/node_exporter --version"
@@ -66,10 +131,17 @@
   changed_when: false
   register: __node_exporter_current_version_output
   check_mode: false
-  when: __node_exporter_is_installed.stat.exists
+  when:
+    - ansible_system != 'Win32NT'
+    - __node_exporter_is_installed.stat.exists
   tags:
     - node_exporter_install
     - skip_ansible_lint
+
+- name: Set fact __node_exporter_current_version_output
+  set_fact:
+    __node_exporter_current_version_output: "{{ __node_exporter_current_version_output_windows }}"
+  when: ansible_system == 'Win32NT'
 
 - block:
     - name: Get latest release
@@ -84,9 +156,10 @@
       no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
       register: _latest_release
       until: _latest_release.status == 200
-      retries: 5
+      retries: 200
+      delay: 30
 
-    - name: "Set node_exporter version to {{ _latest_release.json.tag_name[1:] }}"
+    - name: "Set node_exporter_version to {{ _latest_release.json.tag_name[1:] }}"
       set_fact:
         node_exporter_version: "{{ _latest_release.json.tag_name[1:] }}"
   when:
@@ -96,16 +169,53 @@
   run_once: true
 
 - block:
+    - name: Get latest release - Windows
+      uri:
+        url: "https://api.github.com/repos/prometheus-community/windows_exporter/releases/latest"
+        method: GET
+        return_content: true
+        status_code: 200
+        body_format: json
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+      register: _latest_release_windows
+      until: _latest_release_windows.status == 200
+      retries: 200
+      delay: 30
+
+    - name: "Set node_exporter_version_windows to {{ _latest_release_windows.json.tag_name[1:] }}"
+      set_fact:
+        node_exporter_version_windows: "{{ _latest_release_windows.json.tag_name[1:] }}"
+  when:
+    - node_exporter_version_windows == "latest"
+    - node_exporter_binary_local_dir | length == 0
+  delegate_to: localhost
+  run_once: true
+
+- block:
     - name: Get checksum list from github
       set_fact:
-        _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+        _checksums: "{{ lookup('url', 'https://github.com/prometheus/node_exporter/releases' + '/download/v' + node_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
       run_once: true
 
-    - name: "Get checksum for {{ go_arch }} architecture"
+    - name: Get checksum list from github - windows
+      set_fact:
+        _checksums_windows: "{{ lookup('url', 'https://github.com/prometheus-community/windows_exporter/releases' + '/download/v' + node_exporter_version_windows + '/sha256sums.txt', wantlist=True) | list }}"
+      run_once: true
+
+    - name: "Get checksum for {{ go_arch }} architecture - Linux"
       set_fact:
         node_exporter_checksum: "{{ item.split(' ')[0] }}"
       with_items: "{{ _checksums }}"
       when:
-        - "('linux-' + go_arch + '.tar.gz') in item"
+        - ( "{{ ansible_system |lower }}" + "-" + go_arch + '.tar.gz') in item
+
+    - name: "Get checksum for {{ go_arch }} architecture - Windows"
+      set_fact:
+        node_exporter_checksum_windows: "{{ item.split(' ')[0] }}"
+      with_items: "{{ _checksums_windows }}"
+      when:
+        - ( "-" + go_arch + '.msi') in item
   delegate_to: localhost
   when: node_exporter_binary_local_dir | length == 0

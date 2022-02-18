@@ -7,6 +7,30 @@
     group: root
     mode: 0644
   notify: restart node_exporter
+  when:
+    - ansible_system == 'Linux'
+
+- name: Copy the node_exporter launchd service file
+  template:
+    src: cloudalchemy.mxcl.node_exporter.plist.j2
+    dest: /Library/LaunchDaemons/cloudalchemy.mxcl.node_exporter.plist
+    owner: root
+    group: "{{ _node_exporter_root_group }}"
+    mode: 0644
+  notify: restart node_exporter osx
+  when:
+    - ansible_distribution == 'MacOSX'
+
+- name: Copy the node_exporter startup script
+  template:
+    src: node_exporter_cloudalchemy_services.j2
+    dest: "{{ _node_exporter_binary_install_dir }}/node_exporter_cloudalchemy_services"
+    owner: root
+    group: "{{ _node_exporter_root_group }}"
+    mode: 0755
+  notify: restart node_exporter osx
+  when:
+    - ansible_distribution == 'MacOSX'
 
 - block:
     - name: Create node_exporter config directory
@@ -14,7 +38,7 @@
         path: "/etc/node_exporter"
         state: directory
         owner: root
-        group: root
+        group: "{{ _node_exporter_root_group }}"
         mode: u+rwX,g+rwX,o=rX
 
     - name: Copy the node_exporter config file
@@ -22,9 +46,11 @@
         src: config.yaml.j2
         dest: /etc/node_exporter/config.yaml
         owner: root
-        group: root
+        group: "{{ _node_exporter_root_group }}"
         mode: 0644
-      notify: restart node_exporter
+      notify:
+        - restart node_exporter
+        - restart node_exporter osx
   when:
     ( node_exporter_tls_server_config | length > 0 ) or
     ( node_exporter_http_server_config | length > 0 ) or

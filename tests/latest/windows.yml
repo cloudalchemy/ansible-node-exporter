@@ -1,0 +1,6 @@
+---
+- name: Test windows
+  hosts: localhost
+  tasks:
+  - name: check if node_exporter is running on port 9100
+    command: curl http://localhost:9100

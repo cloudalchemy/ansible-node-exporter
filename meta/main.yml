@@ -23,6 +23,12 @@ galaxy_info:
       versions:
         - 30
         - 31
+    - name: MacOSX
+      versions:
+        - all
+    - name: Windows
+      versions:
+        - 2019
   galaxy_tags:
     - monitoring
     - prometheus

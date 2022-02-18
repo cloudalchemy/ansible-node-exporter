@@ -1,0 +1,15 @@
+
+localhost ansible_connection=local
+
+[targetnodes]
+targethost ansible_host=127.0.0.1
+
+[windows]
+targethost
+
+[windows:vars]
+ansible_user=runneradmin
+ansible_ssh_pass=9!test12345678
+ansible_shell_type=cmd
+ansible_python_interpreter='C:\Python310\python.exe'
+ansible_become=false

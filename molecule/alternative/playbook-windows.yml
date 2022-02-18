@@ -1,18 +1,17 @@
 ---
 - name: Run role
-  hosts: all
+  hosts: targetnodes
   any_errors_fatal: true
   roles:
     - cloudalchemy.node_exporter
   pre_tasks:
     - name: Create node_exporter cert dir
-      file:
-        path: "{{ node_exporter_tls_server_config.cert_file | dirname }}"
+      win_file:
+        path: "{{ node_exporter_tls_server_config.cert_file | win_dirname }}"
         state: directory
-        owner: root
       become: true
     - name: Copy cert and key
-      copy:
+      win_copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
       with_items:
@@ -23,16 +22,18 @@
       become: true
   vars:
     node_exporter_binary_local_dir: "/tmp/node_exporter-{{ ansible_system|lower }}-amd64"
+    node_exporter_local_installer: "/tmp/windows_exporter-amd64.msi"
     node_exporter_web_listen_address: "127.0.0.1:8080"
     node_exporter_textfile_dir: ""
     node_exporter_enabled_collectors:
-      - netdev
-    node_exporter_disabled_collectors:
-      - diskstats
+      - cpu
+      - memory
+    # node_exporter_disabled_collectors:
+    #   - diskstats
 
     node_exporter_tls_server_config:
-      cert_file: /etc/node_exporter/tls.cert
-      key_file: /etc/node_exporter/tls.key
+      cert_file: '{{ _node_exporter_binary_install_dir_windows }}\tls.cert'
+      key_file: '{{ _node_exporter_binary_install_dir_windows }}\tls.key'
     node_exporter_http_server_config:
       http2: true
     node_exporter_basic_auth_users:

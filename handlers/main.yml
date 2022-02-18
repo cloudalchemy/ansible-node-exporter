@@ -7,3 +7,22 @@
     state: restarted
   when:
     - not ansible_check_mode
+    - ansible_system == 'Linux'
+
+- name: restart node_exporter osx
+  shell: |
+    /bin/launchctl unload /Library/LaunchDaemons/cloudalchemy.mxcl.node_exporter.plist
+    /usr/bin/pkill node_exporter
+    /bin/launchctl load /Library/LaunchDaemons/cloudalchemy.mxcl.node_exporter.plist
+  become: true
+  when:
+    - not ansible_check_mode
+    - ansible_distribution == 'MacOSX'
+
+- name: restart windows_exporter
+  win_service:
+    name: windows_exporter
+    state: restarted
+  when:
+    - not ansible_check_mode
+    - ansible_system == 'Win32NT'
