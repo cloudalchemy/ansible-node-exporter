@@ -57,7 +57,8 @@ Umask=077
 PrivateTmp=true
 PrivateDevices=true
 PrivateNetwork=false
-PrivateUsers=true
+# Ubuntu 18.04/systemd 237 ok; Raspbian 10/systemd 241 nok = (code=exited, status=217/USER)
+# PrivateUsers=true
 {% if node_exporter_systemd_version | int > 237 %}
 ProtectClock=true
 {% endif %}
