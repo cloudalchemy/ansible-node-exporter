@@ -1,0 +1,37 @@
+---
+name: ci
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  macos:
+    name: macos
+    runs-on: macos-12
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v2
+
+      - name: Install a default Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install ansible
+        run: pip3 install ansible molecule
+
+      - name: Set up the test environment
+        run: |
+          pip3 install -r test-requirements.txt
+
+      - name: Run Molecule tests.
+        run: molecule test -s default-macos
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          OBJC_DISABLE_INITIALIZE_FORK_SAFETY: 'YES'

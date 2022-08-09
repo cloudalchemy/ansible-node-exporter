@@ -23,6 +23,9 @@ galaxy_info:
       versions:
         - 30
         - 31
+    - name: MacOSX
+      versions:
+        - all
   galaxy_tags:
     - monitoring
     - prometheus

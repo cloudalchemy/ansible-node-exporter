@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>homebrew.mxcl.node_exporter</string>
+	<key>UserName</key>
+	<string>{{ _node_exporter_system_user }}</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>{{ _node_exporter_binary_install_dir }}/node_exporter</string>
+{% for collector in node_exporter_enabled_collectors %}
+{% if not collector == 'systemd' %}
+{%+ if not collector is mapping %}
+		<string>--collector.{{ collector }}</string>
+{% else %}
+{% set name, options = (collector.items()|list)[0] %}
+		<string>--collector.{{ name }}</string>
+{% for k,v in options|dictsort %}
+		<string>--collector.{{ name }}.{{ k }}={{ v | quote }}</string>
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% for collector in node_exporter_disabled_collectors %}
+		<string>--no-collector.{{ collector }}</string>
+{% endfor %}
+{% if node_exporter_tls_server_config | length > 0 or node_exporter_http_server_config | length > 0 or node_exporter_basic_auth_users | length > 0 %}
+		<string>--web.config=/etc/node_exporter/config.yaml</string>
+{% endif %}
+		<string>--web.listen-address={{ node_exporter_web_listen_address }}</string>
+		<string>--web.telemetry-path={{ node_exporter_web_telemetry_path }}</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>

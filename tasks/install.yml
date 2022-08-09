@@ -21,8 +21,8 @@
     - name: Download node_exporter binary to local folder
       become: false
       get_url:
-        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
-        dest: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+        url: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}.tar.gz"
+        dest: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ node_exporter_checksum }}"
         mode: '0644'
       register: _download_binary
@@ -31,25 +31,29 @@
       delay: 2
       delegate_to: localhost
       check_mode: false
+      when: ansible_system == 'Linux' or ansible_system == 'Darwin'
 
     - name: Unpack node_exporter binary
       become: false
       unarchive:
-        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}.tar.gz"
         dest: "/tmp"
-        creates: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+        creates: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}/node_exporter"
       delegate_to: localhost
       check_mode: false
+      when: ansible_system == 'Linux' or ansible_system == 'Darwin'
 
     - name: Propagate node_exporter binaries
       copy:
-        src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ go_arch }}/node_exporter"
+        src: "/tmp/node_exporter-{{ node_exporter_version }}.{{ ansible_system | lower }}-{{ go_arch }}/node_exporter"
         dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
         mode: 0755
         owner: root
-        group: root
+        group: "{{ _node_exporter_root_group }}"
       notify: restart node_exporter
-      when: not ansible_check_mode
+      when:
+        - not ansible_check_mode
+        - ansible_system == 'Linux' or ansible_system == 'Darwin'
   when: node_exporter_binary_local_dir | length == 0
 
 - name: propagate locally distributed node_exporter binary
@@ -58,6 +62,8 @@
     dest: "{{ _node_exporter_binary_install_dir }}/node_exporter"
     mode: 0755
     owner: root
-    group: root
-  when: node_exporter_binary_local_dir | length > 0
+    group: "{{ _node_exporter_root_group }}"
+  when:
+    - node_exporter_binary_local_dir | length > 0
+    - ansible_system == 'Linux' or ansible_system == 'Darwin'
   notify: restart node_exporter

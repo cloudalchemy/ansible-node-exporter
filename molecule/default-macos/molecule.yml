@@ -1,0 +1,13 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+platforms:
+  - name: instance
+provisioner:
+  name: ansible
+  connection_options:
+    ansible_connection: local
+verifier:
+  name: testinfra

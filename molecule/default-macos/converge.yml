@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include cloudalchemy.node_exporter"
+      ansible.builtin.include_role:
+        name: "cloudalchemy.node_exporter"
