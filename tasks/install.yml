@@ -11,7 +11,7 @@
     name: "{{ _node_exporter_system_user }}"
     groups: "{{ _node_exporter_system_group }}"
     append: true
-    shell: /usr/sbin/nologin
+    shell: "{{ _node_exporter_system_user_shell }}"
     system: true
     create_home: false
     home: /

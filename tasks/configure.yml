@@ -12,8 +12,8 @@
 
 - name: Copy the node_exporter launchd service file
   template:
-    src: homebrew.mxcl.node_exporter.plist.j2
-    dest: /Library/LaunchDaemons/homebrew.mxcl.node_exporter.plist
+    src: cloudalchemy.mxcl.node_exporter.plist.j2
+    dest: /Library/LaunchDaemons/cloudalchemy.mxcl.node_exporter.plist
     owner: root
     group: "{{ _node_exporter_root_group }}"
     mode: 0644

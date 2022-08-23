@@ -12,7 +12,7 @@
 - name: restart node_exporter osx
   become: true
   community.general.launchd:
-    name: homebrew.mxcl.node_exporter
+    name: cloudalchemy.mxcl.node_exporter
     state: restarted
   when:
     - not ansible_check_mode
