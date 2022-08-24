@@ -35,9 +35,8 @@
         src: config.yaml.j2
         dest: /etc/node_exporter/config.yaml
         owner: root
-        group: root
-        mode: 0644
         group: "{{ _node_exporter_root_group }}"
+        mode: 0644
       notify:
         - restart node_exporter
         - restart node_exporter osx
