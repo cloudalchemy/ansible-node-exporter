@@ -37,6 +37,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `node_exporter_tls_server_config` | {} | Configuration for TLS authentication. Keys and values are the same as in [node_exporter docs](https://github.com/prometheus/node_exporter/blob/master/https/README.md#sample-config). |
 | `node_exporter_http_server_config` | {} | Config for HTTP/2 support. Keys and values are the same as in [node_exporter docs](https://github.com/prometheus/node_exporter/blob/master/https/README.md#sample-config). |
 | `node_exporter_basic_auth_users` | {} | Dictionary of users and password for basic authentication. Passwords are automatically hashed with bcrypt. |
+| `node_exporter_cpu_shares` | 0 | [CPUShares](https://www.freedesktop.org/software/systemd/man/systemd.exec.html) to add to the `node_exporter` executable. Can be useful if node_exporter gets starved for resources. |
 
 ## Example
 

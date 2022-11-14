@@ -41,6 +41,10 @@ ProtectHome=yes
 {% endfor %}
 NoNewPrivileges=yes
 
+{% if node_exporter_cpu_shares | int > 0 %}
+CPUShares={{ node_exporter_cpu_shares }}
+{% endif %}
+
 {% if node_exporter_systemd_version | int >= 232 %}
 ProtectSystem=strict
 ProtectControlGroups=true
