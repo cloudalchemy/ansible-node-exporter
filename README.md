@@ -7,6 +7,10 @@
 [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.node_exporter-blue.svg)](https://galaxy.ansible.com/cloudalchemy/node_exporter/)
 [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-node-exporter.svg)](https://github.com/cloudalchemy/ansible-node-exporter/tags)
 
+## Deprecation Notice
+
+:warning: This ansible role has been deprecated and moved to https://github.com/prometheus-community/ansible collection.
+
 ## Warning
 
 Due to limitations of galaxy.ansible.com we had to move the role to https://galaxy.ansible.com/cloudalchemy/node_exporter and use `_` instead of `-` in role name. This is a breaking change and unfortunately, it affects all versions of node_exporter role as ansible galaxy doesn't offer any form of redirection. We are sorry for the inconvenience.
